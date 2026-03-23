@@ -1,0 +1,52 @@
+{
+  "config_path": "experiments/exp007_catboost_seedbag_screen.yaml",
+  "config": {
+    "name": "exp007_catboost_seedbag_screen",
+    "competition_slug": "fiicode-2026-ai-competition",
+    "model_family": "catboost",
+    "feature_set": "blend",
+    "drop_columns": [],
+    "data_dir": "data/raw",
+    "output_root": "outputs",
+    "n_trials": 0,
+    "search_folds": 3,
+    "search_seeds": [
+      42
+    ],
+    "final_folds": 3,
+    "final_seeds": [
+      42
+    ],
+    "early_stop": 150,
+    "study_name": "exp007_catboost_seedbag_screen",
+    "storage": null,
+    "timeout": null,
+    "thread_count": 8,
+    "with_class_weight": true,
+    "fixed_params_path": "outputs/logs/exp003_blend_features/best_run_summary.json",
+    "notes": "Cheap screen for CatBoost seed bagging; reduced folds/seeds and capped threads before promoting to full exp007."
+  },
+  "data_dir": "data/raw",
+  "study_storage": "fixed-params",
+  "existing_trials": 0,
+  "requested_trials": 0,
+  "best_trial_number": null,
+  "search_auc": null,
+  "final_auc": 0.9334995604395604,
+  "best_params": {
+    "iterations": 4000,
+    "learning_rate": 0.021785629012884875,
+    "depth": 7,
+    "l2_leaf_reg": 5.665907559659504,
+    "random_strength": 2.2007514038065743,
+    "bagging_temperature": 0.4809795397254599
+  },
+  "fixed_params_path": "/mnt/c/Users/dbxdr_iytiz92/Dropbox/fiicode/outputs/logs/exp003_blend_features/best_run_summary.json",
+  "paths": {
+    "submission": "/mnt/c/Users/dbxdr_iytiz92/Dropbox/fiicode/outputs/submissions/exp007_catboost_seedbag_screen/submission.csv",
+    "oof": "/mnt/c/Users/dbxdr_iytiz92/Dropbox/fiicode/outputs/oof/exp007_catboost_seedbag_screen/oof_predictions.csv",
+    "trials": "/mnt/c/Users/dbxdr_iytiz92/Dropbox/fiicode/outputs/logs/exp007_catboost_seedbag_screen/optuna_trials.csv",
+    "summary": "/mnt/c/Users/dbxdr_iytiz92/Dropbox/fiicode/outputs/logs/exp007_catboost_seedbag_screen/best_run_summary.json",
+    "best_params": "/mnt/c/Users/dbxdr_iytiz92/Dropbox/fiicode/outputs/models/exp007_catboost_seedbag_screen/best_params.json"
+  }
+}

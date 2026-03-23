@@ -1,0 +1,20 @@
+name: exp007_catboost_seedbag
+competition_slug: fiicode-2026-ai-competition
+model_family: catboost
+feature_set: blend
+drop_columns: []
+data_dir: data/raw
+output_root: outputs
+n_trials: 0
+search_folds: 5
+search_seeds: [42]
+final_folds: 5
+final_seeds: [42, 2024, 3407, 777, 1337]
+early_stop: 250
+study_name: exp007_catboost_seedbag
+storage: null
+timeout: null
+thread_count: -1
+with_class_weight: true
+fixed_params_path: outputs/logs/exp003_blend_features/best_run_summary.json
+notes: Fixed-param CatBoost bagging run; point fixed_params_path at exp006 if that becomes the stronger parent.

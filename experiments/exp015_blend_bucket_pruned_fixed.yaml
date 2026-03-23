@@ -1,0 +1,24 @@
+name: exp015_blend_bucket_pruned_fixed
+competition_slug: fiicode-2026-ai-competition
+model_family: catboost
+feature_set: blend_buckets
+drop_columns:
+  - campaign_bucket
+  - previous_bucket
+  - duration_bucket
+  - day_bucket
+data_dir: data/raw
+output_root: outputs
+n_trials: 0
+search_folds: 5
+search_seeds: [42]
+final_folds: 5
+final_seeds: [42, 2024, 3407]
+early_stop: 250
+study_name: exp015_blend_bucket_pruned_fixed
+storage: null
+timeout: null
+thread_count: 8
+with_class_weight: true
+fixed_params_path: outputs/models/exp012_blend_bucket_features_fixed/best_params.json
+notes: Fixed-param promotion of the best cheap group ablation subset from the blend_buckets feature path.

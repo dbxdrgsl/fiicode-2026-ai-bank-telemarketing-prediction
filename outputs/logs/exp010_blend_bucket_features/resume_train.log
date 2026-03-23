@@ -1,0 +1,56 @@
+======================================================================
+FiiCode Model Training
+======================================================================
+Experiment:           exp010_blend_bucket_features
+Config path:          experiments/exp010_blend_bucket_features.yaml
+Model family:         catboost
+Feature set:          blend_buckets
+Data dir:             data/raw
+Output root:          /mnt/c/Users/dbxdr_iytiz92/Dropbox/fiicode/outputs
+Study name:           exp010_blend_bucket_features
+Study storage:        sqlite:////mnt/c/Users/dbxdr_iytiz92/Dropbox/fiicode/outputs/logs/exp010_blend_bucket_features/exp010_blend_bucket_features.sqlite3
+Requested trials:     30
+Search CV:            5-fold, seeds=[42]
+Final CV:             5-fold, seeds=[42, 2024, 3407]
+Thread count:         8
+Class weight:         True
+Drop columns:         none
+Fixed params path:    none
+======================================================================
+[I 2026-03-23 08:45:33,962] Using an existing study with name 'exp010_blend_bucket_features' instead of creating a new one.
+
+Starting Optuna search with 23 new trial(s)...
+[I 2026-03-23 08:49:52,813] Trial 7 finished with value: 0.9355066373626374 and parameters: {'iterations': 3500, 'learning_rate': 0.02841881747862225, 'depth': 7, 'l2_leaf_reg': 7.190609389379256, 'random_strength': 0.812037280884873, 'bagging_temperature': 0.3119890406724053}. Best is trial 3 with value: 0.9357008791208791.
+[I 2026-03-23 08:57:16,468] Trial 8 finished with value: 0.9349664615384615 and parameters: {'iterations': 2500, 'learning_rate': 0.025898287605281723, 'depth': 6, 'l2_leaf_reg': 7.956508044572319, 'random_strength': 0.5411689885916049, 'bagging_temperature': 1.9398197043239886}. Best is trial 3 with value: 0.9357008791208791.
+[I 2026-03-23 09:09:39,142] Trial 9 finished with value: 0.9354204835164834 and parameters: {'iterations': 4500, 'learning_rate': 0.012627329201463677, 'depth': 5, 'l2_leaf_reg': 4.283831568974037, 'random_strength': 1.1084844859190754, 'bagging_temperature': 1.0495128632644757}. Best is trial 3 with value: 0.9357008791208791.
+[I 2026-03-23 09:19:53,028] Trial 10 finished with value: 0.9357008791208791 and parameters: {'iterations': 3500, 'learning_rate': 0.013770560347033606, 'depth': 6, 'l2_leaf_reg': 3.9764570245642927, 'random_strength': 1.0842892970704363, 'bagging_temperature': 0.7327236865873834}. Best is trial 3 with value: 0.9357008791208791.
+[I 2026-03-23 09:26:18,450] Trial 11 finished with value: 0.9356293626373625 and parameters: {'iterations': 5000, 'learning_rate': 0.01682033052233128, 'depth': 6, 'l2_leaf_reg': 3.125733129303738, 'random_strength': 1.6957621336147723, 'bagging_temperature': 0.6877350882260297}. Best is trial 3 with value: 0.9357008791208791.
+[I 2026-03-23 09:37:19,296] Trial 12 finished with value: 0.9357041758241759 and parameters: {'iterations': 3000, 'learning_rate': 0.01616281446819073, 'depth': 6, 'l2_leaf_reg': 4.911160938559995, 'random_strength': 1.3777660293557983, 'bagging_temperature': 0.7121824466699873}. Best is trial 12 with value: 0.9357041758241759.
+[I 2026-03-23 09:44:07,008] Trial 13 finished with value: 0.9361794285714286 and parameters: {'iterations': 3000, 'learning_rate': 0.01694245129986473, 'depth': 7, 'l2_leaf_reg': 5.3390952295063885, 'random_strength': 1.4727574629497904, 'bagging_temperature': 0.7416271370267629}. Best is trial 13 with value: 0.9361794285714286.
+[I 2026-03-23 09:50:02,290] Trial 14 finished with value: 0.935040131868132 and parameters: {'iterations': 3000, 'learning_rate': 0.018999842316241664, 'depth': 7, 'l2_leaf_reg': 5.419856216737866, 'random_strength': 2.0433282865138764, 'bagging_temperature': 1.3536361161912305}. Best is trial 13 with value: 0.9361794285714286.
+[I 2026-03-23 10:01:41,186] Trial 15 finished with value: 0.936100967032967 and parameters: {'iterations': 3000, 'learning_rate': 0.017752156901972765, 'depth': 7, 'l2_leaf_reg': 5.399595017864214, 'random_strength': 1.4108835665301898, 'bagging_temperature': 0.5326814177148325}. Best is trial 13 with value: 0.9361794285714286.
+[I 2026-03-23 10:07:21,532] Trial 16 finished with value: 0.9359431648351647 and parameters: {'iterations': 3000, 'learning_rate': 0.0205228570840857, 'depth': 7, 'l2_leaf_reg': 5.690758494422338, 'random_strength': 1.4875658292122684, 'bagging_temperature': 0.4479474518093699}. Best is trial 13 with value: 0.9361794285714286.
+[I 2026-03-23 10:13:24,402] Trial 17 finished with value: 0.935486989010989 and parameters: {'iterations': 2500, 'learning_rate': 0.02068514599134938, 'depth': 7, 'l2_leaf_reg': 5.912220268421785, 'random_strength': 1.893823661669879, 'bagging_temperature': 1.3024558620845985}. Best is trial 13 with value: 0.9361794285714286.
+[I 2026-03-23 10:20:56,837] Trial 18 finished with value: 0.9355327912087912 and parameters: {'iterations': 3000, 'learning_rate': 0.015264281583728594, 'depth': 7, 'l2_leaf_reg': 6.21757846719555, 'random_strength': 2.1896690757257837, 'bagging_temperature': 0.01426832734162331}. Best is trial 13 with value: 0.9361794285714286.
+[I 2026-03-23 10:27:14,676] Trial 19 finished with value: 0.9358156043956044 and parameters: {'iterations': 4000, 'learning_rate': 0.01862604779985321, 'depth': 7, 'l2_leaf_reg': 5.032750022075959, 'random_strength': 1.6711297864648138, 'bagging_temperature': 0.4294650955954069}. Best is trial 13 with value: 0.9361794285714286.
+[I 2026-03-23 10:37:22,856] Trial 20 finished with value: 0.9358253186813186 and parameters: {'iterations': 3000, 'learning_rate': 0.01023241880285781, 'depth': 7, 'l2_leaf_reg': 3.0777961173835524, 'random_strength': 1.3378911934938629, 'bagging_temperature': 0.8889175128454063}. Best is trial 13 with value: 0.9361794285714286.
+[I 2026-03-23 10:45:56,704] Trial 21 finished with value: 0.9359735384615384 and parameters: {'iterations': 2500, 'learning_rate': 0.02222543831103653, 'depth': 7, 'l2_leaf_reg': 8.618432432033915, 'random_strength': 1.3724123420740701, 'bagging_temperature': 1.2506906090515173}. Best is trial 13 with value: 0.9361794285714286.
+[I 2026-03-23 10:53:28,494] Trial 22 finished with value: 0.9353854945054947 and parameters: {'iterations': 2500, 'learning_rate': 0.02212277319455433, 'depth': 7, 'l2_leaf_reg': 9.579973130739395, 'random_strength': 1.2345763030402344, 'bagging_temperature': 1.262716887699555}. Best is trial 13 with value: 0.9361794285714286.
+[I 2026-03-23 11:02:57,378] Trial 23 finished with value: 0.9351384175824177 and parameters: {'iterations': 2500, 'learning_rate': 0.01755659346091926, 'depth': 7, 'l2_leaf_reg': 8.970261966035746, 'random_strength': 1.5600159098641488, 'bagging_temperature': 1.600746087749219}. Best is trial 13 with value: 0.9361794285714286.
+[I 2026-03-23 11:16:43,019] Trial 24 finished with value: 0.9356257142857144 and parameters: {'iterations': 3000, 'learning_rate': 0.014823831535941676, 'depth': 7, 'l2_leaf_reg': 8.582484953124576, 'random_strength': 1.4885157635812167, 'bagging_temperature': 0.8983469296439337}. Best is trial 13 with value: 0.9361794285714286.
+[I 2026-03-23 11:28:32,703] Trial 25 finished with value: 0.9355643956043954 and parameters: {'iterations': 2500, 'learning_rate': 0.019354719506328836, 'depth': 7, 'l2_leaf_reg': 6.652489179544526, 'random_strength': 1.7855309089718228, 'bagging_temperature': 0.5687203737044471}. Best is trial 13 with value: 0.9361794285714286.
+[I 2026-03-23 11:34:42,537] Trial 26 finished with value: 0.9353891868131868 and parameters: {'iterations': 3000, 'learning_rate': 0.022279938904985166, 'depth': 7, 'l2_leaf_reg': 5.202492875768864, 'random_strength': 0.8934193261871611, 'bagging_temperature': 1.1647363829442865}. Best is trial 13 with value: 0.9361794285714286.
+[I 2026-03-23 11:39:50,183] Trial 27 finished with value: 0.9352648791208791 and parameters: {'iterations': 2500, 'learning_rate': 0.017153481218233898, 'depth': 6, 'l2_leaf_reg': 7.210923184107764, 'random_strength': 1.292757280477959, 'bagging_temperature': 1.5859895990719424}. Best is trial 13 with value: 0.9361794285714286.
+[I 2026-03-23 11:44:28,438] Trial 28 finished with value: 0.9362935824175824 and parameters: {'iterations': 4000, 'learning_rate': 0.02280654223400188, 'depth': 7, 'l2_leaf_reg': 4.668573123647291, 'random_strength': 1.9492601739265623, 'bagging_temperature': 0.9188975971731919}. Best is trial 28 with value: 0.9362935824175824.
+[I 2026-03-23 11:50:23,388] Trial 29 finished with value: 0.9354306813186812 and parameters: {'iterations': 4000, 'learning_rate': 0.015568537139208197, 'depth': 7, 'l2_leaf_reg': 4.737725189971133, 'random_strength': 1.9137019324941902, 'bagging_temperature': 0.8341367967190461}. Best is trial 28 with value: 0.9362935824175824.
+
+Best trial: 28
+  Search AUC: 0.936294
+  Final OOF AUC: 0.936518
+  OOF corr to previous best: 0.998001
+
+Saved submission: /mnt/c/Users/dbxdr_iytiz92/Dropbox/fiicode/outputs/submissions/exp010_blend_bucket_features/submission.csv
+Saved OOF:        /mnt/c/Users/dbxdr_iytiz92/Dropbox/fiicode/outputs/oof/exp010_blend_bucket_features/oof_predictions.csv
+Saved trials:     /mnt/c/Users/dbxdr_iytiz92/Dropbox/fiicode/outputs/logs/exp010_blend_bucket_features/optuna_trials.csv
+Saved summary:    /mnt/c/Users/dbxdr_iytiz92/Dropbox/fiicode/outputs/logs/exp010_blend_bucket_features/best_run_summary.json
+Saved params:     /mnt/c/Users/dbxdr_iytiz92/Dropbox/fiicode/outputs/models/exp010_blend_bucket_features/best_params.json

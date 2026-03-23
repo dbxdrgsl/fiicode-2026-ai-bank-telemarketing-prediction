@@ -1,0 +1,20 @@
+name: exp008_lightgbm_onehot
+competition_slug: fiicode-2026-ai-competition
+model_family: lightgbm
+feature_set: blend
+drop_columns: []
+data_dir: data/raw
+output_root: outputs
+n_trials: 40
+search_folds: 5
+search_seeds: [42]
+final_folds: 5
+final_seeds: [42, 2024, 3407]
+early_stop: 250
+study_name: exp008_lightgbm_onehot
+storage: null
+timeout: null
+thread_count: -1
+with_class_weight: true
+fixed_params_path: null
+notes: One-hot encoded LightGBM diversity model on the blend feature set.

@@ -1,0 +1,16 @@
+{
+  "id": "YOUR_USERNAME/YOUR_KERNEL_SLUG",
+  "title": "FiiCode 2026 - CatBoost Focused",
+  "code_file": "notebooks/improved.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": "true",
+  "enable_gpu": "false",
+  "enable_internet": "false",
+  "competition_sources": [
+    "fiicode-2026-ai-competition"
+  ],
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "model_sources": []
+}

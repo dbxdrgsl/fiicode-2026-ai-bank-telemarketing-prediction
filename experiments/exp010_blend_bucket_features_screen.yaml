@@ -1,0 +1,20 @@
+name: exp010_blend_bucket_features_screen
+competition_slug: fiicode-2026-ai-competition
+model_family: catboost
+feature_set: blend_buckets
+drop_columns: []
+data_dir: data/raw
+output_root: outputs
+n_trials: 8
+search_folds: 3
+search_seeds: [42]
+final_folds: 3
+final_seeds: [42]
+early_stop: 150
+study_name: exp010_blend_bucket_features_screen
+storage: null
+timeout: 1800
+thread_count: 8
+with_class_weight: true
+fixed_params_path: null
+notes: Cheap screen for bucketed blend CatBoost features before promoting to the full exp010 run.

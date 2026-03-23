@@ -1,0 +1,52 @@
+{
+  "config_path": "experiments/exp010_blend_bucket_features_screen.yaml",
+  "config": {
+    "name": "exp010_blend_bucket_features_screen",
+    "competition_slug": "fiicode-2026-ai-competition",
+    "model_family": "catboost",
+    "feature_set": "blend_buckets",
+    "drop_columns": [],
+    "data_dir": "data/raw",
+    "output_root": "outputs",
+    "n_trials": 8,
+    "search_folds": 3,
+    "search_seeds": [
+      42
+    ],
+    "final_folds": 3,
+    "final_seeds": [
+      42
+    ],
+    "early_stop": 150,
+    "study_name": "exp010_blend_bucket_features_screen",
+    "storage": null,
+    "timeout": 1800,
+    "thread_count": 8,
+    "with_class_weight": true,
+    "fixed_params_path": null,
+    "notes": "Cheap screen for bucketed blend CatBoost features before promoting to the full exp010 run."
+  },
+  "data_dir": "data/raw",
+  "study_storage": "sqlite:////mnt/c/Users/dbxdr_iytiz92/Dropbox/fiicode/outputs/logs/exp010_blend_bucket_features_screen/exp010_blend_bucket_features_screen.sqlite3",
+  "existing_trials": 0,
+  "requested_trials": 8,
+  "best_trial_number": 0,
+  "search_auc": 0.9341396043956044,
+  "final_auc": 0.9341396043956044,
+  "best_params": {
+    "iterations": 3500,
+    "learning_rate": 0.02841881747862225,
+    "depth": 7,
+    "l2_leaf_reg": 7.190609389379256,
+    "random_strength": 0.812037280884873,
+    "bagging_temperature": 0.3119890406724053
+  },
+  "fixed_params_path": null,
+  "paths": {
+    "submission": "/mnt/c/Users/dbxdr_iytiz92/Dropbox/fiicode/outputs/submissions/exp010_blend_bucket_features_screen/submission.csv",
+    "oof": "/mnt/c/Users/dbxdr_iytiz92/Dropbox/fiicode/outputs/oof/exp010_blend_bucket_features_screen/oof_predictions.csv",
+    "trials": "/mnt/c/Users/dbxdr_iytiz92/Dropbox/fiicode/outputs/logs/exp010_blend_bucket_features_screen/optuna_trials.csv",
+    "summary": "/mnt/c/Users/dbxdr_iytiz92/Dropbox/fiicode/outputs/logs/exp010_blend_bucket_features_screen/best_run_summary.json",
+    "best_params": "/mnt/c/Users/dbxdr_iytiz92/Dropbox/fiicode/outputs/models/exp010_blend_bucket_features_screen/best_params.json"
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "config_path": null,
+  "config": {
+    "name": "exp013_blend_exp012_exp003",
+    "model_family": "blend",
+    "feature_set": "mixed",
+    "with_class_weight": false
+  },
+  "data_dir": null,
+  "study_storage": "blend-search",
+  "existing_trials": 0,
+  "requested_trials": 12000,
+  "best_trial_number": null,
+  "search_auc": 0.9367341978021979,
+  "final_auc": 0.9367341978021979,
+  "best_params": {
+    "weights": {
+      "exp012_blend_bucket_features_fixed": 0.5724762768054714,
+      "exp003_blend_features": 0.4275237231945285
+    }
+  },
+  "members": [
+    {
+      "name": "exp012_blend_bucket_features_fixed",
+      "model_family": "catboost",
+      "final_auc": 0.9363836923076924,
+      "corr_to_best": 1.0
+    },
+    {
+      "name": "exp003_blend_features",
+      "model_family": "catboost",
+      "final_auc": 0.9359625054945054,
+      "corr_to_best": 0.9927062464893244
+    }
+  ],
+  "best_single_model": "exp012_blend_bucket_features_fixed",
+  "best_single_auc": 0.9363836923076924,
+  "improvement_over_best_single": 0.0003505054945055486,
+  "promoted": true,
+  "paths": {
+    "submission": "/mnt/c/Users/dbxdr_iytiz92/Dropbox/fiicode/outputs/submissions/exp013_blend_exp012_exp003/submission.csv",
+    "oof": "/mnt/c/Users/dbxdr_iytiz92/Dropbox/fiicode/outputs/oof/exp013_blend_exp012_exp003/oof_predictions.csv",
+    "summary": "/mnt/c/Users/dbxdr_iytiz92/Dropbox/fiicode/outputs/logs/exp013_blend_exp012_exp003/best_run_summary.json",
+    "best_params": "/mnt/c/Users/dbxdr_iytiz92/Dropbox/fiicode/outputs/models/exp013_blend_exp012_exp003/best_params.json",
+    "correlation": "/mnt/c/Users/dbxdr_iytiz92/Dropbox/fiicode/outputs/logs/exp013_blend_exp012_exp003/oof_correlation.csv"
+  }
+}

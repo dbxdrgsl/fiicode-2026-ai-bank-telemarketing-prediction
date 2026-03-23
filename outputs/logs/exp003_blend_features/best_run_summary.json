@@ -1,0 +1,50 @@
+{
+  "config_path": "experiments/exp003_blend_features.yaml",
+  "config": {
+    "name": "exp003_blend_features",
+    "competition_slug": "fiicode-2026-ai-competition",
+    "feature_set": "blend",
+    "drop_columns": [],
+    "data_dir": "data/raw",
+    "output_root": "outputs",
+    "n_trials": 30,
+    "search_folds": 5,
+    "search_seeds": [
+      42
+    ],
+    "final_folds": 5,
+    "final_seeds": [
+      42,
+      2024,
+      3407
+    ],
+    "early_stop": 250,
+    "study_name": "exp003_blend_features",
+    "storage": null,
+    "timeout": null,
+    "thread_count": -1,
+    "with_class_weight": true,
+    "notes": "Best rough CatBoost screen so far; use richer blend-style features with CatBoost only."
+  },
+  "data_dir": "data/raw",
+  "study_storage": "sqlite:////mnt/c/Users/dbxdr_iytiz92/Dropbox/fiicode/outputs/logs/exp003_blend_features/exp003_blend_features.sqlite3",
+  "existing_trials": 0,
+  "requested_trials": 30,
+  "search_auc": 0.9354716043956044,
+  "final_auc": 0.9359625054945054,
+  "best_params": {
+    "iterations": 4000,
+    "learning_rate": 0.021785629012884875,
+    "depth": 7,
+    "l2_leaf_reg": 5.665907559659504,
+    "random_strength": 2.2007514038065743,
+    "bagging_temperature": 0.4809795397254599
+  },
+  "paths": {
+    "submission": "/mnt/c/Users/dbxdr_iytiz92/Dropbox/fiicode/outputs/submissions/exp003_blend_features/submission.csv",
+    "oof": "/mnt/c/Users/dbxdr_iytiz92/Dropbox/fiicode/outputs/oof/exp003_blend_features/oof_predictions.csv",
+    "trials": "/mnt/c/Users/dbxdr_iytiz92/Dropbox/fiicode/outputs/logs/exp003_blend_features/optuna_trials.csv",
+    "summary": "/mnt/c/Users/dbxdr_iytiz92/Dropbox/fiicode/outputs/logs/exp003_blend_features/best_run_summary.json",
+    "best_params": "/mnt/c/Users/dbxdr_iytiz92/Dropbox/fiicode/outputs/models/exp003_blend_features/best_params.json"
+  }
+}

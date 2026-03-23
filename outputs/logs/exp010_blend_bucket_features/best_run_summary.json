@@ -1,0 +1,54 @@
+{
+  "config_path": "experiments/exp010_blend_bucket_features.yaml",
+  "config": {
+    "name": "exp010_blend_bucket_features",
+    "competition_slug": "fiicode-2026-ai-competition",
+    "model_family": "catboost",
+    "feature_set": "blend_buckets",
+    "drop_columns": [],
+    "data_dir": "data/raw",
+    "output_root": "outputs",
+    "n_trials": 30,
+    "search_folds": 5,
+    "search_seeds": [
+      42
+    ],
+    "final_folds": 5,
+    "final_seeds": [
+      42,
+      2024,
+      3407
+    ],
+    "early_stop": 250,
+    "study_name": "exp010_blend_bucket_features",
+    "storage": null,
+    "timeout": null,
+    "thread_count": 8,
+    "with_class_weight": true,
+    "fixed_params_path": null,
+    "notes": "Add sign-aware balance and bucketed business-state features on top of the blend feature set."
+  },
+  "data_dir": "data/raw",
+  "study_storage": "sqlite:////mnt/c/Users/dbxdr_iytiz92/Dropbox/fiicode/outputs/logs/exp010_blend_bucket_features/exp010_blend_bucket_features.sqlite3",
+  "existing_trials": 7,
+  "requested_trials": 30,
+  "best_trial_number": 28,
+  "search_auc": 0.9362935824175824,
+  "final_auc": 0.9365183736263737,
+  "best_params": {
+    "iterations": 4000,
+    "learning_rate": 0.02280654223400188,
+    "depth": 7,
+    "l2_leaf_reg": 4.668573123647291,
+    "random_strength": 1.9492601739265623,
+    "bagging_temperature": 0.9188975971731919
+  },
+  "fixed_params_path": null,
+  "paths": {
+    "submission": "/mnt/c/Users/dbxdr_iytiz92/Dropbox/fiicode/outputs/submissions/exp010_blend_bucket_features/submission.csv",
+    "oof": "/mnt/c/Users/dbxdr_iytiz92/Dropbox/fiicode/outputs/oof/exp010_blend_bucket_features/oof_predictions.csv",
+    "trials": "/mnt/c/Users/dbxdr_iytiz92/Dropbox/fiicode/outputs/logs/exp010_blend_bucket_features/optuna_trials.csv",
+    "summary": "/mnt/c/Users/dbxdr_iytiz92/Dropbox/fiicode/outputs/logs/exp010_blend_bucket_features/best_run_summary.json",
+    "best_params": "/mnt/c/Users/dbxdr_iytiz92/Dropbox/fiicode/outputs/models/exp010_blend_bucket_features/best_params.json"
+  }
+}

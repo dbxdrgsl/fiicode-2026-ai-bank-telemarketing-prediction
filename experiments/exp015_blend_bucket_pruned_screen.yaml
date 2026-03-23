@@ -1,0 +1,24 @@
+name: exp015_blend_bucket_pruned_screen
+competition_slug: fiicode-2026-ai-competition
+model_family: catboost
+feature_set: blend_buckets
+drop_columns:
+  - campaign_bucket
+  - previous_bucket
+  - duration_bucket
+  - day_bucket
+data_dir: data/raw
+output_root: outputs
+n_trials: 0
+search_folds: 3
+search_seeds: [42]
+final_folds: 3
+final_seeds: [42]
+early_stop: 250
+study_name: exp015_blend_bucket_pruned_screen
+storage: null
+timeout: null
+thread_count: 8
+with_class_weight: true
+fixed_params_path: outputs/models/exp012_blend_bucket_features_fixed/best_params.json
+notes: Cheap fixed-param screen for the pruned blend_buckets subset before any heavier evaluation.

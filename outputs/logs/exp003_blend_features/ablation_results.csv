@@ -1,0 +1,6 @@
+experiment,ablation,auc
+exp003_blend_features,"A (Full, baseline)",0.935353
+exp003_blend_features,B (without duration_log1p),0.935410
+exp003_blend_features,C (without duration_per_campaign),0.935316
+exp003_blend_features,D (without both),0.935452
+exp003_blend_features,E (without class weights),0.935003

@@ -1,0 +1,55 @@
+{
+  "config_path": "experiments/exp009_xgboost_onehot_screen.yaml",
+  "config": {
+    "name": "exp009_xgboost_onehot_screen",
+    "competition_slug": "fiicode-2026-ai-competition",
+    "model_family": "xgboost",
+    "feature_set": "blend",
+    "drop_columns": [],
+    "data_dir": "data/raw",
+    "output_root": "outputs",
+    "n_trials": 8,
+    "search_folds": 3,
+    "search_seeds": [
+      42
+    ],
+    "final_folds": 3,
+    "final_seeds": [
+      42
+    ],
+    "early_stop": 150,
+    "study_name": "exp009_xgboost_onehot_screen",
+    "storage": null,
+    "timeout": 1800,
+    "thread_count": 8,
+    "with_class_weight": true,
+    "fixed_params_path": null,
+    "notes": "Cheap XGBoost screen; reduced folds/seeds, shorter early stop, and capped threads before full promotion."
+  },
+  "data_dir": "data/raw",
+  "study_storage": "sqlite:////mnt/c/Users/dbxdr_iytiz92/Dropbox/fiicode/outputs/logs/exp009_xgboost_onehot_screen/exp009_xgboost_onehot_screen.sqlite3",
+  "existing_trials": 0,
+  "requested_trials": 8,
+  "best_trial_number": 7,
+  "search_auc": 0.9303151208791208,
+  "final_auc": 0.9303151208791208,
+  "best_params": {
+    "n_estimators": 2000,
+    "learning_rate": 0.01793532053620138,
+    "max_depth": 7,
+    "min_child_weight": 3.6775602745204905,
+    "subsample": 0.9208787923016158,
+    "colsample_bytree": 0.6298202574719083,
+    "reg_alpha": 7.620481786158549,
+    "reg_lambda": 2.0962733672452414,
+    "gamma": 0.993578407670862
+  },
+  "fixed_params_path": null,
+  "paths": {
+    "submission": "/mnt/c/Users/dbxdr_iytiz92/Dropbox/fiicode/outputs/submissions/exp009_xgboost_onehot_screen/submission.csv",
+    "oof": "/mnt/c/Users/dbxdr_iytiz92/Dropbox/fiicode/outputs/oof/exp009_xgboost_onehot_screen/oof_predictions.csv",
+    "trials": "/mnt/c/Users/dbxdr_iytiz92/Dropbox/fiicode/outputs/logs/exp009_xgboost_onehot_screen/optuna_trials.csv",
+    "summary": "/mnt/c/Users/dbxdr_iytiz92/Dropbox/fiicode/outputs/logs/exp009_xgboost_onehot_screen/best_run_summary.json",
+    "best_params": "/mnt/c/Users/dbxdr_iytiz92/Dropbox/fiicode/outputs/models/exp009_xgboost_onehot_screen/best_params.json"
+  }
+}

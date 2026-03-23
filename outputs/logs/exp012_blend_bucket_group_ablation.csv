@@ -1,0 +1,16 @@
+phase,subset,removed,auc
+2fold,anchor,,0.9323002637362637
+2fold,greedy,balance_state,0.9325265054945057
+2fold,greedy,contact_pressure,0.9325412747252747
+2fold,greedy,history_state,0.9322115604395607
+2fold,greedy,timing_buckets,0.9324565714285714
+2fold,greedy,timing_interactions,0.9322395604395605
+2fold,greedy,"contact_pressure,balance_state",0.9322349010989011
+2fold,greedy,"contact_pressure,history_state",0.9320477802197803
+2fold,greedy,"contact_pressure,timing_buckets",0.9327552087912088
+2fold,greedy,"contact_pressure,timing_interactions",0.932412923076923
+2fold,greedy,"contact_pressure,timing_buckets,balance_state",0.9324307252747251
+2fold,greedy,"contact_pressure,timing_buckets,history_state",0.9327026373626371
+2fold,greedy,"contact_pressure,timing_buckets,timing_interactions",0.9312431208791209
+3fold,anchor,,0.9340272527472526
+3fold,greedy_best,"contact_pressure,timing_buckets",0.9346618021978023

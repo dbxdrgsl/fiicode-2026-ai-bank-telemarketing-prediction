@@ -1,0 +1,54 @@
+{
+  "config_path": null,
+  "config": {
+    "name": "exp011_screen_blend_audit",
+    "model_family": "blend",
+    "feature_set": "mixed",
+    "with_class_weight": false
+  },
+  "data_dir": null,
+  "study_storage": "blend-search",
+  "existing_trials": 0,
+  "requested_trials": 8000,
+  "best_trial_number": null,
+  "search_auc": 0.9359779340659341,
+  "final_auc": 0.9359779340659341,
+  "best_params": {
+    "weights": {
+      "exp003_blend_features": 0.9498792815382651,
+      "exp008_lightgbm_onehot_screen": 0.013577635314520749,
+      "exp009_xgboost_onehot_screen": 0.036543083147214175
+    }
+  },
+  "members": [
+    {
+      "name": "exp003_blend_features",
+      "model_family": "catboost",
+      "final_auc": 0.9359625054945054,
+      "corr_to_best": 1.0
+    },
+    {
+      "name": "exp008_lightgbm_onehot_screen",
+      "model_family": "lightgbm",
+      "final_auc": 0.9299456703296702,
+      "corr_to_best": 0.9818855228470599
+    },
+    {
+      "name": "exp009_xgboost_onehot_screen",
+      "model_family": "xgboost",
+      "final_auc": 0.9303151208791208,
+      "corr_to_best": 0.9820712401943006
+    }
+  ],
+  "best_single_model": "exp003_blend_features",
+  "best_single_auc": 0.9359625054945054,
+  "improvement_over_best_single": 1.542857142866616e-05,
+  "promoted": false,
+  "paths": {
+    "submission": "/mnt/c/Users/dbxdr_iytiz92/Dropbox/fiicode/outputs/submissions/exp011_screen_blend_audit/submission.csv",
+    "oof": "/mnt/c/Users/dbxdr_iytiz92/Dropbox/fiicode/outputs/oof/exp011_screen_blend_audit/oof_predictions.csv",
+    "summary": "/mnt/c/Users/dbxdr_iytiz92/Dropbox/fiicode/outputs/logs/exp011_screen_blend_audit/best_run_summary.json",
+    "best_params": "/mnt/c/Users/dbxdr_iytiz92/Dropbox/fiicode/outputs/models/exp011_screen_blend_audit/best_params.json",
+    "correlation": "/mnt/c/Users/dbxdr_iytiz92/Dropbox/fiicode/outputs/logs/exp011_screen_blend_audit/oof_correlation.csv"
+  }
+}

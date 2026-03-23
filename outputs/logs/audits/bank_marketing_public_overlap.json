@@ -1,0 +1,54 @@
+{
+  "audit_name": "bank_marketing_public_overlap",
+  "timestamp_utc": "2026-03-23T08:46:17.412350+00:00",
+  "local_data": {
+    "data_dir": "/mnt/c/Users/dbxdr_iytiz92/Dropbox/fiicode/data/raw",
+    "train_rows": 10000,
+    "test_rows": 1000,
+    "feature_columns": [
+      "age",
+      "job",
+      "marital",
+      "education",
+      "default",
+      "balance",
+      "housing",
+      "loan",
+      "contact",
+      "day",
+      "month",
+      "duration",
+      "campaign",
+      "pdays",
+      "previous",
+      "poutcome"
+    ],
+    "target_column": "Subscribed"
+  },
+  "public_source": {
+    "dataset_name": "UCI Bank Marketing",
+    "dataset_page_url": "https://archive.ics.uci.edu/dataset/222/bank+marketing",
+    "download_url": "https://archive.ics.uci.edu/static/public/222/bank+marketing.zip",
+    "inner_archive_name": "bank.zip",
+    "data_file_name": "bank-full.csv",
+    "public_rows": 45211,
+    "public_target_column": "y"
+  },
+  "mapping": {
+    "public_target_yes": "1",
+    "public_target_no": "0",
+    "local_target_name": "Subscribed"
+  },
+  "findings": {
+    "train_rows_found_in_public": 10000,
+    "test_rows_found_in_public": 1000,
+    "train_rows_unique_by_features_in_public": 10000,
+    "test_rows_unique_by_features_in_public": 1000,
+    "train_label_mismatches_after_mapping": 0,
+    "missing_train_public_matches": 0,
+    "public_feature_label_conflicts": 0,
+    "test_rows_recoverable_without_model": 1000,
+    "exact_public_subset": true
+  },
+  "conclusion": "Local train/test rows are exact feature-level subsets of the public UCI Bank Marketing dataset, with train labels matching after yes/no -> 1/0 mapping. The audit intentionally does not emit recovered test labels or any submission-ready artifact."
+}

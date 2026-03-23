@@ -1,0 +1,20 @@
+name: exp005_blend_no_class_weight
+competition_slug: fiicode-2026-ai-competition
+model_family: catboost
+feature_set: blend
+drop_columns: []
+data_dir: data/raw
+output_root: outputs
+n_trials: 30
+search_folds: 5
+search_seeds: [42]
+final_folds: 5
+final_seeds: [42, 2024, 3407]
+early_stop: 250
+study_name: exp005_blend_no_class_weight
+storage: null
+timeout: null
+thread_count: -1
+with_class_weight: false
+fixed_params_path: null
+notes: Same feature set as exp003, but without class weighting.

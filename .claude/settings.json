@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "deny": [
+      "Read(./.env)",
+      "Read(./.env.*)",
+      "Read(./kaggle.json)",
+      "Read(./**/kaggle.json)",
+      "Read(./secrets/**)"
+    ]
+  }
+}
