@@ -38,6 +38,7 @@ FeatureSet = Literal[
     "blend_buckets_contact_interactions",
     "blend_buckets_state_crosses",
     "blend_buckets_catfreq",
+    "blend_buckets_target_enc",
 ]
 
 RARE_FREQUENCY_COLUMNS = [
@@ -444,6 +445,58 @@ def _add_blend_bucket_catfreq_features(data: pd.DataFrame) -> pd.DataFrame:
     return _add_blend_bucket_features(data)
 
 
+def _add_blend_bucket_target_enc_features(data: pd.DataFrame) -> pd.DataFrame:
+    """Base feature builder for target encoding set - applied in prepare_data."""
+    return _add_blend_bucket_features(data)
+
+
+def _apply_target_encoding(
+    train_fe: pd.DataFrame,
+    test_fe: pd.DataFrame | None,
+    y_train: pd.Series,
+    *,
+    smoothing: float = 10.0,
+    noise_level: float = 0.01,
+    seed: int = 42,
+) -> tuple[pd.DataFrame, pd.DataFrame | None]:
+    """
+    Apply target encoding with smoothing to prevent overfitting.
+    
+    Uses: encoded = (count * mean + global_mean * smoothing) / (count + smoothing)
+    This shrinks rare categories toward the global mean.
+    """
+    rng = np.random.default_rng(seed)
+    train_fe = train_fe.copy()
+    test_fe = test_fe.copy() if test_fe is not None else None
+    
+    global_mean = y_train.mean()
+    
+    for col in TARGET_ENCODING_COLUMNS:
+        if col not in train_fe.columns:
+            continue
+        
+        train_col = train_fe[col].fillna("missing").astype(str)
+        
+        # Compute stats per category
+        df_stats = pd.DataFrame({"cat": train_col, "target": y_train})
+        agg = df_stats.groupby("cat")["target"].agg(["mean", "count"])
+        
+        # Smoothed encoding: shrink toward global mean
+        smoothed = (agg["count"] * agg["mean"] + global_mean * smoothing) / (agg["count"] + smoothing)
+        
+        # Apply to train with small noise to reduce overfitting
+        train_encoded = train_col.map(smoothed).fillna(global_mean).astype(np.float32)
+        train_encoded += rng.normal(0, noise_level, len(train_encoded)).astype(np.float32)
+        train_fe[f"{col}_target_enc"] = train_encoded
+        
+        # Apply to test (no noise)
+        if test_fe is not None:
+            test_col = test_fe[col].fillna("missing").astype(str)
+            test_fe[f"{col}_target_enc"] = test_col.map(smoothed).fillna(global_mean).astype(np.float32)
+    
+    return train_fe, test_fe
+
+
 def prepare_data(
     data_dir: Path,
     *,
@@ -463,6 +516,7 @@ def prepare_data(
         "blend_buckets_contact_interactions": _add_blend_bucket_contact_interactions,
         "blend_buckets_state_crosses": _add_blend_bucket_state_crosses,
         "blend_buckets_catfreq": _add_blend_bucket_catfreq_features,
+        "blend_buckets_target_enc": _add_blend_bucket_target_enc_features,
     }
     add_features = builders[feature_set]
 
@@ -474,6 +528,11 @@ def prepare_data(
     
     if feature_set == "blend_buckets_catfreq":
         train_fe, test_fe = _apply_category_frequency_features(train_fe, test_fe)
+    
+    # Target encoding needs y, applied after basic features
+    y_for_te = train_fe[TARGET].astype(int)
+    if feature_set == "blend_buckets_target_enc":
+        train_fe, test_fe = _apply_target_encoding(train_fe, test_fe, y_for_te)
 
     if drop_columns:
         train_fe = train_fe.drop(columns=list(drop_columns), errors="ignore")

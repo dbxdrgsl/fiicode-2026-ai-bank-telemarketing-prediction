@@ -1,0 +1,28 @@
+# exp034: LightGBM with target encoding
+# Hypothesis: Different GBM family might capture different patterns
+name: exp034_lightgbm_target_enc
+model: lightgbm
+feature_set: blend_buckets_target_enc
+notes: "LightGBM for diversity - different splitting algorithm than CatBoost"
+
+search:
+  n_trials: 50
+  timeout_minutes: 90
+
+search_space:
+  n_estimators: [600, 1000]
+  max_depth: [6, 10]
+  learning_rate: [0.02, 0.08]
+  num_leaves: [31, 127]
+  min_child_samples: [20, 50]
+  reg_alpha: [0.0, 0.5]
+  reg_lambda: [0.0, 0.5]
+  subsample: [0.7, 0.9]
+  colsample_bytree: [0.7, 0.9]
+
+cv:
+  n_splits: 5
+  shuffle: true
+
+final:
+  seeds: [42, 2024, 3407]

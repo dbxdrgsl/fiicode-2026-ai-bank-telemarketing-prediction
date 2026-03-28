@@ -1,0 +1,62 @@
+# exp039: GPU mega-blend of all architectures
+# Runs multiple architectures and auto-blends the best
+name: exp039_gpu_mega_blend
+feature_set: blend_buckets_target_enc
+notes: "All 3 NN architectures with target encoding, auto-blended"
+
+require_cuda: true
+deterministic: false
+
+cv:
+  folds: 5
+  seed: 42
+
+models:
+  - name: exp039_attention
+    family: attention
+    seeds: [42, 2024, 3407]
+    epochs: 80
+    batch_size: 512
+    lr: 0.0008
+    weight_decay: 0.015
+    patience: 12
+    model_params:
+      hidden_dim: 192
+      num_heads: 6
+      num_layers: 3
+      dropout: 0.2
+
+  - name: exp039_fttransformer
+    family: ft_transformer
+    seeds: [42, 2024, 3407]
+    epochs: 80
+    batch_size: 256
+    lr: 0.0005
+    weight_decay: 0.02
+    patience: 12
+    model_params:
+      d_token: 128
+      n_blocks: 3
+      attention_n_heads: 8
+      attention_dropout: 0.15
+      ffn_d_hidden: 384
+      ffn_dropout: 0.2
+
+  - name: exp039_tabresnet
+    family: tabresnet
+    seeds: [42, 2024, 3407]
+    epochs: 80
+    batch_size: 512
+    lr: 0.001
+    weight_decay: 0.01
+    patience: 12
+    model_params:
+      hidden_dim: 256
+      num_blocks: 5
+      dropout: 0.15
+
+blend:
+  enabled: true
+  name: exp039_mega_blend
+  samples: 15000
+  seed: 42

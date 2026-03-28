@@ -1,0 +1,35 @@
+name: exp028_gpu_tabresnet
+competition_slug: fiicode-2026-ai-competition
+feature_set: blend_buckets
+drop_columns: []
+data_dir: data/raw
+output_root: outputs
+require_cuda: true
+deterministic: false
+cv_folds: 5
+cv_seed: 42
+notes: >
+  TabResNet architecture for diversity - residual connections may capture
+  different patterns than attention models. Combined with our attention
+  and CatBoost should provide orthogonal signal.
+
+models:
+  - name: exp028_tabresnet_gpu
+    family: tabresnet
+    seeds: [42, 2024, 3407, 777, 1337, 1001, 2718, 314, 628, 999]
+    epochs: 100
+    batch_size: 1024
+    lr: 0.0008
+    weight_decay: 0.015
+    patience: 18
+    max_grad_norm: 1.0
+    num_workers: 0
+    amp: true
+    model_params:
+      hidden_dim: 256
+      n_blocks: 6
+      dropout: 0.25
+      use_batch_norm: true
+
+blend:
+  enabled: false

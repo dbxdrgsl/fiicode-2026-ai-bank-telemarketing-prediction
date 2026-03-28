@@ -1,0 +1,33 @@
+# exp037: GPU FT-Transformer with deeper architecture
+# Hypothesis: Deeper transformer captures more complex feature interactions
+name: exp037_gpu_fttransformer_deep
+feature_set: blend_buckets_catfreq
+notes: "Deeper FT-Transformer (4 layers, more heads) for complexity"
+
+require_cuda: true
+deterministic: false
+
+cv:
+  folds: 5
+  seed: 42
+
+models:
+  - name: exp037_fttransformer_deep
+    family: ft_transformer
+    seeds: [42, 2024, 3407, 1337, 999]
+    epochs: 120
+    batch_size: 256
+    lr: 0.0005
+    weight_decay: 0.02
+    patience: 18
+    model_params:
+      d_token: 128
+      n_blocks: 4
+      attention_n_heads: 8
+      attention_dropout: 0.15
+      ffn_d_hidden: 512
+      ffn_dropout: 0.2
+      residual_dropout: 0.1
+
+blend:
+  enabled: false

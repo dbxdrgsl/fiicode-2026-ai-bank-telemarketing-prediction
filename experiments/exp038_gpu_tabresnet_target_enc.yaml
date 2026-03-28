@@ -1,0 +1,30 @@
+# exp038: GPU TabResNet with target encoding
+# Hypothesis: ResNet + target encoding = complementary to attention
+name: exp038_gpu_tabresnet_target_enc
+feature_set: blend_buckets_target_enc
+notes: "TabResNet with target encoding - different architecture family"
+
+require_cuda: true
+deterministic: false
+
+cv:
+  folds: 5
+  seed: 42
+
+models:
+  - name: exp038_tabresnet_target_enc
+    family: tabresnet
+    seeds: [42, 2024, 3407, 1337, 999]
+    epochs: 100
+    batch_size: 512
+    lr: 0.001
+    weight_decay: 0.01
+    patience: 15
+    model_params:
+      hidden_dim: 256
+      num_blocks: 6
+      dropout: 0.15
+      use_batch_norm: true
+
+blend:
+  enabled: false

@@ -1,0 +1,31 @@
+# exp036: GPU attention with target encoding
+# Hypothesis: NNs + target encoding = different learned representations
+name: exp036_gpu_attention_target_enc
+feature_set: blend_buckets_target_enc
+notes: "Attention NN with target-encoded features - structural diversity"
+
+require_cuda: true
+deterministic: false
+
+cv:
+  folds: 5
+  seed: 42
+
+models:
+  - name: exp036_attention_target_enc
+    family: attention
+    seeds: [42, 2024, 3407, 1337, 999]
+    epochs: 100
+    batch_size: 512
+    lr: 0.0008
+    weight_decay: 0.015
+    patience: 15
+    model_params:
+      hidden_dim: 192
+      num_heads: 6
+      num_layers: 3
+      dropout: 0.2
+      use_layer_norm: true
+
+blend:
+  enabled: false
