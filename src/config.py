@@ -40,12 +40,16 @@ class ExperimentConfig:
     thread_count: int = -1
     with_class_weight: bool = True
     fixed_params_path: str | None = None
+    train_weight_mode: str | None = None
+    train_weight_params: dict[str, Any] = field(default_factory=dict)
     notes: str = ""
 
     def __post_init__(self) -> None:
         if not self.study_name:
             self.study_name = self.name
         self.model_family = normalize_model_family(self.model_family)
+        if self.train_weight_mode:
+            self.train_weight_mode = self.train_weight_mode.strip().lower()
 
     def to_dict(self) -> dict[str, Any]:
         return asdict(self)

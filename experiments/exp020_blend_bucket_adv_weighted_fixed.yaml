@@ -1,0 +1,31 @@
+name: exp020_blend_bucket_adv_weighted_fixed
+competition_slug: fiicode-2026-ai-competition
+model_family: catboost
+feature_set: blend_buckets
+drop_columns: []
+data_dir: data/raw
+output_root: outputs
+n_trials: 0
+search_folds: 5
+search_seeds: [42]
+final_folds: 5
+final_seeds: [42, 2024, 3407]
+early_stop: 250
+study_name: exp020_blend_bucket_adv_weighted_fixed
+storage: null
+timeout: null
+thread_count: 8
+with_class_weight: true
+fixed_params_path: outputs/models/exp012_blend_bucket_features_fixed/best_params.json
+train_weight_mode: adversarial
+train_weight_params:
+  folds: 5
+  seed: 42
+  iterations: 250
+  learning_rate: 0.05
+  depth: 6
+  early_stop: 50
+  power: 0.5
+  min_weight: 0.6
+  max_weight: 2.5
+notes: Fixed-param exp012 rerun with adversarial train weighting toward test-like rows to address observed train/test drift.

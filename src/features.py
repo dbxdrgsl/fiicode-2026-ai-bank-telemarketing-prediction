@@ -29,7 +29,33 @@ MONTH_MAP = {
     "dec": 12,
 }
 
-FeatureSet = Literal["focused", "blend", "blend_buckets"]
+FeatureSet = Literal[
+    "focused",
+    "blend",
+    "blend_buckets",
+    "blend_buckets_rare_frequency",
+    "blend_buckets_finance_interactions",
+    "blend_buckets_contact_interactions",
+    "blend_buckets_state_crosses",
+    "blend_buckets_catfreq",
+]
+
+RARE_FREQUENCY_COLUMNS = [
+    "job",
+    "education",
+    "contact",
+    "month",
+    "poutcome",
+    "age_bucket",
+    "job_education",
+    "job_marital",
+    "contact_month",
+    "poutcome_month",
+    "loan_default",
+    "history_state",
+    "contact_day_bucket",
+    "month_day_bucket",
+]
 
 
 @dataclass
@@ -98,6 +124,44 @@ def _string_series(data: pd.DataFrame, column: str, *, lowercase: bool = False) 
     if lowercase:
         values = values.str.lower()
     return values
+
+
+def _apply_shared_rare_frequency_features(
+    train_fe: pd.DataFrame,
+    test_fe: pd.DataFrame | None,
+    *,
+    min_count: int = 50,
+) -> tuple[pd.DataFrame, pd.DataFrame | None]:
+    train_fe = train_fe.copy()
+    test_fe = test_fe.copy() if test_fe is not None else None
+
+    frames = [frame for frame in (train_fe, test_fe) if frame is not None]
+    combined = pd.concat(frames, axis=0, ignore_index=True)
+
+    for column in RARE_FREQUENCY_COLUMNS:
+        if column not in train_fe.columns:
+            continue
+
+        values = combined[column].fillna("missing").astype(str)
+        counts = values.value_counts(dropna=False)
+        frequencies = counts / len(values)
+
+        def collapse(frame: pd.DataFrame) -> pd.Series:
+            raw = frame[column].fillna("missing").astype(str)
+            return raw.where(raw.map(counts).fillna(0) >= min_count, "rare")
+
+        train_collapsed = collapse(train_fe)
+        train_fe[column] = train_collapsed
+        train_fe[f"{column}_freq"] = train_collapsed.map(frequencies).fillna(0.0).astype(np.float32)
+        train_fe[f"{column}_count"] = train_collapsed.map(counts).fillna(0).astype(np.int32)
+
+        if test_fe is not None:
+            test_collapsed = collapse(test_fe)
+            test_fe[column] = test_collapsed
+            test_fe[f"{column}_freq"] = test_collapsed.map(frequencies).fillna(0.0).astype(np.float32)
+            test_fe[f"{column}_count"] = test_collapsed.map(counts).fillna(0).astype(np.int32)
+
+    return train_fe, test_fe
 
 
 def _add_focused_features(data: pd.DataFrame) -> pd.DataFrame:
@@ -246,6 +310,140 @@ def _add_blend_bucket_features(data: pd.DataFrame) -> pd.DataFrame:
     return data
 
 
+def _add_blend_bucket_rare_frequency_features(data: pd.DataFrame) -> pd.DataFrame:
+    return _add_blend_bucket_features(data)
+
+
+def _add_blend_bucket_finance_interactions(data: pd.DataFrame) -> pd.DataFrame:
+    data = _add_blend_bucket_features(data)
+
+    contacts_log1p = np.log1p(data["contacts_total"].clip(lower=0))
+
+    data["balance_signed_x_duration_log1p"] = data["balance_signed_log1p"] * data["duration_log1p"]
+    data["balance_signed_x_contacts_log1p"] = data["balance_signed_log1p"] * contacts_log1p
+    data["balance_signed_x_previous_log1p"] = data["balance_signed_log1p"] * data["previous_log1p"]
+    data["balance_abs_per_contact"] = data["balance_abs_log1p"] / (data["contacts_total"] + 1)
+    data["balance_signed_per_age"] = data["balance_signed_log1p"] / (data["age"] + 1)
+    data["age_x_duration_log1p"] = data["age"] * data["duration_log1p"]
+    data["balance_negative_x_has_any_loan"] = data["balance_negative"] * data["has_any_loan"]
+    data["balance_nonpositive_x_is_default"] = data["balance_nonpositive"] * data["is_default"]
+
+    return data
+
+
+def _add_blend_bucket_contact_interactions(data: pd.DataFrame) -> pd.DataFrame:
+    data = _add_blend_bucket_features(data)
+
+    data["contacts_total_log1p"] = np.log1p(data["contacts_total"].clip(lower=0))
+    data["duration_x_previous_log1p"] = data["duration_log1p"] * data["previous_log1p"]
+    data["duration_x_pdays_log1p"] = data["duration_log1p"] * data["pdays_log1p"]
+    data["campaign_x_pdays_log1p"] = data["campaign_log1p"] * data["pdays_log1p"]
+    data["duration_per_contact_total"] = data["duration"] / (data["contacts_total"] + 1)
+    data["previous_share_total_contacts"] = data["previous"] / (data["contacts_total"] + 1)
+    data["campaign_share_total_contacts"] = data["campaign"] / (data["contacts_total"] + 1)
+    data["contacted_before_x_previous_log1p"] = data["was_contacted_before"] * data["previous_log1p"]
+    data["duration_log1p_x_was_contacted_before"] = data["duration_log1p"] * data["was_contacted_before"]
+
+    return data
+
+
+def _add_blend_bucket_state_crosses(data: pd.DataFrame) -> pd.DataFrame:
+    data = _add_blend_bucket_features(data)
+
+    data["age_bucket_contact"] = data["age_bucket"].astype(str) + "__" + data["contact"].astype(str)
+    data["age_bucket_history_state"] = data["age_bucket"].astype(str) + "__" + data["history_state"].astype(str)
+    data["loan_housing"] = data["loan"].astype(str) + "__" + data["housing"].astype(str)
+    data["contact_history_state"] = data["contact"].astype(str) + "__" + data["history_state"].astype(str)
+    data["month_pdays_bucket"] = data["month"].astype(str) + "__" + data["pdays_bucket"].astype(str)
+    data["job_contact"] = data["job"].astype(str) + "__" + data["contact"].astype(str)
+    data["education_contact"] = data["education"].astype(str) + "__" + data["contact"].astype(str)
+    data["housing_default"] = data["housing"].astype(str) + "__" + data["default"].astype(str)
+    data["marital_loan"] = data["marital"].astype(str) + "__" + data["loan"].astype(str)
+
+    return data
+
+
+TARGET_ENCODING_COLUMNS = [
+    "job",
+    "education",
+    "contact",
+    "month",
+    "poutcome",
+    "marital",
+    "housing",
+    "loan",
+    "default",
+    "age_bucket",
+    "campaign_bucket",
+    "pdays_bucket",
+    "duration_bucket",
+    "history_state",
+    "job_education",
+    "contact_month",
+    "poutcome_month",
+]
+
+
+CATFREQ_COLUMNS = [
+    "job",
+    "education",
+    "contact",
+    "month",
+    "poutcome",
+    "marital",
+    "age_bucket",
+    "campaign_bucket",
+    "pdays_bucket",
+    "duration_bucket",
+    "history_state",
+    "job_education",
+    "contact_month",
+    "poutcome_month",
+]
+
+
+def _apply_category_frequency_features(
+    train_fe: pd.DataFrame,
+    test_fe: pd.DataFrame | None,
+) -> tuple[pd.DataFrame, pd.DataFrame | None]:
+    """Add frequency and count features for categorical columns (no target leakage)."""
+    train_fe = train_fe.copy()
+    test_fe = test_fe.copy() if test_fe is not None else None
+    
+    # Combine train and test for computing global frequencies
+    frames = [frame for frame in (train_fe, test_fe) if frame is not None]
+    combined = pd.concat(frames, axis=0, ignore_index=True)
+    n_combined = len(combined)
+    
+    for col in CATFREQ_COLUMNS:
+        if col not in train_fe.columns:
+            continue
+        
+        col_values = combined[col].fillna("missing").astype(str)
+        counts = col_values.value_counts(dropna=False)
+        frequencies = counts / n_combined
+        
+        # Also compute train-specific frequencies for potential drift features
+        train_col = train_fe[col].fillna("missing").astype(str)
+        
+        train_fe[f"{col}_freq"] = train_col.map(frequencies).fillna(0.0).astype(np.float32)
+        train_fe[f"{col}_count"] = train_col.map(counts).fillna(0).astype(np.int32)
+        train_fe[f"{col}_log_count"] = np.log1p(train_fe[f"{col}_count"]).astype(np.float32)
+        
+        if test_fe is not None:
+            test_col = test_fe[col].fillna("missing").astype(str)
+            test_fe[f"{col}_freq"] = test_col.map(frequencies).fillna(0.0).astype(np.float32)
+            test_fe[f"{col}_count"] = test_col.map(counts).fillna(0).astype(np.int32)
+            test_fe[f"{col}_log_count"] = np.log1p(test_fe[f"{col}_count"]).astype(np.float32)
+    
+    return train_fe, test_fe
+
+
+def _add_blend_bucket_catfreq_features(data: pd.DataFrame) -> pd.DataFrame:
+    """Base feature builder for category frequency set - applied in prepare_data."""
+    return _add_blend_bucket_features(data)
+
+
 def prepare_data(
     data_dir: Path,
     *,
@@ -260,11 +458,22 @@ def prepare_data(
         "focused": _add_focused_features,
         "blend": _add_blend_features,
         "blend_buckets": _add_blend_bucket_features,
+        "blend_buckets_rare_frequency": _add_blend_bucket_rare_frequency_features,
+        "blend_buckets_finance_interactions": _add_blend_bucket_finance_interactions,
+        "blend_buckets_contact_interactions": _add_blend_bucket_contact_interactions,
+        "blend_buckets_state_crosses": _add_blend_bucket_state_crosses,
+        "blend_buckets_catfreq": _add_blend_bucket_catfreq_features,
     }
     add_features = builders[feature_set]
 
     train_fe = add_features(train_raw)
     test_fe = add_features(test_raw) if test_raw is not None else None
+
+    if feature_set == "blend_buckets_rare_frequency":
+        train_fe, test_fe = _apply_shared_rare_frequency_features(train_fe, test_fe)
+    
+    if feature_set == "blend_buckets_catfreq":
+        train_fe, test_fe = _apply_category_frequency_features(train_fe, test_fe)
 
     if drop_columns:
         train_fe = train_fe.drop(columns=list(drop_columns), errors="ignore")

@@ -1,0 +1,132 @@
+nohup: ignoring input
+[I 2026-03-25 19:19:03,117] A new study created in RDB with name: exp023_deep_optuna
+[I 2026-03-25 19:26:52,247] Trial 0 finished with value: 0.9359349450549453 and parameters: {'iterations': 3500, 'learning_rate': 0.044635901521768134, 'depth': 7, 'l2_leaf_reg': 9.381218778758512, 'random_strength': 0.5524540572830658, 'bagging_temperature': 0.46798356100860794, 'min_data_in_leaf': 3}. Best is trial 0 with value: 0.9359349450549453.
+[I 2026-03-25 19:45:59,985] Trial 1 finished with value: 0.9347893626373626 and parameters: {'iterations': 5500, 'learning_rate': 0.019956529392808398, 'depth': 7, 'l2_leaf_reg': 1.2881829201412343, 'random_strength': 2.9127385712697835, 'bagging_temperature': 2.497327922401265, 'min_data_in_leaf': 11}. Best is trial 0 with value: 0.9359349450549453.
+[I 2026-03-25 20:49:28,986] Trial 2 finished with value: 0.9339970989010989 and parameters: {'iterations': 2750, 'learning_rate': 0.007627364729026304, 'depth': 5, 'l2_leaf_reg': 8.346590042851329, 'random_strength': 1.3526405540621358, 'bagging_temperature': 0.8736874205941257, 'min_data_in_leaf': 31}. Best is trial 0 with value: 0.9359349450549453.
+[I 2026-03-25 21:54:33,725] Trial 3 finished with value: 0.9342628131868133 and parameters: {'iterations': 2500, 'learning_rate': 0.009797486029339582, 'depth': 5, 'l2_leaf_reg': 7.384979779038503, 'random_strength': 2.3770102880397395, 'bagging_temperature': 0.5990213464750792, 'min_data_in_leaf': 26}. Best is trial 0 with value: 0.9359349450549453.
+[I 2026-03-25 22:44:45,741] Trial 4 finished with value: 0.9344192527472528 and parameters: {'iterations': 4500, 'learning_rate': 0.005564426587452866, 'depth': 7, 'l2_leaf_reg': 3.3873377316220816, 'random_strength': 0.2886496196573106, 'bagging_temperature': 2.84665661176, 'min_data_in_leaf': 49}. Best is trial 0 with value: 0.9359349450549453.
+[I 2026-03-25 23:20:50,049] Trial 5 finished with value: 0.9346001318681317 and parameters: {'iterations': 5250, 'learning_rate': 0.0100828608459043, 'depth': 4, 'l2_leaf_reg': 10.579262371170197, 'random_strength': 1.376442231844844, 'bagging_temperature': 0.3661147045343365, 'min_data_in_leaf': 25}. Best is trial 0 with value: 0.9359349450549453.
+[I 2026-03-26 05:02:46,069] Trial 6 finished with value: 0.9353613186813187 and parameters: {'iterations': 2000, 'learning_rate': 0.04057797837985251, 'depth': 5, 'l2_leaf_reg': 10.275311980955747, 'random_strength': 1.0039621206592917, 'bagging_temperature': 1.5602040635334324, 'min_data_in_leaf': 28}. Best is trial 0 with value: 0.9359349450549453.
+[I 2026-03-26 05:11:53,686] Trial 7 finished with value: 0.9345617582417582 and parameters: {'iterations': 2750, 'learning_rate': 0.046618106758907395, 'depth': 7, 'l2_leaf_reg': 14.152985181898648, 'random_strength': 2.6949993162401817, 'bagging_temperature': 1.7936999364332555, 'min_data_in_leaf': 47}. Best is trial 0 with value: 0.9359349450549453.
+[I 2026-03-26 05:23:34,204] Trial 8 finished with value: 0.9321166593406593 and parameters: {'iterations': 2250, 'learning_rate': 0.007851504189403358, 'depth': 4, 'l2_leaf_reg': 5.554624630685701, 'random_strength': 1.227164140099498, 'bagging_temperature': 0.8140470953216877, 'min_data_in_leaf': 42}. Best is trial 0 with value: 0.9359349450549453.
+[I 2026-03-26 05:45:28,272] Trial 9 finished with value: 0.93568210989011 and parameters: {'iterations': 3500, 'learning_rate': 0.009547826400522689, 'depth': 6, 'l2_leaf_reg': 2.972939149646677, 'random_strength': 2.426371244186715, 'bagging_temperature': 0.22365193103931247, 'min_data_in_leaf': 50}. Best is trial 0 with value: 0.9359349450549453.
+[I 2026-03-26 05:58:33,254] Trial 10 finished with value: 0.9351682197802198 and parameters: {'iterations': 4000, 'learning_rate': 0.02541579250771343, 'depth': 8, 'l2_leaf_reg': 14.052064786765019, 'random_strength': 0.14456643825150245, 'bagging_temperature': 1.19413002666053, 'min_data_in_leaf': 1}. Best is trial 0 with value: 0.9359349450549453.
+[I 2026-03-26 06:16:05,802] Trial 11 finished with value: 0.935436 and parameters: {'iterations': 3750, 'learning_rate': 0.01561760037145544, 'depth': 6, 'l2_leaf_reg': 4.900807736417627, 'random_strength': 2.1217521051862738, 'bagging_temperature': 0.07411387321841045, 'min_data_in_leaf': 13}. Best is trial 0 with value: 0.9359349450549453.
+[I 2026-03-26 06:28:41,461] Trial 12 finished with value: 0.9355308131868132 and parameters: {'iterations': 3250, 'learning_rate': 0.014773823331728143, 'depth': 6, 'l2_leaf_reg': 1.1143160525345495, 'random_strength': 0.687137087068662, 'bagging_temperature': 0.013302443004446829, 'min_data_in_leaf': 38}. Best is trial 0 with value: 0.9359349450549453.
+[I 2026-03-26 06:42:32,079] Trial 13 finished with value: 0.9349202637362636 and parameters: {'iterations': 4750, 'learning_rate': 0.03070337196656504, 'depth': 8, 'l2_leaf_reg': 10.816276335512637, 'random_strength': 1.9065805198091847, 'bagging_temperature': 1.1253314572033424, 'min_data_in_leaf': 18}. Best is trial 0 with value: 0.9359349450549453.
+[I 2026-03-26 09:12:50,890] Trial 14 finished with value: 0.9349516483516482 and parameters: {'iterations': 3500, 'learning_rate': 0.01259800880064418, 'depth': 7, 'l2_leaf_reg': 7.36316559758062, 'random_strength': 1.791358746502349, 'bagging_temperature': 1.990219285835948, 'min_data_in_leaf': 3}. Best is trial 0 with value: 0.9359349450549453.
+[I 2026-03-26 09:43:23,903] Trial 15 finished with value: 0.9350415824175824 and parameters: {'iterations': 4250, 'learning_rate': 0.005153595402621667, 'depth': 6, 'l2_leaf_reg': 12.3129244822603, 'random_strength': 0.7102453416021559, 'bagging_temperature': 0.4979848097558373, 'min_data_in_leaf': 38}. Best is trial 0 with value: 0.9359349450549453.
+[I 2026-03-26 10:09:32,548] Trial 16 finished with value: 0.9353270769230769 and parameters: {'iterations': 3500, 'learning_rate': 0.021306415068440405, 'depth': 8, 'l2_leaf_reg': 3.1626785436291986, 'random_strength': 2.381220828132996, 'bagging_temperature': 0.2985314612200406, 'min_data_in_leaf': 19}. Best is trial 0 with value: 0.9359349450549453.
+[I 2026-03-26 10:27:26,457] Trial 17 finished with value: 0.9352158681318681 and parameters: {'iterations': 3000, 'learning_rate': 0.03603317836989457, 'depth': 7, 'l2_leaf_reg': 8.907891192057388, 'random_strength': 1.69710760931265, 'bagging_temperature': 1.1564348631656773, 'min_data_in_leaf': 8}. Best is trial 0 with value: 0.9359349450549453.
+[I 2026-03-26 11:01:50,081] Trial 18 finished with value: 0.9360137582417583 and parameters: {'iterations': 4000, 'learning_rate': 0.011124298081234038, 'depth': 6, 'l2_leaf_reg': 5.9340693137756855, 'random_strength': 0.4926310412827724, 'bagging_temperature': 0.8442427787368778, 'min_data_in_leaf': 34}. Best is trial 18 with value: 0.9360137582417583.
+[I 2026-03-26 11:18:09,935] Trial 19 finished with value: 0.9354032527472528 and parameters: {'iterations': 4750, 'learning_rate': 0.020320214345171957, 'depth': 5, 'l2_leaf_reg': 5.772411749777846, 'random_strength': 0.5508774745037709, 'bagging_temperature': 0.7841866501859642, 'min_data_in_leaf': 33}. Best is trial 18 with value: 0.9360137582417583.
+[I 2026-03-26 11:44:40,991] Trial 20 finished with value: 0.935405054945055 and parameters: {'iterations': 6000, 'learning_rate': 0.012209085185281927, 'depth': 7, 'l2_leaf_reg': 6.505755953775747, 'random_strength': 0.9794403717867284, 'bagging_temperature': 1.449997571800647, 'min_data_in_leaf': 19}. Best is trial 18 with value: 0.9360137582417583.
+[I 2026-03-26 12:13:54,106] Trial 21 finished with value: 0.9356265054945055 and parameters: {'iterations': 4000, 'learning_rate': 0.008118125880820252, 'depth': 6, 'l2_leaf_reg': 3.940790208837397, 'random_strength': 0.5594971488354554, 'bagging_temperature': 0.30536619321054365, 'min_data_in_leaf': 44}. Best is trial 18 with value: 0.9360137582417583.
+[I 2026-03-26 13:34:31,355] Trial 22 finished with value: 0.9353306813186814 and parameters: {'iterations': 3250, 'learning_rate': 0.006605389260979813, 'depth': 6, 'l2_leaf_reg': 2.1738199726077285, 'random_strength': 0.3048157165578368, 'bagging_temperature': 0.6056329487781931, 'min_data_in_leaf': 36}. Best is trial 18 with value: 0.9360137582417583.
+[I 2026-03-26 14:16:06,807] Trial 23 finished with value: 0.9354622417582417 and parameters: {'iterations': 3750, 'learning_rate': 0.01053561231125202, 'depth': 6, 'l2_leaf_reg': 8.799730670071124, 'random_strength': 0.9692875080410535, 'bagging_temperature': 0.16831994656862606, 'min_data_in_leaf': 50}. Best is trial 18 with value: 0.9360137582417583.
+[I 2026-03-26 14:56:13,811] Trial 24 finished with value: 0.9355794285714285 and parameters: {'iterations': 4250, 'learning_rate': 0.012075654988773561, 'depth': 6, 'l2_leaf_reg': 4.480214827361184, 'random_strength': 2.094845238309235, 'bagging_temperature': 1.0016569901949899, 'min_data_in_leaf': 42}. Best is trial 18 with value: 0.9360137582417583.
+[I 2026-03-26 15:28:50,309] Trial 25 finished with value: 0.9352540219780219 and parameters: {'iterations': 3000, 'learning_rate': 0.01641162237561345, 'depth': 5, 'l2_leaf_reg': 6.704171213776603, 'random_strength': 0.44547669187872413, 'bagging_temperature': 0.6058075155835929, 'min_data_in_leaf': 24}. Best is trial 18 with value: 0.9360137582417583.
+[I 2026-03-26 16:07:25,476] Trial 26 finished with value: 0.9356932307692306 and parameters: {'iterations': 3500, 'learning_rate': 0.02785791818429237, 'depth': 7, 'l2_leaf_reg': 2.4462438764257746, 'random_strength': 0.8772986355194451, 'bagging_temperature': 0.4319412776844563, 'min_data_in_leaf': 32}. Best is trial 18 with value: 0.9360137582417583.
+[I 2026-03-26 16:35:59,963] Trial 27 finished with value: 0.9350350769230769 and parameters: {'iterations': 4500, 'learning_rate': 0.04991872467172292, 'depth': 8, 'l2_leaf_reg': 9.759836172629063, 'random_strength': 0.8539456715447942, 'bagging_temperature': 1.3835302673085366, 'min_data_in_leaf': 32}. Best is trial 18 with value: 0.9360137582417583.
+[I 2026-03-26 17:14:15,740] Trial 28 finished with value: 0.9362411868131869 and parameters: {'iterations': 3750, 'learning_rate': 0.028435423443131956, 'depth': 7, 'l2_leaf_reg': 11.992457858968976, 'random_strength': 1.1818138518109256, 'bagging_temperature': 0.716277459221098, 'min_data_in_leaf': 28}. Best is trial 28 with value: 0.9362411868131869.
+[I 2026-03-26 17:39:37,018] Trial 29 finished with value: 0.9344181978021978 and parameters: {'iterations': 5250, 'learning_rate': 0.0349767011604702, 'depth': 7, 'l2_leaf_reg': 11.960065708274032, 'random_strength': 1.1907573973920451, 'bagging_temperature': 2.210469402176042, 'min_data_in_leaf': 13}. Best is trial 28 with value: 0.9362411868131869.
+[I 2026-03-26 18:06:40,955] Trial 30 finished with value: 0.9360324395604396 and parameters: {'iterations': 4000, 'learning_rate': 0.03634659322565408, 'depth': 7, 'l2_leaf_reg': 12.681403753125139, 'random_strength': 0.13085963530089545, 'bagging_temperature': 0.7647861096764588, 'min_data_in_leaf': 22}. Best is trial 28 with value: 0.9362411868131869.
+Traceback (most recent call last):
+  File "/home/admin/.venvs/fiicode/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1145, in _commit_impl
+    self.engine.dialect.do_commit(self.connection)
+  File "/home/admin/.venvs/fiicode/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 715, in do_commit
+    dbapi_connection.commit()
+sqlite3.OperationalError: disk I/O error
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/admin/.venvs/fiicode/lib/python3.12/site-packages/optuna/storages/_rdb/storage.py", line 80, in _create_scoped_session
+    session.commit()
+  File "/home/admin/.venvs/fiicode/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 2030, in commit
+    trans.commit(_to_root=True)
+  File "<string>", line 2, in commit
+  File "/home/admin/.venvs/fiicode/lib/python3.12/site-packages/sqlalchemy/orm/state_changes.py", line 137, in _go
+    ret_value = fn(self, *arg, **kw)
+                ^^^^^^^^^^^^^^^^^^^^
+  File "/home/admin/.venvs/fiicode/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 1318, in commit
+    trans.commit()
+  File "/home/admin/.venvs/fiicode/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 2640, in commit
+    self._do_commit()
+  File "/home/admin/.venvs/fiicode/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 2745, in _do_commit
+    self._connection_commit_impl()
+  File "/home/admin/.venvs/fiicode/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 2716, in _connection_commit_impl
+    self.connection._commit_impl()
+  File "/home/admin/.venvs/fiicode/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1147, in _commit_impl
+    self._handle_dbapi_exception(e, None, None, None, None)
+  File "/home/admin/.venvs/fiicode/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 2363, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/home/admin/.venvs/fiicode/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1145, in _commit_impl
+    self.engine.dialect.do_commit(self.connection)
+  File "/home/admin/.venvs/fiicode/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 715, in do_commit
+    dbapi_connection.commit()
+sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) disk I/O error
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/admin/.venvs/fiicode/lib/python3.12/site-packages/optuna/study/_optimize.py", line 218, in _run_trial
+    updated_state, values, warning_message = _tell_with_warning(
+                                             ^^^^^^^^^^^^^^^^^^^
+  File "/home/admin/.venvs/fiicode/lib/python3.12/site-packages/optuna/study/_tell.py", line 174, in _tell_with_warning
+    study._storage.set_trial_state_values(frozen_trial._trial_id, state, values)
+  File "/home/admin/.venvs/fiicode/lib/python3.12/site-packages/optuna/storages/_cached_storage.py", line 194, in set_trial_state_values
+    return self._backend.set_trial_state_values(trial_id, state=state, values=values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/admin/.venvs/fiicode/lib/python3.12/site-packages/optuna/storages/_rdb/storage.py", line 657, in set_trial_state_values
+    with _create_scoped_session(self.scoped_session) as session:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/admin/.local/share/uv/python/cpython-3.12.13-linux-x86_64-gnu/lib/python3.12/contextlib.py", line 144, in __exit__
+    next(self.gen)
+  File "/home/admin/.venvs/fiicode/lib/python3.12/site-packages/optuna/storages/_rdb/storage.py", line 98, in _create_scoped_session
+    raise optuna.exceptions.StorageInternalError(message) from e
+optuna.exceptions.StorageInternalError: An exception is raised during the commit. This typically happens due to invalid data in the commit, e.g. exceeding max length. 
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/mnt/c/Users/dbxdr_iytiz92/Dropbox/fiicode/src/train.py", line 282, in <module>
+    main()
+  File "/mnt/c/Users/dbxdr_iytiz92/Dropbox/fiicode/src/train.py", line 182, in main
+    study.optimize(
+  File "/home/admin/.venvs/fiicode/lib/python3.12/site-packages/optuna/study/study.py", line 490, in optimize
+    _optimize(
+  File "/home/admin/.venvs/fiicode/lib/python3.12/site-packages/optuna/study/_optimize.py", line 68, in _optimize
+    _optimize_sequential(
+  File "/home/admin/.venvs/fiicode/lib/python3.12/site-packages/optuna/study/_optimize.py", line 165, in _optimize_sequential
+    frozen_trial_id = _run_trial(study, func, catch)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/admin/.venvs/fiicode/lib/python3.12/site-packages/optuna/study/_optimize.py", line 256, in _run_trial
+    assert False, "Should not reach."
+           ^^^^^
+AssertionError: Should not reach.
+======================================================================
+FiiCode Model Training
+======================================================================
+Experiment:           exp023_deep_optuna
+Config path:          experiments/exp023_deep_optuna.yaml
+Model family:         catboost
+Feature set:          blend_buckets
+Data dir:             data/raw
+Output root:          /mnt/c/Users/dbxdr_iytiz92/Dropbox/fiicode/outputs
+Study name:           exp023_deep_optuna
+Study storage:        sqlite:////mnt/c/Users/dbxdr_iytiz92/Dropbox/fiicode/outputs/logs/exp023_deep_optuna/exp023_deep_optuna.sqlite3
+Requested trials:     300
+Search CV:            5-fold, seeds=[42]
+Final CV:             5-fold, seeds=[42, 2024, 3407]
+Thread count:         8
+Class weight:         True
+Train weight mode:    none
+Drop columns:         none
+Fixed params path:    none
+======================================================================
+
+Starting Optuna search with 300 new trial(s)...

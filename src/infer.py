@@ -6,7 +6,7 @@ from pathlib import Path
 
 from src.config import ensure_output_dirs, load_experiment_config, repo_root, resolve_experiment_paths
 from src.features import ID_COL, TARGET, prepare_data, resolve_data_dir
-from src.modeling import materialize_params, run_model_cv
+from src.modeling import compute_train_sample_weights, materialize_params, run_model_cv
 
 
 def parse_args():
@@ -42,6 +42,14 @@ def main():
         feature_set=config.feature_set,
         drop_columns=config.drop_columns,
     )
+    sample_weight = compute_train_sample_weights(
+        config.train_weight_mode,
+        prepared.x,
+        prepared.x_test,
+        prepared.categorical_columns,
+        thread_count=config.thread_count,
+        weight_params=config.train_weight_params,
+    )
 
     best_model_params = materialize_params(config.model_family, summary["best_params"], config.thread_count)
     final_cv = run_model_cv(
@@ -55,6 +63,7 @@ def main():
         model_params=best_model_params,
         early_stop=config.early_stop,
         use_class_weight=config.with_class_weight,
+        sample_weight=sample_weight,
     )
 
     output_path = args.output_path or paths.submission_path

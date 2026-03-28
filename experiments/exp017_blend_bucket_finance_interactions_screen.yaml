@@ -1,0 +1,24 @@
+name: exp017_blend_bucket_finance_interactions_screen
+competition_slug: fiicode-2026-ai-competition
+model_family: catboost
+feature_set: blend_buckets_finance_interactions
+drop_columns:
+  - campaign_bucket
+  - previous_bucket
+  - duration_bucket
+  - day_bucket
+data_dir: data/raw
+output_root: outputs
+n_trials: 0
+search_folds: 3
+search_seeds: [42]
+final_folds: 3
+final_seeds: [42]
+early_stop: 150
+study_name: exp017_blend_bucket_finance_interactions_screen
+storage: null
+timeout: null
+thread_count: 8
+with_class_weight: true
+fixed_params_path: outputs/models/exp015_blend_bucket_pruned_fixed/best_params.json
+notes: Cheap fixed-param screen for Susan-style finance and balance interaction features on the current best pruned CatBoost path.

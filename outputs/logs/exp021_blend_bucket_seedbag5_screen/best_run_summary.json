@@ -1,0 +1,59 @@
+{
+  "config_path": "experiments/exp021_blend_bucket_seedbag5_screen.yaml",
+  "config": {
+    "name": "exp021_blend_bucket_seedbag5_screen",
+    "competition_slug": "fiicode-2026-ai-competition",
+    "model_family": "catboost",
+    "feature_set": "blend_buckets",
+    "drop_columns": [],
+    "data_dir": "data/raw",
+    "output_root": "outputs",
+    "n_trials": 0,
+    "search_folds": 3,
+    "search_seeds": [
+      42
+    ],
+    "final_folds": 3,
+    "final_seeds": [
+      42,
+      2024,
+      3407,
+      777,
+      1337
+    ],
+    "early_stop": 200,
+    "study_name": "exp021_blend_bucket_seedbag5_screen",
+    "storage": null,
+    "timeout": null,
+    "thread_count": 8,
+    "with_class_weight": true,
+    "fixed_params_path": "outputs/models/exp012_blend_bucket_features_fixed/best_params.json",
+    "train_weight_mode": null,
+    "train_weight_params": {},
+    "notes": "Cheap screen for a wider five-seed CatBoost bag on the public-best exp012 bucket feature path."
+  },
+  "data_dir": "data/raw",
+  "study_storage": "fixed-params",
+  "existing_trials": 0,
+  "requested_trials": 0,
+  "best_trial_number": null,
+  "search_auc": null,
+  "final_auc": 0.9356737582417582,
+  "best_params": {
+    "iterations": 3500,
+    "learning_rate": 0.013770560347033606,
+    "depth": 6,
+    "l2_leaf_reg": 3.9764570245642927,
+    "random_strength": 1.0842892970704363,
+    "bagging_temperature": 0.7327236865873834
+  },
+  "fixed_params_path": "/mnt/c/Users/dbxdr_iytiz92/Dropbox/fiicode/outputs/models/exp012_blend_bucket_features_fixed/best_params.json",
+  "sample_weight_stats": null,
+  "paths": {
+    "submission": "/mnt/c/Users/dbxdr_iytiz92/Dropbox/fiicode/outputs/submissions/exp021_blend_bucket_seedbag5_screen/submission.csv",
+    "oof": "/mnt/c/Users/dbxdr_iytiz92/Dropbox/fiicode/outputs/oof/exp021_blend_bucket_seedbag5_screen/oof_predictions.csv",
+    "trials": "/mnt/c/Users/dbxdr_iytiz92/Dropbox/fiicode/outputs/logs/exp021_blend_bucket_seedbag5_screen/optuna_trials.csv",
+    "summary": "/mnt/c/Users/dbxdr_iytiz92/Dropbox/fiicode/outputs/logs/exp021_blend_bucket_seedbag5_screen/best_run_summary.json",
+    "best_params": "/mnt/c/Users/dbxdr_iytiz92/Dropbox/fiicode/outputs/models/exp021_blend_bucket_seedbag5_screen/best_params.json"
+  }
+}

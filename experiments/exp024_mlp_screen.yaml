@@ -1,0 +1,20 @@
+name: exp024_mlp_screen
+competition_slug: fiicode-2026-ai-competition
+model_family: mlp
+feature_set: blend_buckets
+drop_columns: []
+data_dir: data/raw
+output_root: outputs
+n_trials: 0
+search_folds: 3
+search_seeds: [42]
+final_folds: 3
+final_seeds: [42]
+early_stop: 50
+study_name: exp024_mlp_screen
+storage: null
+timeout: null
+thread_count: 8
+with_class_weight: false
+fixed_params_path: outputs/models/exp024_mlp_screen/fixed_params.json
+notes: Cheap MLP screen for diversity model. Target OOF correlation < 0.95 with CatBoost.

@@ -130,6 +130,12 @@ python -m src.blend --name exp010_blend \
 - `exp009_xgboost_onehot`: diversity model with one-hot encoded categoricals
 - `exp010_blend_bucket_features`: add sign-aware balance and bucketed business-state features to the blend CatBoost path
 - `exp012_blend_bucket_features_fixed`: fixed-param full evaluation of the best partial `exp010` search snapshot
+- `exp017_blend_bucket_finance_interactions_screen`: cheap fixed-param screen for curated finance and balance interactions on the current best pruned CatBoost path
+- `exp018_blend_bucket_contact_interactions_screen`: cheap fixed-param screen for curated contact-history interactions on the current best pruned CatBoost path
+- `exp019_blend_bucket_state_crosses_screen`: cheap fixed-param screen for extra low-cardinality state crosses on the current best pruned CatBoost path
+- `exp020_blend_bucket_adv_weighted_screen`: cheap screen for adversarial train weighting on the `exp012` bucket feature path
+- `exp020_blend_bucket_adv_weighted_fixed`: fixed-param `exp012` rerun with adversarial train weighting toward test-like rows to address measured train/test drift
+- `exp021_blend_bucket_seedbag5_fixed`: fixed-param `exp012` rerun with a wider five-seed CatBoost bag to reduce prediction variance on the public-best path
 
 ## Kaggle Ops
 

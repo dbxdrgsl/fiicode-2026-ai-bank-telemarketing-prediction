@@ -10,7 +10,7 @@ from sklearn.metrics import roc_auc_score
 
 from src.config import ensure_output_dirs, load_experiment_config, repo_root, resolve_experiment_paths
 from src.features import ID_COL, TARGET, prepare_data, resolve_data_dir
-from src.modeling import materialize_params, run_model_cv, suggest_params
+from src.modeling import compute_train_sample_weights, materialize_params, run_model_cv, suggest_params
 from src.tracking import append_experiment_run, compute_corr_to_best
 
 try:
@@ -52,7 +52,7 @@ def load_fixed_params(path: Path) -> dict:
     return payload
 
 
-def objective_factory(prepared, config):
+def objective_factory(prepared, config, sample_weight):
     def objective(trial):
         cv_output = run_model_cv(
             model_family=config.model_family,
@@ -65,6 +65,7 @@ def objective_factory(prepared, config):
             early_stop=config.early_stop,
             use_class_weight=config.with_class_weight,
             predict_test=False,
+            sample_weight=sample_weight,
         )
         return roc_auc_score(prepared.y, cv_output["oof"])
 
@@ -107,6 +108,22 @@ def main():
         feature_set=config.feature_set,
         drop_columns=config.drop_columns,
     )
+    sample_weight = compute_train_sample_weights(
+        config.train_weight_mode,
+        prepared.x,
+        prepared.x_test,
+        prepared.categorical_columns,
+        thread_count=config.thread_count,
+        weight_params=config.train_weight_params,
+    )
+    sample_weight_stats = None
+    if sample_weight is not None:
+        sample_weight_stats = {
+            "min": float(sample_weight.min()),
+            "mean": float(sample_weight.mean()),
+            "max": float(sample_weight.max()),
+            "std": float(sample_weight.std()),
+        }
 
     print("=" * 70)
     print("FiiCode Model Training")
@@ -124,6 +141,15 @@ def main():
     print(f"Final CV:             {config.final_folds}-fold, seeds={config.final_seeds}")
     print(f"Thread count:         {config.thread_count}")
     print(f"Class weight:         {config.with_class_weight}")
+    print(f"Train weight mode:    {config.train_weight_mode or 'none'}")
+    if sample_weight_stats is not None:
+        print(
+            "Train weight stats:   "
+            f"min={sample_weight_stats['min']:.3f}, "
+            f"mean={sample_weight_stats['mean']:.3f}, "
+            f"max={sample_weight_stats['max']:.3f}, "
+            f"std={sample_weight_stats['std']:.3f}"
+        )
     print(f"Drop columns:         {config.drop_columns or 'none'}")
     print(f"Fixed params path:    {fixed_params_path or 'none'}")
     print("=" * 70)
@@ -154,7 +180,7 @@ def main():
         if remaining_trials > 0:
             print(f"\nStarting Optuna search with {remaining_trials} new trial(s)...")
             study.optimize(
-                objective_factory(prepared, config),
+                objective_factory(prepared, config, sample_weight),
                 n_trials=remaining_trials,
                 timeout=config.timeout,
                 show_progress_bar=False,
@@ -183,6 +209,7 @@ def main():
         model_params=best_model_params,
         early_stop=config.early_stop,
         use_class_weight=config.with_class_weight,
+        sample_weight=sample_weight,
     )
     final_auc = roc_auc_score(prepared.y, final_cv["oof"])
 
@@ -209,6 +236,7 @@ def main():
         "final_auc": float(final_auc),
         "best_params": best_params,
         "fixed_params_path": str(fixed_params_path) if fixed_params_path is not None else None,
+        "sample_weight_stats": sample_weight_stats,
         "paths": {
             "submission": str(paths.submission_path),
             "oof": str(paths.oof_path),
