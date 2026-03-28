@@ -11,6 +11,6 @@
   "seed": 42,
   "best_single_model": "exp026_attention_gpu",
   "best_single_auc": 0.933358945054945,
-  "improvement_over_best_single": 0.0012858021978022771,
+  "improvement_over_best_single": 0.0012857582417583613,
   "promoted": true
 }

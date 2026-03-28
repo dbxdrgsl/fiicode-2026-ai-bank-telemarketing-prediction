@@ -24,13 +24,13 @@
     "train_weight_params": {},
     "notes": "Optimized follow-up to exp025 after early-run analysis: keep strongest attention path, prune weak heavy models, and add a lighter FT branch.\n"
   },
-  "data_dir": "/mnt/c/Users/dbxdr/fiicode-2026-ai-bank-telemarketing-prediction/data/raw",
+  "data_dir": "data/raw",
   "study_storage": "gpu-cv",
   "existing_trials": 0,
   "requested_trials": 12002,
   "best_trial_number": null,
   "search_auc": null,
-  "final_auc": 0.9346447472527473,
+  "final_auc": 0.9346447032967033,
   "best_params": {
     "weights": {
       "exp026_attention_gpu": 0.5657476258648011,
@@ -44,7 +44,7 @@
     "seed": 42,
     "best_single_model": "exp026_attention_gpu",
     "best_single_auc": 0.933358945054945,
-    "improvement_over_best_single": 0.0012858021978022771,
+    "improvement_over_best_single": 0.0012857582417583613,
     "promoted": true
   },
   "fixed_params_path": null,

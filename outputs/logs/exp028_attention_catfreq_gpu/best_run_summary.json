@@ -1,0 +1,89 @@
+{
+  "config_path": "/mnt/c/Users/dbxdr/fiicode-2026-ai-bank-telemarketing-prediction/experiments/exp028_gpu_attention_catfreq.yaml",
+  "config": {
+    "name": "exp028_attention_catfreq_gpu",
+    "competition_slug": "fiicode-2026-ai-competition",
+    "model_family": "attention",
+    "feature_set": "blend_buckets_catfreq",
+    "drop_columns": [],
+    "data_dir": "data/raw",
+    "output_root": "outputs",
+    "n_trials": 0,
+    "search_folds": 5,
+    "search_seeds": [
+      42,
+      2024,
+      3407,
+      777,
+      1337,
+      1001,
+      2718,
+      4096
+    ],
+    "final_folds": 5,
+    "final_seeds": [
+      42,
+      2024,
+      3407,
+      777,
+      1337,
+      1001,
+      2718,
+      4096
+    ],
+    "early_stop": 14,
+    "study_name": "exp028_attention_catfreq_gpu",
+    "storage": null,
+    "timeout": null,
+    "thread_count": -1,
+    "with_class_weight": false,
+    "fixed_params_path": null,
+    "train_weight_mode": null,
+    "train_weight_params": {},
+    "notes": "Test whether category-frequency augmented bucket features improve attention-net diversity and blend value against the current exp012 CatBoost incumbent.\n"
+  },
+  "data_dir": "data/raw",
+  "study_storage": "gpu-cv",
+  "existing_trials": 0,
+  "requested_trials": 40,
+  "best_trial_number": null,
+  "search_auc": null,
+  "final_auc": 0.9333608571428571,
+  "best_params": {
+    "family": "attention",
+    "seeds": [
+      42,
+      2024,
+      3407,
+      777,
+      1337,
+      1001,
+      2718,
+      4096
+    ],
+    "epochs": 90,
+    "batch_size": 1024,
+    "lr": 0.001,
+    "weight_decay": 0.01,
+    "patience": 14,
+    "max_grad_norm": 1.0,
+    "num_workers": 0,
+    "amp": true,
+    "model_params": {
+      "emb_dim": 24,
+      "hidden_dim": 192,
+      "n_layers": 4,
+      "heads": 6,
+      "dropout": 0.2
+    }
+  },
+  "fixed_params_path": null,
+  "sample_weight_stats": null,
+  "paths": {
+    "submission": "/mnt/c/Users/dbxdr/fiicode-2026-ai-bank-telemarketing-prediction/outputs/submissions/exp028_attention_catfreq_gpu/submission.csv",
+    "oof": "/mnt/c/Users/dbxdr/fiicode-2026-ai-bank-telemarketing-prediction/outputs/oof/exp028_attention_catfreq_gpu/oof_predictions.csv",
+    "trials": "/mnt/c/Users/dbxdr/fiicode-2026-ai-bank-telemarketing-prediction/outputs/logs/exp028_attention_catfreq_gpu/optuna_trials.csv",
+    "summary": "/mnt/c/Users/dbxdr/fiicode-2026-ai-bank-telemarketing-prediction/outputs/logs/exp028_attention_catfreq_gpu/best_run_summary.json",
+    "best_params": "/mnt/c/Users/dbxdr/fiicode-2026-ai-bank-telemarketing-prediction/outputs/models/exp028_attention_catfreq_gpu/best_params.json"
+  }
+}
