@@ -1,0 +1,27 @@
+{
+  "family": "attention",
+  "seeds": [
+    42,
+    2024,
+    3407,
+    777,
+    1337,
+    1001,
+    2718
+  ],
+  "epochs": 90,
+  "batch_size": 1024,
+  "lr": 0.001,
+  "weight_decay": 0.01,
+  "patience": 16,
+  "max_grad_norm": 1.0,
+  "num_workers": 0,
+  "amp": true,
+  "model_params": {
+    "emb_dim": 24,
+    "hidden_dim": 192,
+    "n_layers": 4,
+    "heads": 6,
+    "dropout": 0.2
+  }
+}

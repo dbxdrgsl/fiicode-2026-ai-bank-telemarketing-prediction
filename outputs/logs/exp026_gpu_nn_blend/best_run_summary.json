@@ -1,0 +1,59 @@
+{
+  "config_path": "/mnt/c/Users/dbxdr/fiicode-2026-ai-bank-telemarketing-prediction/experiments/exp026_gpu_nn_optimized.yaml",
+  "config": {
+    "name": "exp026_gpu_nn_blend",
+    "competition_slug": "fiicode-2026-ai-competition",
+    "model_family": "blend",
+    "feature_set": "blend_buckets",
+    "drop_columns": [],
+    "data_dir": "data/raw",
+    "output_root": "outputs",
+    "n_trials": 0,
+    "search_folds": 5,
+    "search_seeds": [],
+    "final_folds": 5,
+    "final_seeds": [],
+    "early_stop": 0,
+    "study_name": "exp026_gpu_nn_blend",
+    "storage": null,
+    "timeout": null,
+    "thread_count": -1,
+    "with_class_weight": false,
+    "fixed_params_path": null,
+    "train_weight_mode": null,
+    "train_weight_params": {},
+    "notes": "Optimized follow-up to exp025 after early-run analysis: keep strongest attention path, prune weak heavy models, and add a lighter FT branch.\n"
+  },
+  "data_dir": "/mnt/c/Users/dbxdr/fiicode-2026-ai-bank-telemarketing-prediction/data/raw",
+  "study_storage": "gpu-cv",
+  "existing_trials": 0,
+  "requested_trials": 12002,
+  "best_trial_number": null,
+  "search_auc": null,
+  "final_auc": 0.9346447472527473,
+  "best_params": {
+    "weights": {
+      "exp026_attention_gpu": 0.5657476258648011,
+      "exp026_fttransformer_lite_gpu": 0.43425237413519885
+    },
+    "members": [
+      "exp026_attention_gpu",
+      "exp026_fttransformer_lite_gpu"
+    ],
+    "samples": 12000,
+    "seed": 42,
+    "best_single_model": "exp026_attention_gpu",
+    "best_single_auc": 0.933358945054945,
+    "improvement_over_best_single": 0.0012858021978022771,
+    "promoted": true
+  },
+  "fixed_params_path": null,
+  "sample_weight_stats": null,
+  "paths": {
+    "submission": "/mnt/c/Users/dbxdr/fiicode-2026-ai-bank-telemarketing-prediction/outputs/submissions/exp026_gpu_nn_blend/submission.csv",
+    "oof": "/mnt/c/Users/dbxdr/fiicode-2026-ai-bank-telemarketing-prediction/outputs/oof/exp026_gpu_nn_blend/oof_predictions.csv",
+    "trials": "/mnt/c/Users/dbxdr/fiicode-2026-ai-bank-telemarketing-prediction/outputs/logs/exp026_gpu_nn_blend/optuna_trials.csv",
+    "summary": "/mnt/c/Users/dbxdr/fiicode-2026-ai-bank-telemarketing-prediction/outputs/logs/exp026_gpu_nn_blend/best_run_summary.json",
+    "best_params": "/mnt/c/Users/dbxdr/fiicode-2026-ai-bank-telemarketing-prediction/outputs/models/exp026_gpu_nn_blend/best_params.json"
+  }
+}

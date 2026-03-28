@@ -119,6 +119,27 @@ python -m src.blend --name exp010_blend \
   outputs/logs/exp009_xgboost_onehot/best_run_summary.json
 ```
 
+Train custom GPU neural trio (Attention + FT-style Transformer + TabResNet):
+
+```bash
+python gpu_train.py --config experiments/exp025_gpu_nn_trio.yaml
+```
+
+Validate GPU blend submission candidate:
+
+```bash
+python -m src.submit --submission outputs/submissions/exp025_gpu_nn_blend/submission.csv --message "exp025 gpu nn blend"
+```
+
+Blend GPU neural branch with current CatBoost incumbent:
+
+```bash
+python -m src.blend --name exp026_exp012_plus_gpu \
+  --summaries \
+  outputs/logs/exp012_blend_bucket_features_fixed/best_run_summary.json \
+  outputs/logs/exp025_gpu_nn_blend/best_run_summary.json
+```
+
 ## Experiment Ladder
 
 - `exp003_blend_features`: current best CatBoost-style blend features
@@ -136,6 +157,7 @@ python -m src.blend --name exp010_blend \
 - `exp020_blend_bucket_adv_weighted_screen`: cheap screen for adversarial train weighting on the `exp012` bucket feature path
 - `exp020_blend_bucket_adv_weighted_fixed`: fixed-param `exp012` rerun with adversarial train weighting toward test-like rows to address measured train/test drift
 - `exp021_blend_bucket_seedbag5_fixed`: fixed-param `exp012` rerun with a wider five-seed CatBoost bag to reduce prediction variance on the public-best path
+- `exp025_gpu_nn_trio`: GPU-only custom neural trio (attention, FT-style transformer, tabresnet) trained from scratch with multi-seed CV; exports model-level and blend artifacts
 
 ## Kaggle Ops
 

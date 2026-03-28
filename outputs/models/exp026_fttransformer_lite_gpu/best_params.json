@@ -1,0 +1,23 @@
+{
+  "family": "ft_transformer",
+  "seeds": [
+    42,
+    2024,
+    3407
+  ],
+  "epochs": 80,
+  "batch_size": 1024,
+  "lr": 0.001,
+  "weight_decay": 0.008,
+  "patience": 12,
+  "max_grad_norm": 1.0,
+  "num_workers": 0,
+  "amp": true,
+  "model_params": {
+    "token_dim": 128,
+    "n_layers": 4,
+    "heads": 8,
+    "ff_mult": 2,
+    "dropout": 0.15
+  }
+}

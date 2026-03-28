@@ -1,0 +1,75 @@
+name: exp025_gpu_nn_trio
+competition_slug: fiicode-2026-ai-competition
+feature_set: blend_buckets
+drop_columns: []
+data_dir: data/raw
+output_root: outputs
+require_cuda: true
+deterministic: false
+cv_folds: 5
+cv_seed: 42
+notes: >
+  GPU-only custom neural trio (Attention, FT-style Transformer, TabResNet) trained
+  from scratch for diversity against exp012-style CatBoost submissions.
+
+models:
+  - name: exp025_attention_gpu
+    family: attention
+    seeds: [42, 2024, 3407, 777, 1337]
+    epochs: 90
+    batch_size: 1024
+    lr: 0.001
+    weight_decay: 0.01
+    patience: 14
+    max_grad_norm: 1.0
+    num_workers: 0
+    amp: true
+    model_params:
+      emb_dim: 24
+      hidden_dim: 192
+      n_layers: 4
+      heads: 6
+      dropout: 0.2
+
+  - name: exp025_fttransformer_gpu
+    family: ft_transformer
+    seeds: [42, 2024, 3407, 777, 1337]
+    epochs: 100
+    batch_size: 1024
+    lr: 0.0008
+    weight_decay: 0.01
+    patience: 14
+    max_grad_norm: 1.0
+    num_workers: 0
+    amp: true
+    model_params:
+      token_dim: 192
+      n_layers: 6
+      heads: 8
+      ff_mult: 4
+      dropout: 0.2
+
+  - name: exp025_tabresnet_gpu
+    family: tabresnet
+    seeds: [42, 2024, 3407, 777]
+    epochs: 90
+    batch_size: 1024
+    lr: 0.0012
+    weight_decay: 0.01
+    patience: 12
+    max_grad_norm: 1.0
+    num_workers: 0
+    amp: true
+    model_params:
+      emb_dim: 24
+      hidden_dim: 320
+      n_blocks: 6
+      dropout: 0.2
+
+blend:
+  enabled: true
+  name: exp025_gpu_nn_blend
+  samples: 20000
+  seed: 42
+  min_improvement: 0.0
+  max_models: 3
