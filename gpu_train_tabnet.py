@@ -262,6 +262,7 @@ def train_tabnet_cv(
                 cat_emb_dim=1,
                 momentum=model_cfg.momentum,
                 clip_value=model_cfg.clip_value,
+                device_name="cuda",
                 **model_cfg.tabnet_params,
             )
 
@@ -385,6 +386,9 @@ def main() -> None:
         raise FileNotFoundError(f"Config file not found: {config_path}")
 
     config = ExperimentConfig.from_yaml_file(config_path)
+    if not torch.cuda.is_available():
+        raise RuntimeError("CUDA is required for gpu_train_tabnet.py, but no GPU was detected.")
+    print(f"CUDA device: {torch.cuda.get_device_name(0)}")
     print(f"\nExperiment: {config.name}")
     print(f"Feature set: {config.feature_set}")
     print(f"Folds: {config.n_folds}")
@@ -411,6 +415,8 @@ def main() -> None:
 
     # Setup output paths
     output_root = Path(config.output_root)
+    if not output_root.is_absolute():
+        output_root = (repo_root() / output_root).resolve()
     model_dir = output_root / "models" / config.name
     oof_dir = output_root / "oof" / config.name
     submission_dir = output_root / "submissions" / config.name
@@ -431,7 +437,13 @@ def main() -> None:
 
     # Save outputs
     oof_path = oof_dir / "oof_predictions.csv"
-    oof_df = pd.DataFrame({ID_COL: prepared.train_raw[ID_COL], TARGET: oof_preds})
+    oof_df = pd.DataFrame(
+        {
+            ID_COL: prepared.train_raw[ID_COL],
+            "y_true": y_train.to_numpy(),
+            "oof_pred": oof_preds,
+        }
+    )
     oof_df.to_csv(oof_path, index=False)
     print(f"\nSaved OOF predictions to: {oof_path}")
 
@@ -489,12 +501,24 @@ def main() -> None:
     print(f"Saved summary to: {summary_path}")
 
     # Track experiment
-    corr_to_best = compute_corr_to_best(oof_path)
+    experiment_runs_path = output_root / "logs" / "experiment_runs.csv"
+    corr_to_best = compute_corr_to_best(
+        experiment_runs_path,
+        current_experiment=config.name,
+        current_oof_path=oof_path,
+    )
     append_experiment_run(
-        experiment_name=config.name,
-        oof_score=final_oof_auc,
-        lb_score=None,
-        correlation_to_best=corr_to_best,
+        path=experiment_runs_path,
+        experiment=config.name,
+        model_family="tabnet",
+        feature_set=config.feature_set,
+        with_class_weight=False,
+        search_auc=None,
+        final_auc=final_oof_auc,
+        oof_corr_to_best=corr_to_best,
+        submission_path=submission_path if test_preds is not None else (submission_dir / "submission.csv"),
+        summary_path=summary_path,
+        notes=config.notes or "TabNet GPU run",
     )
     print(f"\nRecorded experiment run in tracking journal")
     print(f"Correlation to best: {corr_to_best:.4f}" if corr_to_best is not None else "N/A")

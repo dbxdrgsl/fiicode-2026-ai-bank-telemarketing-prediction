@@ -1,0 +1,16 @@
+{
+  "family": "gat",
+  "seeds": [
+    42,
+    43,
+    44,
+    45,
+    46
+  ],
+  "k_neighbors": 15,
+  "hidden_dim": 128,
+  "num_layers": 2,
+  "epochs": 100,
+  "lr": 0.001,
+  "heads": 4
+}

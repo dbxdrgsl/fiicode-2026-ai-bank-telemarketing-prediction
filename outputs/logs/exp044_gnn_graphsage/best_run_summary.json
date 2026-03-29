@@ -1,0 +1,54 @@
+{
+  "config_path": "/mnt/c/Users/dbxdr/fiicode-2026-ai-bank-telemarketing-prediction/experiments/exp044_gnn_graphsage.yaml",
+  "config": {
+    "name": "exp044_gnn_graphsage",
+    "competition_slug": "fiicode-2026-ai-competition",
+    "feature_set": "blend_buckets",
+    "drop_columns": [],
+    "data_dir": null,
+    "output_root": "outputs",
+    "n_splits": 5,
+    "model": {
+      "family": "graphsage",
+      "seeds": [
+        42,
+        43,
+        44,
+        45,
+        46
+      ],
+      "k_neighbors": 15,
+      "hidden_dim": 128,
+      "num_layers": 2,
+      "epochs": 100,
+      "lr": 0.001,
+      "heads": null
+    },
+    "notes": "Graph Neural Network with GraphSAGE aggregation on customer similarity graph"
+  },
+  "final_auc": 0.9177394725274725,
+  "search_auc": null,
+  "best_params": {
+    "family": "graphsage",
+    "seeds": [
+      42,
+      43,
+      44,
+      45,
+      46
+    ],
+    "k_neighbors": 15,
+    "hidden_dim": 128,
+    "num_layers": 2,
+    "epochs": 100,
+    "lr": 0.001,
+    "heads": null
+  },
+  "paths": {
+    "submission": "/mnt/c/Users/dbxdr/fiicode-2026-ai-bank-telemarketing-prediction/outputs/submissions/exp044_gnn_graphsage/submission.csv",
+    "oof": "/mnt/c/Users/dbxdr/fiicode-2026-ai-bank-telemarketing-prediction/outputs/oof/exp044_gnn_graphsage/oof_predictions.csv",
+    "trials": "/mnt/c/Users/dbxdr/fiicode-2026-ai-bank-telemarketing-prediction/outputs/logs/exp044_gnn_graphsage/optuna_trials.csv",
+    "summary": "/mnt/c/Users/dbxdr/fiicode-2026-ai-bank-telemarketing-prediction/outputs/logs/exp044_gnn_graphsage/best_run_summary.json",
+    "best_params": "/mnt/c/Users/dbxdr/fiicode-2026-ai-bank-telemarketing-prediction/outputs/models/exp044_gnn_graphsage/best_params.json"
+  }
+}

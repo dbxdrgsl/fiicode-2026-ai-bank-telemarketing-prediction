@@ -1,0 +1,40 @@
+{
+  "config_path": "experiments/exp046_tabnet.yaml",
+  "config": {
+    "name": "exp046_tabnet",
+    "feature_set": "blend_buckets",
+    "n_folds": 5,
+    "model": {
+      "n_d": 64,
+      "n_a": 64,
+      "n_steps": 5,
+      "gamma": 1.5,
+      "lambda_sparse": 0.0001,
+      "seeds": [
+        42,
+        2024,
+        3407,
+        123,
+        999
+      ]
+    }
+  },
+  "final_auc": 0.9340197802197803,
+  "best_params": {
+    "n_d": 64,
+    "n_a": 64,
+    "n_steps": 5,
+    "gamma": 1.5,
+    "lambda_sparse": 0.0001,
+    "lr": 0.02,
+    "batch_size": 1024,
+    "patience": 50
+  },
+  "paths": {
+    "submission": "/mnt/c/Users/dbxdr/fiicode-2026-ai-bank-telemarketing-prediction/outputs/submissions/exp046_tabnet/submission.csv",
+    "oof": "/mnt/c/Users/dbxdr/fiicode-2026-ai-bank-telemarketing-prediction/outputs/oof/exp046_tabnet/oof_predictions.csv",
+    "trials": "/mnt/c/Users/dbxdr/fiicode-2026-ai-bank-telemarketing-prediction/outputs/logs/exp046_tabnet/optuna_trials.csv",
+    "summary": "/mnt/c/Users/dbxdr/fiicode-2026-ai-bank-telemarketing-prediction/outputs/logs/exp046_tabnet/best_run_summary.json",
+    "best_params": "/mnt/c/Users/dbxdr/fiicode-2026-ai-bank-telemarketing-prediction/outputs/models/exp046_tabnet/best_params.json"
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "config_path": "/mnt/c/Users/dbxdr/fiicode-2026-ai-bank-telemarketing-prediction/experiments/exp045_gnn_gat.yaml",
+  "config": {
+    "name": "exp045_gnn_gat",
+    "competition_slug": "fiicode-2026-ai-competition",
+    "feature_set": "blend_buckets",
+    "drop_columns": [],
+    "data_dir": null,
+    "output_root": "outputs",
+    "n_splits": 5,
+    "model": {
+      "family": "gat",
+      "seeds": [
+        42,
+        43,
+        44,
+        45,
+        46
+      ],
+      "k_neighbors": 15,
+      "hidden_dim": 128,
+      "num_layers": 2,
+      "epochs": 100,
+      "lr": 0.001,
+      "heads": 4
+    },
+    "notes": "Graph Attention Network (GAT) on customer similarity graph"
+  },
+  "final_auc": 0.9109869230769231,
+  "search_auc": null,
+  "best_params": {
+    "family": "gat",
+    "seeds": [
+      42,
+      43,
+      44,
+      45,
+      46
+    ],
+    "k_neighbors": 15,
+    "hidden_dim": 128,
+    "num_layers": 2,
+    "epochs": 100,
+    "lr": 0.001,
+    "heads": 4
+  },
+  "paths": {
+    "submission": "/mnt/c/Users/dbxdr/fiicode-2026-ai-bank-telemarketing-prediction/outputs/submissions/exp045_gnn_gat/submission.csv",
+    "oof": "/mnt/c/Users/dbxdr/fiicode-2026-ai-bank-telemarketing-prediction/outputs/oof/exp045_gnn_gat/oof_predictions.csv",
+    "trials": "/mnt/c/Users/dbxdr/fiicode-2026-ai-bank-telemarketing-prediction/outputs/logs/exp045_gnn_gat/optuna_trials.csv",
+    "summary": "/mnt/c/Users/dbxdr/fiicode-2026-ai-bank-telemarketing-prediction/outputs/logs/exp045_gnn_gat/best_run_summary.json",
+    "best_params": "/mnt/c/Users/dbxdr/fiicode-2026-ai-bank-telemarketing-prediction/outputs/models/exp045_gnn_gat/best_params.json"
+  }
+}
