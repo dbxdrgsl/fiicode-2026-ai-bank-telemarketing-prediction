@@ -1,0 +1,29 @@
+name: exp046_tabnet
+competition_slug: fiicode-2026-ai-competition
+feature_set: blend_buckets
+drop_columns: []
+data_dir: data/raw
+output_root: outputs
+n_folds: 5
+notes: |
+  TabNet with instance-wise feature selection via attention mechanism.
+  Uses blend_buckets feature set (same as exp012 CatBoost baseline).
+  TabNet learns which features matter for each prediction dynamically,
+  orthogonal to CatBoost's fixed global feature importance.
+
+model:
+  name: exp046_tabnet
+  seeds: [42, 2024, 3407, 123, 999]
+  n_d: 64                    # feature embedding dimension
+  n_a: 64                    # attention embedding dimension
+  n_steps: 5                 # number of decision steps
+  gamma: 1.5                 # relaxation parameter
+  lambda_sparse: 0.0001      # sparsity regularization (1e-4)
+  epochs: 200                # max epochs
+  batch_size: 1024           # batch size
+  lr: 0.02                   # learning rate
+  patience: 50               # early stopping patience
+  virtual_batch_size: 128    # virtual batch size for ghost batch norm
+  momentum: 0.02             # momentum for batch normalization
+  clip_value: 1.0            # gradient clipping
+  tabnet_params: {}          # additional TabNet parameters

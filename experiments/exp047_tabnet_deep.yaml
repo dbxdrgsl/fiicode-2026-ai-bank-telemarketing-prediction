@@ -1,0 +1,29 @@
+name: exp047_tabnet_deep
+competition_slug: fiicode-2026-ai-competition
+feature_set: blend_buckets
+drop_columns: []
+data_dir: data/raw
+output_root: outputs
+n_folds: 5
+notes: |
+  Deeper TabNet with increased capacity.
+  Uses more decision steps (7 vs 5) and larger embeddings (128 vs 64).
+  This allows the model to learn more complex attention patterns
+  and feature interactions across multiple reasoning steps.
+
+model:
+  name: exp047_tabnet_deep
+  seeds: [42, 2024, 3407, 123, 999]
+  n_d: 128                   # feature embedding dimension (increased)
+  n_a: 128                   # attention embedding dimension (increased)
+  n_steps: 7                 # number of decision steps (increased)
+  gamma: 1.5                 # relaxation parameter
+  lambda_sparse: 0.0001      # sparsity regularization (1e-4)
+  epochs: 200                # max epochs
+  batch_size: 1024           # batch size
+  lr: 0.015                  # learning rate (slightly reduced for stability)
+  patience: 50               # early stopping patience
+  virtual_batch_size: 128    # virtual batch size for ghost batch norm
+  momentum: 0.02             # momentum for batch normalization
+  clip_value: 1.0            # gradient clipping
+  tabnet_params: {}          # additional TabNet parameters

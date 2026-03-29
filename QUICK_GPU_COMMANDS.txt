@@ -1,0 +1,38 @@
+========================================
+QUICK GPU MACHINE COMMANDS
+========================================
+
+1. SYNC AND SETUP
+------------------
+cd ~/fiicode-2026-ai-bank-telemarketing-prediction
+git pull
+source venv/bin/activate
+pip install torch-geometric pytorch-tabnet -q
+
+2. RUN GNN EXPERIMENTS
+-----------------------
+python gpu_train_gnn.py --config experiments/exp044_gnn_graphsage.yaml
+python gpu_train_gnn.py --config experiments/exp045_gnn_gat.yaml
+
+3. RUN TABNET EXPERIMENTS
+--------------------------
+python gpu_train_tabnet.py --config experiments/exp046_tabnet.yaml
+python gpu_train_tabnet.py --config experiments/exp047_tabnet_deep.yaml
+
+4. COMMIT AND PUSH RESULTS
+---------------------------
+git add outputs/ experiments/
+git commit -m "GPU orthogonal experiments: GNN + TabNet"
+git push
+
+========================================
+QUEUE ALL 4 (if supported):
+========================================
+python gpu_train_gnn.py --config experiments/exp044_gnn_graphsage.yaml && \
+python gpu_train_gnn.py --config experiments/exp045_gnn_gat.yaml && \
+python gpu_train_tabnet.py --config experiments/exp046_tabnet.yaml && \
+python gpu_train_tabnet.py --config experiments/exp047_tabnet_deep.yaml && \
+git add outputs/ experiments/ && git commit -m "All GPU experiments done" && git push
+
+Expected total runtime: ~7 hours
+========================================
