@@ -1,30 +1,31 @@
-# exp038: GPU TabResNet with target encoding
-# Hypothesis: ResNet + target encoding = complementary to attention
 name: exp038_gpu_tabresnet_target_enc
+competition_slug: fiicode-2026-ai-competition
 feature_set: blend_buckets_target_enc
-notes: "TabResNet with target encoding - different architecture family"
-
+drop_columns: []
+data_dir: data/raw
+output_root: outputs
 require_cuda: true
 deterministic: false
-
-cv:
-  folds: 5
-  seed: 42
+cv_folds: 5
+cv_seed: 42
+notes: >
+  TabResNet on leakage-safe target encoded features to test architecture + feature
+  interaction differences versus attention and transformer branches.
 
 models:
-  - name: exp038_tabresnet_target_enc
+  - name: exp038_tabresnet_target_enc_gpu
     family: tabresnet
-    seeds: [42, 2024, 3407, 1337, 999]
-    epochs: 100
-    batch_size: 512
+    seeds: [42, 2024, 3407, 1337, 1001]
+    epochs: 90
+    batch_size: 1024
     lr: 0.001
     weight_decay: 0.01
-    patience: 15
+    patience: 14
+    max_grad_norm: 1.0
+    num_workers: 0
+    amp: true
     model_params:
-      hidden_dim: 256
-      num_blocks: 6
-      dropout: 0.15
-      use_batch_norm: true
-
-blend:
-  enabled: false
+      emb_dim: 24
+      hidden_dim: 320
+      n_blocks: 6
+      dropout: 0.2

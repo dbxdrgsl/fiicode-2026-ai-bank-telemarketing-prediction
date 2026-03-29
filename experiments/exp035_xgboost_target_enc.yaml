@@ -1,28 +1,21 @@
-# exp035: XGBoost with target encoding  
-# Hypothesis: Third GBM family for maximum ensemble diversity
 name: exp035_xgboost_target_enc
-model: xgboost
+competition_slug: fiicode-2026-ai-competition
+model_family: xgboost
 feature_set: blend_buckets_target_enc
-notes: "XGBoost for 3-way GBM ensemble potential"
-
-search:
-  n_trials: 50
-  timeout_minutes: 90
-
-search_space:
-  n_estimators: [600, 1000]
-  max_depth: [6, 10]
-  learning_rate: [0.02, 0.08]
-  min_child_weight: [1, 10]
-  gamma: [0.0, 0.3]
-  subsample: [0.7, 0.9]
-  colsample_bytree: [0.7, 0.9]
-  reg_alpha: [0.0, 0.5]
-  reg_lambda: [0.0, 0.5]
-
-cv:
-  n_splits: 5
-  shuffle: true
-
-final:
-  seeds: [42, 2024, 3407]
+drop_columns: []
+data_dir: data/raw
+output_root: outputs
+n_trials: 70
+search_folds: 5
+search_seeds: [42]
+final_folds: 5
+final_seeds: [42, 2024, 3407]
+early_stop: 250
+study_name: exp035_xgboost_target_enc
+storage: null
+timeout: null
+thread_count: 8
+with_class_weight: true
+notes: >
+  XGBoost with leakage-safe OOF target encoding for additional tree-family
+  diversity and blend robustness.

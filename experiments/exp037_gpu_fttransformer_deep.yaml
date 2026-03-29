@@ -1,33 +1,32 @@
-# exp037: GPU FT-Transformer with deeper architecture
-# Hypothesis: Deeper transformer captures more complex feature interactions
 name: exp037_gpu_fttransformer_deep
+competition_slug: fiicode-2026-ai-competition
 feature_set: blend_buckets_catfreq
-notes: "Deeper FT-Transformer (4 layers, more heads) for complexity"
-
+drop_columns: []
+data_dir: data/raw
+output_root: outputs
 require_cuda: true
 deterministic: false
-
-cv:
-  folds: 5
-  seed: 42
+cv_folds: 5
+cv_seed: 42
+notes: >
+  Deeper FT-Transformer variant on catfreq feature set for architecture-driven
+  diversity compared to attention/tabresnet.
 
 models:
-  - name: exp037_fttransformer_deep
+  - name: exp037_fttransformer_deep_gpu
     family: ft_transformer
-    seeds: [42, 2024, 3407, 1337, 999]
-    epochs: 120
-    batch_size: 256
-    lr: 0.0005
-    weight_decay: 0.02
-    patience: 18
+    seeds: [42, 2024, 3407, 1337, 1001]
+    epochs: 90
+    batch_size: 1024
+    lr: 0.0008
+    weight_decay: 0.01
+    patience: 14
+    max_grad_norm: 1.0
+    num_workers: 0
+    amp: true
     model_params:
-      d_token: 128
-      n_blocks: 4
-      attention_n_heads: 8
-      attention_dropout: 0.15
-      ffn_d_hidden: 512
-      ffn_dropout: 0.2
-      residual_dropout: 0.1
-
-blend:
-  enabled: false
+      token_dim: 192
+      n_layers: 6
+      heads: 8
+      ff_mult: 4
+      dropout: 0.2

@@ -1,0 +1,2 @@
+number,value,datetime_start,datetime_complete,duration,params_bagging_temperature,params_depth,params_iterations,params_l2_leaf_reg,params_learning_rate,params_min_data_in_leaf,params_random_strength,state
+0,0.9340614945054944,2026-03-28 22:41:43.802493,2026-03-28 22:43:31.443371,0 days 00:01:47.640878,0.46798356100860794,7,3500,9.381218778758512,0.044635901521768134,3,0.5524540572830658,COMPLETE

@@ -1,62 +1,75 @@
-# exp039: GPU mega-blend of all architectures
-# Runs multiple architectures and auto-blends the best
 name: exp039_gpu_mega_blend
+competition_slug: fiicode-2026-ai-competition
 feature_set: blend_buckets_target_enc
-notes: "All 3 NN architectures with target encoding, auto-blended"
-
+drop_columns: []
+data_dir: data/raw
+output_root: outputs
 require_cuda: true
 deterministic: false
-
-cv:
-  folds: 5
-  seed: 42
+cv_folds: 5
+cv_seed: 42
+notes: >
+  Train all three GPU architectures on target-encoded features and run OOF blend
+  search to identify best neural-only ensemble candidate overnight.
 
 models:
-  - name: exp039_attention
+  - name: exp039_attention_gpu
     family: attention
     seeds: [42, 2024, 3407]
     epochs: 80
-    batch_size: 512
-    lr: 0.0008
-    weight_decay: 0.015
-    patience: 12
-    model_params:
-      hidden_dim: 192
-      num_heads: 6
-      num_layers: 3
-      dropout: 0.2
-
-  - name: exp039_fttransformer
-    family: ft_transformer
-    seeds: [42, 2024, 3407]
-    epochs: 80
-    batch_size: 256
-    lr: 0.0005
-    weight_decay: 0.02
-    patience: 12
-    model_params:
-      d_token: 128
-      n_blocks: 3
-      attention_n_heads: 8
-      attention_dropout: 0.15
-      ffn_d_hidden: 384
-      ffn_dropout: 0.2
-
-  - name: exp039_tabresnet
-    family: tabresnet
-    seeds: [42, 2024, 3407]
-    epochs: 80
-    batch_size: 512
+    batch_size: 1024
     lr: 0.001
     weight_decay: 0.01
     patience: 12
+    max_grad_norm: 1.0
+    num_workers: 0
+    amp: true
     model_params:
-      hidden_dim: 256
-      num_blocks: 5
-      dropout: 0.15
+      emb_dim: 24
+      hidden_dim: 192
+      n_layers: 4
+      heads: 6
+      dropout: 0.2
+
+  - name: exp039_fttransformer_gpu
+    family: ft_transformer
+    seeds: [42, 2024, 3407]
+    epochs: 80
+    batch_size: 1024
+    lr: 0.0008
+    weight_decay: 0.01
+    patience: 12
+    max_grad_norm: 1.0
+    num_workers: 0
+    amp: true
+    model_params:
+      token_dim: 192
+      n_layers: 6
+      heads: 8
+      ff_mult: 4
+      dropout: 0.2
+
+  - name: exp039_tabresnet_gpu
+    family: tabresnet
+    seeds: [42, 2024, 3407]
+    epochs: 80
+    batch_size: 1024
+    lr: 0.001
+    weight_decay: 0.01
+    patience: 12
+    max_grad_norm: 1.0
+    num_workers: 0
+    amp: true
+    model_params:
+      emb_dim: 24
+      hidden_dim: 320
+      n_blocks: 6
+      dropout: 0.2
 
 blend:
   enabled: true
-  name: exp039_mega_blend
+  name: exp039_gpu_mega_blend_result
   samples: 15000
   seed: 42
+  min_improvement: 0.0
+  max_models: 3

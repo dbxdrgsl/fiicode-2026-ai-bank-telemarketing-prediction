@@ -1,0 +1,80 @@
+{
+  "config_path": "/mnt/c/Users/dbxdr/fiicode-2026-ai-bank-telemarketing-prediction/experiments/exp037_gpu_fttransformer_deep.yaml",
+  "config": {
+    "name": "exp037_fttransformer_deep_gpu",
+    "competition_slug": "fiicode-2026-ai-competition",
+    "model_family": "ft_transformer",
+    "feature_set": "blend_buckets_catfreq",
+    "drop_columns": [],
+    "data_dir": "data/raw",
+    "output_root": "outputs",
+    "n_trials": 0,
+    "search_folds": 5,
+    "search_seeds": [
+      42,
+      2024,
+      3407,
+      1337,
+      1001
+    ],
+    "final_folds": 5,
+    "final_seeds": [
+      42,
+      2024,
+      3407,
+      1337,
+      1001
+    ],
+    "early_stop": 14,
+    "study_name": "exp037_fttransformer_deep_gpu",
+    "storage": null,
+    "timeout": null,
+    "thread_count": -1,
+    "with_class_weight": false,
+    "fixed_params_path": null,
+    "train_weight_mode": null,
+    "train_weight_params": {},
+    "notes": "Deeper FT-Transformer variant on catfreq feature set for architecture-driven diversity compared to attention/tabresnet.\n"
+  },
+  "data_dir": "data/raw",
+  "study_storage": "gpu-cv",
+  "existing_trials": 0,
+  "requested_trials": 25,
+  "best_trial_number": null,
+  "search_auc": null,
+  "final_auc": 0.9335774505494504,
+  "best_params": {
+    "family": "ft_transformer",
+    "seeds": [
+      42,
+      2024,
+      3407,
+      1337,
+      1001
+    ],
+    "epochs": 90,
+    "batch_size": 1024,
+    "lr": 0.0008,
+    "weight_decay": 0.01,
+    "patience": 14,
+    "max_grad_norm": 1.0,
+    "num_workers": 0,
+    "amp": true,
+    "model_params": {
+      "token_dim": 192,
+      "n_layers": 6,
+      "heads": 8,
+      "ff_mult": 4,
+      "dropout": 0.2
+    }
+  },
+  "fixed_params_path": null,
+  "sample_weight_stats": null,
+  "paths": {
+    "submission": "/mnt/c/Users/dbxdr/fiicode-2026-ai-bank-telemarketing-prediction/outputs/submissions/exp037_fttransformer_deep_gpu/submission.csv",
+    "oof": "/mnt/c/Users/dbxdr/fiicode-2026-ai-bank-telemarketing-prediction/outputs/oof/exp037_fttransformer_deep_gpu/oof_predictions.csv",
+    "trials": "/mnt/c/Users/dbxdr/fiicode-2026-ai-bank-telemarketing-prediction/outputs/logs/exp037_fttransformer_deep_gpu/optuna_trials.csv",
+    "summary": "/mnt/c/Users/dbxdr/fiicode-2026-ai-bank-telemarketing-prediction/outputs/logs/exp037_fttransformer_deep_gpu/best_run_summary.json",
+    "best_params": "/mnt/c/Users/dbxdr/fiicode-2026-ai-bank-telemarketing-prediction/outputs/models/exp037_fttransformer_deep_gpu/best_params.json"
+  }
+}

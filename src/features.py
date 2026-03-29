@@ -7,6 +7,7 @@ from typing import Literal, Sequence
 
 import numpy as np
 import pandas as pd
+from sklearn.model_selection import StratifiedKFold
 
 from src.config import repo_root
 
@@ -458,42 +459,59 @@ def _apply_target_encoding(
     smoothing: float = 10.0,
     noise_level: float = 0.01,
     seed: int = 42,
+    n_splits: int = 5,
 ) -> tuple[pd.DataFrame, pd.DataFrame | None]:
     """
-    Apply target encoding with smoothing to prevent overfitting.
-    
-    Uses: encoded = (count * mean + global_mean * smoothing) / (count + smoothing)
-    This shrinks rare categories toward the global mean.
+    Apply leakage-safe target encoding with smoothing.
+
+    Train rows are encoded out-of-fold so each encoded value is built without
+    seeing that row's target.
     """
+    if n_splits < 2:
+        raise ValueError(f"n_splits must be >= 2 for target encoding, got {n_splits}.")
+
     rng = np.random.default_rng(seed)
     train_fe = train_fe.copy()
     test_fe = test_fe.copy() if test_fe is not None else None
-    
-    global_mean = y_train.mean()
-    
+    y_train = y_train.reset_index(drop=True).astype(float)
+
+    if len(train_fe) != len(y_train):
+        raise ValueError("Target encoding expects y_train to align with train feature rows.")
+
+    global_mean = float(y_train.mean())
+    splitter = StratifiedKFold(n_splits=n_splits, shuffle=True, random_state=seed)
+
     for col in TARGET_ENCODING_COLUMNS:
         if col not in train_fe.columns:
             continue
-        
+
         train_col = train_fe[col].fillna("missing").astype(str)
-        
-        # Compute stats per category
-        df_stats = pd.DataFrame({"cat": train_col, "target": y_train})
-        agg = df_stats.groupby("cat")["target"].agg(["mean", "count"])
-        
-        # Smoothed encoding: shrink toward global mean
-        smoothed = (agg["count"] * agg["mean"] + global_mean * smoothing) / (agg["count"] + smoothing)
-        
-        # Apply to train with small noise to reduce overfitting
-        train_encoded = train_col.map(smoothed).fillna(global_mean).astype(np.float32)
-        train_encoded += rng.normal(0, noise_level, len(train_encoded)).astype(np.float32)
-        train_fe[f"{col}_target_enc"] = train_encoded
-        
-        # Apply to test (no noise)
+        oof_encoded = np.full(len(train_fe), global_mean, dtype=np.float32)
+
+        for fit_idx, val_idx in splitter.split(train_fe, y_train.astype(int)):
+            fit_col = train_col.iloc[fit_idx]
+            fit_target = y_train.iloc[fit_idx]
+
+            fold_stats = pd.DataFrame({"cat": fit_col.to_numpy(), "target": fit_target.to_numpy()})
+            agg = fold_stats.groupby("cat")["target"].agg(["mean", "count"])
+            smoothed = (agg["count"] * agg["mean"] + global_mean * smoothing) / (agg["count"] + smoothing)
+
+            val_col = train_col.iloc[val_idx]
+            val_encoded = val_col.map(smoothed).fillna(global_mean).astype(np.float32).to_numpy()
+            oof_encoded[val_idx] = val_encoded
+
+        if noise_level > 0:
+            oof_encoded += rng.normal(0, noise_level, len(oof_encoded)).astype(np.float32)
+        train_fe[f"{col}_target_enc"] = oof_encoded
+
         if test_fe is not None:
+            full_stats = pd.DataFrame({"cat": train_col.to_numpy(), "target": y_train.to_numpy()})
+            agg = full_stats.groupby("cat")["target"].agg(["mean", "count"])
+            smoothed = (agg["count"] * agg["mean"] + global_mean * smoothing) / (agg["count"] + smoothing)
+
             test_col = test_fe[col].fillna("missing").astype(str)
             test_fe[f"{col}_target_enc"] = test_col.map(smoothed).fillna(global_mean).astype(np.float32)
-    
+
     return train_fe, test_fe
 
 

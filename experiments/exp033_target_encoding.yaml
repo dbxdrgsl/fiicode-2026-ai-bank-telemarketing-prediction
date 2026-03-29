@@ -1,26 +1,21 @@
-# exp033: Target encoding - fundamentally new feature type
-# Hypothesis: Smoothed target encoding captures category-target relationships CatBoost might miss
 name: exp033_target_encoding
-model: catboost
+competition_slug: fiicode-2026-ai-competition
+model_family: catboost
 feature_set: blend_buckets_target_enc
-notes: "Target encoding with smoothing=10, noise=0.01 - structural change from pure frequency"
-
-search:
-  n_trials: 60
-  timeout_minutes: 120
-
-search_space:
-  iterations: [800, 1200]
-  depth: [6, 8]
-  learning_rate: [0.03, 0.08]
-  l2_leaf_reg: [3, 7]
-  random_strength: [0.5, 2.0]
-  bagging_temperature: [0.5, 1.5]
-  border_count: [128, 254]
-
-cv:
-  n_splits: 5
-  shuffle: true
-
-final:
-  seeds: [42, 2024, 3407]
+drop_columns: []
+data_dir: data/raw
+output_root: outputs
+n_trials: 80
+search_folds: 5
+search_seeds: [42]
+final_folds: 5
+final_seeds: [42, 2024, 3407]
+early_stop: 250
+study_name: exp033_target_encoding
+storage: null
+timeout: null
+thread_count: 8
+with_class_weight: true
+notes: >
+  CatBoost with leakage-safe OOF target encoding on blend_buckets features.
+  Overnight promotion candidate to test stronger category-target signal.
