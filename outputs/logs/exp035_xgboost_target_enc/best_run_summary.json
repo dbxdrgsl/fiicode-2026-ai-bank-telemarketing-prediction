@@ -1,0 +1,60 @@
+{
+  "config_path": "experiments/exp035_xgboost_target_enc.yaml",
+  "config": {
+    "name": "exp035_xgboost_target_enc",
+    "competition_slug": "fiicode-2026-ai-competition",
+    "model_family": "xgboost",
+    "feature_set": "blend_buckets_target_enc",
+    "drop_columns": [],
+    "data_dir": "data/raw",
+    "output_root": "outputs",
+    "n_trials": 50,
+    "search_folds": 5,
+    "search_seeds": [
+      42
+    ],
+    "final_folds": 5,
+    "final_seeds": [
+      42,
+      2024,
+      3407
+    ],
+    "early_stop": 250,
+    "study_name": "exp035_xgboost_target_enc",
+    "storage": null,
+    "timeout": 5400,
+    "thread_count": 8,
+    "with_class_weight": true,
+    "fixed_params_path": null,
+    "train_weight_mode": null,
+    "train_weight_params": {},
+    "notes": "XGBoost for 3-way GBM ensemble potential"
+  },
+  "data_dir": "data/raw",
+  "study_storage": "sqlite:////mnt/c/Users/dbxdr_iytiz92/Dropbox/fiicode/outputs/logs/exp035_xgboost_target_enc/exp035_xgboost_target_enc.sqlite3",
+  "existing_trials": 0,
+  "requested_trials": 50,
+  "best_trial_number": 36,
+  "search_auc": 0.9328278901098902,
+  "final_auc": 0.9333888351648353,
+  "best_params": {
+    "n_estimators": 1500,
+    "learning_rate": 0.012549473389197947,
+    "max_depth": 8,
+    "min_child_weight": 4.643253825321233,
+    "subsample": 0.6971556011274652,
+    "colsample_bytree": 0.7194109609524324,
+    "reg_alpha": 0.03147032754713845,
+    "reg_lambda": 0.03428637754478599,
+    "gamma": 4.993204662796431
+  },
+  "fixed_params_path": null,
+  "sample_weight_stats": null,
+  "paths": {
+    "submission": "/mnt/c/Users/dbxdr_iytiz92/Dropbox/fiicode/outputs/submissions/exp035_xgboost_target_enc/submission.csv",
+    "oof": "/mnt/c/Users/dbxdr_iytiz92/Dropbox/fiicode/outputs/oof/exp035_xgboost_target_enc/oof_predictions.csv",
+    "trials": "/mnt/c/Users/dbxdr_iytiz92/Dropbox/fiicode/outputs/logs/exp035_xgboost_target_enc/optuna_trials.csv",
+    "summary": "/mnt/c/Users/dbxdr_iytiz92/Dropbox/fiicode/outputs/logs/exp035_xgboost_target_enc/best_run_summary.json",
+    "best_params": "/mnt/c/Users/dbxdr_iytiz92/Dropbox/fiicode/outputs/models/exp035_xgboost_target_enc/best_params.json"
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "config_path": null,
+  "config": {
+    "name": "exp040_gbm_trio_blend",
+    "model_family": "blend",
+    "feature_set": "mixed",
+    "with_class_weight": false
+  },
+  "data_dir": null,
+  "study_storage": "blend-search",
+  "existing_trials": 0,
+  "requested_trials": 5000,
+  "best_trial_number": null,
+  "search_auc": 0.9368625494505495,
+  "final_auc": 0.9368625494505495,
+  "best_params": {
+    "weights": {
+      "exp012_blend_bucket_features_fixed": 0.6828866480794203,
+      "exp034_lightgbm_target_enc": 0.2975545448263244,
+      "exp035_xgboost_target_enc": 0.004592966328273583,
+      "exp033_target_encoding": 0.014965840765981755
+    }
+  },
+  "members": [
+    {
+      "name": "exp012_blend_bucket_features_fixed",
+      "model_family": "catboost",
+      "final_auc": 0.9363836923076924,
+      "corr_to_best": 1.0
+    },
+    {
+      "name": "exp034_lightgbm_target_enc",
+      "model_family": "lightgbm",
+      "final_auc": 0.9342553846153845,
+      "corr_to_best": 0.9865821224629693
+    },
+    {
+      "name": "exp035_xgboost_target_enc",
+      "model_family": "xgboost",
+      "final_auc": 0.9333888351648353,
+      "corr_to_best": 0.9875169597907857
+    },
+    {
+      "name": "exp033_target_encoding",
+      "model_family": "catboost",
+      "final_auc": 0.935380967032967,
+      "corr_to_best": 0.9962164427233784
+    }
+  ],
+  "best_single_model": "exp012_blend_bucket_features_fixed",
+  "best_single_auc": 0.9363836923076924,
+  "improvement_over_best_single": 0.0004788571428571142,
+  "promoted": true,
+  "paths": {
+    "submission": "/mnt/c/Users/dbxdr_iytiz92/Dropbox/fiicode/outputs/submissions/exp040_gbm_trio_blend/submission.csv",
+    "oof": "/mnt/c/Users/dbxdr_iytiz92/Dropbox/fiicode/outputs/oof/exp040_gbm_trio_blend/oof_predictions.csv",
+    "summary": "/mnt/c/Users/dbxdr_iytiz92/Dropbox/fiicode/outputs/logs/exp040_gbm_trio_blend/best_run_summary.json",
+    "best_params": "/mnt/c/Users/dbxdr_iytiz92/Dropbox/fiicode/outputs/models/exp040_gbm_trio_blend/best_params.json",
+    "correlation": "/mnt/c/Users/dbxdr_iytiz92/Dropbox/fiicode/outputs/logs/exp040_gbm_trio_blend/oof_correlation.csv"
+  }
+}

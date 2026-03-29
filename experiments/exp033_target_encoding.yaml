@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+# exp033: Target encoding - fundamentally new feature type
+>>>>>>> 3999a05 (local cpu experiments exp033-035 + exp040 blend)
 name: exp033_target_encoding
 competition_slug: fiicode-2026-ai-competition
 model_family: catboost
@@ -5,12 +9,17 @@ feature_set: blend_buckets_target_enc
 drop_columns: []
 data_dir: data/raw
 output_root: outputs
+<<<<<<< HEAD
 n_trials: 80
+=======
+n_trials: 60
+>>>>>>> 3999a05 (local cpu experiments exp033-035 + exp040 blend)
 search_folds: 5
 search_seeds: [42]
 final_folds: 5
 final_seeds: [42, 2024, 3407]
 early_stop: 250
+<<<<<<< HEAD
 study_name: exp033_target_encoding
 storage: null
 timeout: null
@@ -19,3 +28,9 @@ with_class_weight: true
 notes: >
   CatBoost with leakage-safe OOF target encoding on blend_buckets features.
   Overnight promotion candidate to test stronger category-target signal.
+=======
+timeout: 7200
+thread_count: 8
+with_class_weight: true
+notes: "Target encoding with smoothing - structural change from pure frequency"
+>>>>>>> 3999a05 (local cpu experiments exp033-035 + exp040 blend)

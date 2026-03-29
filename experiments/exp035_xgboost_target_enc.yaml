@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+# exp035: XGBoost with target encoding for 3-way GBM diversity
+>>>>>>> 3999a05 (local cpu experiments exp033-035 + exp040 blend)
 name: exp035_xgboost_target_enc
 competition_slug: fiicode-2026-ai-competition
 model_family: xgboost
@@ -5,12 +9,17 @@ feature_set: blend_buckets_target_enc
 drop_columns: []
 data_dir: data/raw
 output_root: outputs
+<<<<<<< HEAD
 n_trials: 70
+=======
+n_trials: 50
+>>>>>>> 3999a05 (local cpu experiments exp033-035 + exp040 blend)
 search_folds: 5
 search_seeds: [42]
 final_folds: 5
 final_seeds: [42, 2024, 3407]
 early_stop: 250
+<<<<<<< HEAD
 study_name: exp035_xgboost_target_enc
 storage: null
 timeout: null
@@ -19,3 +28,9 @@ with_class_weight: true
 notes: >
   XGBoost with leakage-safe OOF target encoding for additional tree-family
   diversity and blend robustness.
+=======
+timeout: 5400
+thread_count: 8
+with_class_weight: true
+notes: "XGBoost for 3-way GBM ensemble potential"
+>>>>>>> 3999a05 (local cpu experiments exp033-035 + exp040 blend)
