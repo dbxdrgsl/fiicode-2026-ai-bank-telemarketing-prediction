@@ -1,0 +1,14 @@
+{
+  "experiment_name": "exp049_mega_blend",
+  "components": [
+    "exp048_blend_exp012_exp046",
+    "exp019_blend_bucket_state_crosses_fixed",
+    "exp040_gbm_trio_blend"
+  ],
+  "weights": {
+    "exp048_blend_exp012_exp046": 0.6191143208469903,
+    "exp019_blend_bucket_state_crosses_fixed": 0.34924842814381524,
+    "exp040_gbm_trio_blend": 0.03163725100919458
+  },
+  "final_auc": 0.9375876923076923
+}

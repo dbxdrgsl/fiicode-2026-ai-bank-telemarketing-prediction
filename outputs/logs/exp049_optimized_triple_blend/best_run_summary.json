@@ -1,0 +1,15 @@
+{
+  "experiment_name": "exp049_optimized_triple_blend",
+  "components": [
+    "exp022_target_encoding_screen",
+    "exp048_blend_exp012_exp046",
+    "exp019_blend_bucket_state_crosses_fixed"
+  ],
+  "weights": {
+    "exp022_target_encoding_screen": 0.9529814387421529,
+    "exp048_blend_exp012_exp046": 0.018232278864335406,
+    "exp019_blend_bucket_state_crosses_fixed": 0.02878628239351176
+  },
+  "final_auc": 0.9999807032967033,
+  "note": "Optimized blend of top 3 OOF models"
+}
