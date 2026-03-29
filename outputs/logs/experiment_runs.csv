@@ -56,3 +56,4 @@ Uses more decision steps (7 vs 5) and larger embeddings (128 vs 64).
 This allows the model to learn more complex attention patterns
 and feature interactions across multiple reasoning steps.
 "
+2026-03-29T13:40:01.532500+00:00,exp048_blend_exp012_exp046,blend,mixed,False,0.937392,0.937392,,,0.997847,/mnt/c/Users/dbxdr/fiicode-2026-ai-bank-telemarketing-prediction/outputs/submissions/exp048_blend_exp012_exp046/submission.csv,/mnt/c/Users/dbxdr/fiicode-2026-ai-bank-telemarketing-prediction/outputs/logs/exp048_blend_exp012_exp046/best_run_summary.json,"Blend of exp012_blend_bucket_features_fixed, exp046_tabnet"

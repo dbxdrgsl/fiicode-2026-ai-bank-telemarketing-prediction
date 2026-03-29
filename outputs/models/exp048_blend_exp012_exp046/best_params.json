@@ -1,0 +1,8 @@
+{
+  "weights": {
+    "exp012_blend_bucket_features_fixed": 0.6832474263360534,
+    "exp046_tabnet": 0.31675257366394666
+  },
+  "samples": 20000,
+  "seed": 42
+}
