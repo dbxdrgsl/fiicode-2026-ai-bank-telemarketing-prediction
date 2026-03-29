@@ -1,0 +1,227 @@
+{
+  "overall_auc": 0.515806,
+  "fold_aucs": [
+    0.40665250000000003,
+    0.4486225,
+    0.55047625,
+    0.57974625,
+    0.574355
+  ],
+  "feature_importance": [
+    {
+      "feature": "duration_per_campaign",
+      "importance": 833.9446650981903
+    },
+    {
+      "feature": "duration_x_campaign",
+      "importance": 773.0396813869477
+    },
+    {
+      "feature": "duration",
+      "importance": 755.056015086174
+    },
+    {
+      "feature": "age",
+      "importance": 698.9194031476975
+    },
+    {
+      "feature": "day",
+      "importance": 645.1417448043824
+    },
+    {
+      "feature": "balance_per_age",
+      "importance": 627.1894945859909
+    },
+    {
+      "feature": "balance",
+      "importance": 517.6276657581329
+    },
+    {
+      "feature": "balance_abs_log1p",
+      "importance": 437.3456929206848
+    },
+    {
+      "feature": "job_marital",
+      "importance": 302.6224835395813
+    },
+    {
+      "feature": "poutcome_month",
+      "importance": 280.40236217975615
+    },
+    {
+      "feature": "job_education",
+      "importance": 275.9491504907608
+    },
+    {
+      "feature": "month_day_bucket",
+      "importance": 266.5308904409409
+    },
+    {
+      "feature": "contact_month",
+      "importance": 262.8860477089882
+    },
+    {
+      "feature": "pdays_clean",
+      "importance": 248.8226577281952
+    },
+    {
+      "feature": "balance_log1p",
+      "importance": 245.32491619586943
+    },
+    {
+      "feature": "month_num",
+      "importance": 211.94433612823485
+    },
+    {
+      "feature": "duration_log1p",
+      "importance": 210.3490538597107
+    },
+    {
+      "feature": "education",
+      "importance": 184.27229781150817
+    },
+    {
+      "feature": "contacts_total",
+      "importance": 159.34028406143187
+    },
+    {
+      "feature": "age_bucket",
+      "importance": 129.09032447338103
+    },
+    {
+      "feature": "month",
+      "importance": 118.78764412403106
+    },
+    {
+      "feature": "marital",
+      "importance": 99.47198376655578
+    },
+    {
+      "feature": "job",
+      "importance": 94.75452363491058
+    },
+    {
+      "feature": "campaign",
+      "importance": 89.4304260969162
+    },
+    {
+      "feature": "contact_day_bucket",
+      "importance": 88.23313782215118
+    },
+    {
+      "feature": "campaign_x_previous",
+      "importance": 84.36437842845916
+    },
+    {
+      "feature": "previous_per_campaign",
+      "importance": 72.5194597005844
+    },
+    {
+      "feature": "housing",
+      "importance": 69.76392009258271
+    },
+    {
+      "feature": "has_any_loan",
+      "importance": 56.42865610122681
+    },
+    {
+      "feature": "duration_bucket",
+      "importance": 53.61148021221161
+    },
+    {
+      "feature": "history_state",
+      "importance": 49.24377408027649
+    },
+    {
+      "feature": "campaign_bucket",
+      "importance": 47.53049223423004
+    },
+    {
+      "feature": "pdays_log1p",
+      "importance": 46.962659978866576
+    },
+    {
+      "feature": "pdays_bucket",
+      "importance": 46.580067944526675
+    },
+    {
+      "feature": "previous",
+      "importance": 44.57234585285187
+    },
+    {
+      "feature": "day_bucket",
+      "importance": 41.67238805294037
+    },
+    {
+      "feature": "loan_default",
+      "importance": 31.69320602416992
+    },
+    {
+      "feature": "campaign_log1p",
+      "importance": 31.421492195129396
+    },
+    {
+      "feature": "balance_signed_log1p",
+      "importance": 31.336077976226807
+    },
+    {
+      "feature": "loan",
+      "importance": 28.427596044540405
+    },
+    {
+      "feature": "previous_log1p",
+      "importance": 25.40972771644592
+    },
+    {
+      "feature": "contact",
+      "importance": 20.17174401283264
+    },
+    {
+      "feature": "poutcome",
+      "importance": 14.862533855438233
+    },
+    {
+      "feature": "pdays",
+      "importance": 8.317339897155762
+    },
+    {
+      "feature": "default",
+      "importance": 7.548994064331055
+    },
+    {
+      "feature": "balance_negative",
+      "importance": 2.9354599952697753
+    },
+    {
+      "feature": "balance_nonpositive",
+      "importance": 1.8500120162963867
+    },
+    {
+      "feature": "is_cellular",
+      "importance": 1.2174779891967773
+    },
+    {
+      "feature": "pdays_was_missing",
+      "importance": 0.0
+    },
+    {
+      "feature": "was_contacted_before",
+      "importance": 0.0
+    },
+    {
+      "feature": "is_default",
+      "importance": 0.0
+    },
+    {
+      "feature": "previous_bucket",
+      "importance": 0.0
+    }
+  ],
+  "train_probs_stats": {
+    "min": 0.007236646991844808,
+    "max": 0.6836017795738629,
+    "mean": 0.09218818635719586,
+    "median": 0.0879050073764274,
+    "std": 0.040531447991588775
+  }
+}

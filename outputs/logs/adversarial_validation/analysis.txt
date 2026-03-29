@@ -1,0 +1,52 @@
+============================================================
+ADVERSARIAL VALIDATION ANALYSIS
+============================================================
+
+Overall AUC: 0.51581
+Fold AUCs: ['0.40665', '0.44862', '0.55048', '0.57975', '0.57435']
+
+✓ AUC < 0.55 indicates minimal distribution shift.
+
+Top 10 features with train/test distribution shift:
+------------------------------------------------------------
+ 1. duration_per_campaign                          833.94
+ 2. duration_x_campaign                            773.04
+ 3. duration                                       755.06
+ 4. age                                            698.92
+ 5. day                                            645.14
+ 6. balance_per_age                                627.19
+ 7. balance                                        517.63
+ 8. balance_abs_log1p                              437.35
+ 9. job_marital                                    302.62
+10. poutcome_month                                 280.40
+
+============================================================
+SAMPLE WEIGHT STATISTICS
+============================================================
+
+Adversarial probabilities:
+  Min:    0.007237
+  Max:    0.683602
+  Mean:   0.092188
+  Median: 0.087905
+  Std:    0.040531
+
+Sample weights (capped at 10.0):
+  Min:    0.9120
+  Max:    2.8616
+  Mean:   1.0000
+  Median: 0.9927
+  Std:    0.0620
+
+============================================================
+INTERPRETATION
+============================================================
+
+Sample weights are computed as: weight = 1 / (1 - p_test)
+Where p_test is the probability of being from the test set.
+
+High weight => sample looks like test data => weight it more.
+Low weight => sample looks unlike test data => weight it less.
+
+This reweighting should help the model focus on training samples
+that are most representative of the test distribution.
