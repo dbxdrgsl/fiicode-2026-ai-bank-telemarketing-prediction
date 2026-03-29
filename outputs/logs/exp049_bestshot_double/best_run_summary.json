@@ -1,0 +1,30 @@
+{
+  "config": {
+    "name": "exp049_bestshot_double",
+    "model_family": "blend",
+    "feature_set": "mixed",
+    "with_class_weight": false
+  },
+  "final_auc": 0.9376284835164836,
+  "search_auc": 0.9376284835164836,
+  "best_single_model": "exp048_blend_exp012_exp046",
+  "best_single_auc": 0.9373916483516483,
+  "improvement_over_best_single": 0.00023683516483530287,
+  "promoted": true,
+  "best_params": {
+    "weights": {
+      "exp048_blend_exp012_exp046": 0.82375,
+      "exp047_tabnet_deep": 0.17625000000000002
+    }
+  },
+  "members": [
+    "exp048_blend_exp012_exp046",
+    "exp047_tabnet_deep"
+  ],
+  "paths": {
+    "submission": "/mnt/c/Users/dbxdr/fiicode-2026-ai-bank-telemarketing-prediction/outputs/submissions/exp049_bestshot_double/submission.csv",
+    "oof": "/mnt/c/Users/dbxdr/fiicode-2026-ai-bank-telemarketing-prediction/outputs/oof/exp049_bestshot_double/oof_predictions.csv",
+    "summary": "/mnt/c/Users/dbxdr/fiicode-2026-ai-bank-telemarketing-prediction/outputs/logs/exp049_bestshot_double/best_run_summary.json",
+    "best_params": "/mnt/c/Users/dbxdr/fiicode-2026-ai-bank-telemarketing-prediction/outputs/models/exp049_bestshot_double/best_params.json"
+  }
+}

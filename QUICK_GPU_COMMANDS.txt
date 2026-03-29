@@ -1,38 +1,50 @@
 ========================================
-QUICK GPU MACHINE COMMANDS
+GPU LUNCH BREAK / OVERNIGHT QUEUE
 ========================================
 
-1. SYNC AND SETUP
+Priority objective:
+- Find a robust post-exp048 improvement WITHOUT leakage.
+- Avoid any model/OOF source with suspiciously near-perfect CV (e.g. ~0.99+ OOF).
+
+0) Environment
 ------------------
-cd ~/fiicode-2026-ai-bank-telemarketing-prediction
-git pull
-source venv/bin/activate
-pip install torch-geometric pytorch-tabnet -q
+cd /mnt/c/Users/dbxdr/fiicode-2026-ai-bank-telemarketing-prediction
+source /home/admin/.venvs/fiicode/bin/activate
+python -c "import torch; print('cuda=', torch.cuda.is_available(), torch.cuda.get_device_name(0) if torch.cuda.is_available() else 'N/A')"
 
-2. RUN GNN EXPERIMENTS
------------------------
-python gpu_train_gnn.py --config experiments/exp044_gnn_graphsage.yaml
-python gpu_train_gnn.py --config experiments/exp045_gnn_gat.yaml
+1) TODAY BEST-SHOT CANDIDATE (ready now)
+------------------
+# Already built and validated locally
+python -m src.submit --submission outputs/submissions/exp049_bestshot_double/submission.csv --message "exp049 bestshot double validation"
 
-3. RUN TABNET EXPERIMENTS
---------------------------
-python gpu_train_tabnet.py --config experiments/exp046_tabnet.yaml
-python gpu_train_tabnet.py --config experiments/exp047_tabnet_deep.yaml
+2) MEDIUM (GPU): Neural stacking refresh with clean model whitelist
+------------------
+# Recommended: edit gpu_train_stacking.py whitelist to only include:
+# exp012_blend_bucket_features_fixed, exp046_tabnet, exp047_tabnet_deep,
+# exp048_blend_exp012_exp046, exp039_attention_gpu, exp037_fttransformer_deep_gpu,
+# exp038_tabresnet_target_enc_gpu
+python gpu_train_stacking.py
+python -m src.submit --submission outputs/submissions/exp050_neural_stacking/submission.csv --message "exp050 neural stacking validation"
 
-4. COMMIT AND PUSH RESULTS
----------------------------
-git add outputs/ experiments/
-git commit -m "GPU orthogonal experiments: GNN + TabNet"
-git push
+3) SLOW (GPU): Deep TabNet seed expansion (orthogonal capacity)
+------------------
+# Duplicate exp047 config with more seeds and mild lr/batch tune (exp051)
+# Then run:
+python gpu_train_tabnet.py --config experiments/exp051_tabnet_deep_seedbag.yaml
+python -m src.submit --submission outputs/submissions/exp051_tabnet_deep_seedbag/submission.csv --message "exp051 tabnet deep seedbag validation"
+
+4) FAST (CPU/GPU-light): post-run blend scans
+------------------
+# After exp050/exp051, run blend search on summaries with strict promotion threshold.
+python -m src.blend --name exp052_blend_poststack --summaries \
+  outputs/logs/exp048_blend_exp012_exp046/best_run_summary.json \
+  outputs/logs/exp050_neural_stacking/best_run_summary.json \
+  outputs/logs/exp051_tabnet_deep_seedbag/best_run_summary.json \
+  --samples 30000 --seed 42 --max-models 3 --min-improvement 0.0001
+python -m src.submit --submission outputs/submissions/exp052_blend_poststack/submission.csv --message "exp052 post-stack blend validation"
 
 ========================================
-QUEUE ALL 4 (if supported):
+DECISION RULE
 ========================================
-python gpu_train_gnn.py --config experiments/exp044_gnn_graphsage.yaml && \
-python gpu_train_gnn.py --config experiments/exp045_gnn_gat.yaml && \
-python gpu_train_tabnet.py --config experiments/exp046_tabnet.yaml && \
-python gpu_train_tabnet.py --config experiments/exp047_tabnet_deep.yaml && \
-git add outputs/ experiments/ && git commit -m "All GPU experiments done" && git push
-
-Expected total runtime: ~7 hours
-========================================
+Submit only if local OOF improves over exp048 by >= 0.00010
+and candidate passes schema/range/order checks.
