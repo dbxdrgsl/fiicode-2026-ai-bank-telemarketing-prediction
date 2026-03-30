@@ -1,0 +1,75 @@
+{
+  "config_path": null,
+  "config": {
+    "name": "exp056_blend_exp052_catlineage",
+    "model_family": "blend",
+    "feature_set": "mixed",
+    "with_class_weight": false
+  },
+  "data_dir": null,
+  "study_storage": "blend-search",
+  "existing_trials": 0,
+  "requested_trials": 120000,
+  "best_trial_number": null,
+  "search_auc": 0.938050153846154,
+  "final_auc": 0.938050153846154,
+  "best_params": {
+    "weights": {
+      "exp052_blend_poststack": 0.6549110283060614,
+      "exp015_blend_bucket_pruned_fixed": 0.12446481462367454,
+      "exp019_blend_bucket_state_crosses_fixed": 0.188174513371846,
+      "exp016_blend_exp012_exp015": 0.013387859354676082,
+      "exp010_blend_bucket_features": 0.015815940919815145,
+      "exp040_gbm_trio_blend": 0.003245843423926704
+    }
+  },
+  "members": [
+    {
+      "name": "exp052_blend_poststack",
+      "model_family": "blend",
+      "final_auc": 0.9378740659340659,
+      "corr_to_best": 1.0
+    },
+    {
+      "name": "exp015_blend_bucket_pruned_fixed",
+      "model_family": "catboost",
+      "final_auc": 0.9368345494505494,
+      "corr_to_best": 0.9945114629627655
+    },
+    {
+      "name": "exp019_blend_bucket_state_crosses_fixed",
+      "model_family": "catboost",
+      "final_auc": 0.9369589450549451,
+      "corr_to_best": 0.9945974845630314
+    },
+    {
+      "name": "exp016_blend_exp012_exp015",
+      "model_family": "blend",
+      "final_auc": 0.9368574065934067,
+      "corr_to_best": 0.9948878245822617
+    },
+    {
+      "name": "exp010_blend_bucket_features",
+      "model_family": "catboost",
+      "final_auc": 0.9365183736263737,
+      "corr_to_best": 0.9950897022522278
+    },
+    {
+      "name": "exp040_gbm_trio_blend",
+      "model_family": "blend",
+      "final_auc": 0.9368625494505495,
+      "corr_to_best": 0.9954723015270974
+    }
+  ],
+  "best_single_model": "exp052_blend_poststack",
+  "best_single_auc": 0.9378740659340659,
+  "improvement_over_best_single": 0.0001760879120881187,
+  "promoted": true,
+  "paths": {
+    "submission": "/mnt/c/Users/dbxdr/fiicode-2026-ai-bank-telemarketing-prediction/outputs/submissions/exp056_blend_exp052_catlineage/submission.csv",
+    "oof": "/mnt/c/Users/dbxdr/fiicode-2026-ai-bank-telemarketing-prediction/outputs/oof/exp056_blend_exp052_catlineage/oof_predictions.csv",
+    "summary": "/mnt/c/Users/dbxdr/fiicode-2026-ai-bank-telemarketing-prediction/outputs/logs/exp056_blend_exp052_catlineage/best_run_summary.json",
+    "best_params": "/mnt/c/Users/dbxdr/fiicode-2026-ai-bank-telemarketing-prediction/outputs/models/exp056_blend_exp052_catlineage/best_params.json",
+    "correlation": "/mnt/c/Users/dbxdr/fiicode-2026-ai-bank-telemarketing-prediction/outputs/logs/exp056_blend_exp052_catlineage/oof_correlation.csv"
+  }
+}

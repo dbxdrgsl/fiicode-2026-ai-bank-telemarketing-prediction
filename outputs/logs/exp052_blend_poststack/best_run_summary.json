@@ -1,0 +1,54 @@
+{
+  "config_path": null,
+  "config": {
+    "name": "exp052_blend_poststack",
+    "model_family": "blend",
+    "feature_set": "mixed",
+    "with_class_weight": false
+  },
+  "data_dir": null,
+  "study_storage": "blend-search",
+  "existing_trials": 0,
+  "requested_trials": 30000,
+  "best_trial_number": null,
+  "search_auc": 0.9378740659340659,
+  "final_auc": 0.9378740659340659,
+  "best_params": {
+    "weights": {
+      "exp048_blend_exp012_exp046": 0.5028524655413941,
+      "exp051_tabnet_deep_seedbag": 0.18820961135402112,
+      "exp050_neural_stacking": 0.30893792310458484
+    }
+  },
+  "members": [
+    {
+      "name": "exp048_blend_exp012_exp046",
+      "model_family": "blend",
+      "final_auc": 0.9373916483516483,
+      "corr_to_best": 1.0
+    },
+    {
+      "name": "exp051_tabnet_deep_seedbag",
+      "model_family": "catboost",
+      "final_auc": 0.934938989010989,
+      "corr_to_best": 0.9829542594616864
+    },
+    {
+      "name": "exp050_neural_stacking",
+      "model_family": "stacking_nn",
+      "final_auc": 0.9363735824175825,
+      "corr_to_best": 0.9955010163909461
+    }
+  ],
+  "best_single_model": "exp048_blend_exp012_exp046",
+  "best_single_auc": 0.9373916483516483,
+  "improvement_over_best_single": 0.00048241758241751587,
+  "promoted": true,
+  "paths": {
+    "submission": "/mnt/c/Users/dbxdr/fiicode-2026-ai-bank-telemarketing-prediction/outputs/submissions/exp052_blend_poststack/submission.csv",
+    "oof": "/mnt/c/Users/dbxdr/fiicode-2026-ai-bank-telemarketing-prediction/outputs/oof/exp052_blend_poststack/oof_predictions.csv",
+    "summary": "/mnt/c/Users/dbxdr/fiicode-2026-ai-bank-telemarketing-prediction/outputs/logs/exp052_blend_poststack/best_run_summary.json",
+    "best_params": "/mnt/c/Users/dbxdr/fiicode-2026-ai-bank-telemarketing-prediction/outputs/models/exp052_blend_poststack/best_params.json",
+    "correlation": "/mnt/c/Users/dbxdr/fiicode-2026-ai-bank-telemarketing-prediction/outputs/logs/exp052_blend_poststack/oof_correlation.csv"
+  }
+}

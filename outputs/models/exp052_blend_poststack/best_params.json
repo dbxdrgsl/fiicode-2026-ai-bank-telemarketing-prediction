@@ -1,0 +1,9 @@
+{
+  "weights": {
+    "exp048_blend_exp012_exp046": 0.5028524655413941,
+    "exp051_tabnet_deep_seedbag": 0.18820961135402112,
+    "exp050_neural_stacking": 0.30893792310458484
+  },
+  "samples": 30000,
+  "seed": 42
+}

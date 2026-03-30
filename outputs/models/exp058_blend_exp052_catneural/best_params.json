@@ -1,0 +1,12 @@
+{
+  "weights": {
+    "exp052_blend_poststack": 0.5281592879492498,
+    "exp026_fttransformer_lite_gpu": 0.07628507832949241,
+    "exp047_tabnet_deep": 0.04654278597043214,
+    "exp028_attention_catfreq_gpu": 0.06661348526744168,
+    "exp019_blend_bucket_state_crosses_fixed": 0.264980359437571,
+    "exp040_gbm_trio_blend": 0.017419003045812894
+  },
+  "samples": 140000,
+  "seed": 121
+}

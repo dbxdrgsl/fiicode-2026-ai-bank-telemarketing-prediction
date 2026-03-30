@@ -1,0 +1,27 @@
+name: exp051_tabnet_deep_seedbag
+competition_slug: fiicode-2026-ai-competition
+feature_set: blend_buckets
+drop_columns: []
+data_dir: data/raw
+output_root: outputs
+n_folds: 5
+notes: |
+  Deep TabNet seedbag follow-up to exp047 for stronger neural diversity.
+  Keeps architecture family fixed while expanding seeds and stabilizing training.
+
+model:
+  name: exp051_tabnet_deep_seedbag
+  seeds: [42, 2024, 3407, 123, 999, 1001, 1337, 2718]
+  n_d: 128
+  n_a: 128
+  n_steps: 7
+  gamma: 1.5
+  lambda_sparse: 0.0001
+  epochs: 240
+  batch_size: 1024
+  lr: 0.012
+  patience: 60
+  virtual_batch_size: 128
+  momentum: 0.02
+  clip_value: 1.0
+  tabnet_params: {}

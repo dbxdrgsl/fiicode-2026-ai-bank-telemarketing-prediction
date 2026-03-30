@@ -46,10 +46,10 @@
   "fixed_params_path": "/mnt/c/Users/dbxdr_iytiz92/Dropbox/fiicode/outputs/models/exp012_blend_bucket_features_fixed/best_params.json",
   "sample_weight_stats": null,
   "paths": {
-    "submission": "/mnt/c/Users/dbxdr_iytiz92/Dropbox/fiicode/outputs/submissions/exp022_catfreq_screen/submission.csv",
-    "oof": "/mnt/c/Users/dbxdr_iytiz92/Dropbox/fiicode/outputs/oof/exp022_catfreq_screen/oof_predictions.csv",
+    "submission": "/mnt/c/Users/dbxdr/fiicode-2026-ai-bank-telemarketing-prediction/outputs/submissions/exp022_catfreq_screen/submission.csv",
+    "oof": "/mnt/c/Users/dbxdr/fiicode-2026-ai-bank-telemarketing-prediction/outputs/oof/exp022_catfreq_screen/oof_predictions.csv",
     "trials": "/mnt/c/Users/dbxdr_iytiz92/Dropbox/fiicode/outputs/logs/exp022_catfreq_screen/optuna_trials.csv",
-    "summary": "/mnt/c/Users/dbxdr_iytiz92/Dropbox/fiicode/outputs/logs/exp022_catfreq_screen/best_run_summary.json",
-    "best_params": "/mnt/c/Users/dbxdr_iytiz92/Dropbox/fiicode/outputs/models/exp022_catfreq_screen/best_params.json"
+    "summary": "/mnt/c/Users/dbxdr/fiicode-2026-ai-bank-telemarketing-prediction/outputs/logs/exp022_catfreq_screen/best_run_summary.json",
+    "best_params": "/mnt/c/Users/dbxdr/fiicode-2026-ai-bank-telemarketing-prediction/outputs/models/exp022_catfreq_screen/best_params.json"
   }
 }

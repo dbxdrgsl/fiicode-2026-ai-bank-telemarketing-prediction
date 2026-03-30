@@ -1,0 +1,10 @@
+{
+  "weights": {
+    "exp052_blend_poststack": 0.8604617050169892,
+    "exp026_fttransformer_lite_gpu": 0.05701222548132845,
+    "exp047_tabnet_deep": 0.013143971188937618,
+    "exp028_attention_catfreq_gpu": 0.06938209831274486
+  },
+  "samples": 50000,
+  "seed": 42
+}

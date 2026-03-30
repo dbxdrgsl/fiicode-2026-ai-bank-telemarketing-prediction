@@ -10,5 +10,10 @@
     "exp019_blend_bucket_state_crosses_fixed": 0.34924842814381524,
     "exp040_gbm_trio_blend": 0.03163725100919458
   },
-  "final_auc": 0.9375876923076923
+  "final_auc": 0.9375876923076923,
+  "paths": {
+    "oof": "/mnt/c/Users/dbxdr/fiicode-2026-ai-bank-telemarketing-prediction/outputs/oof/exp049_mega_blend/oof_predictions.csv",
+    "submission": "/mnt/c/Users/dbxdr/fiicode-2026-ai-bank-telemarketing-prediction/outputs/submissions/exp049_mega_blend/submission.csv",
+    "summary": "/mnt/c/Users/dbxdr/fiicode-2026-ai-bank-telemarketing-prediction/outputs/logs/exp049_mega_blend/best_run_summary.json"
+  }
 }
