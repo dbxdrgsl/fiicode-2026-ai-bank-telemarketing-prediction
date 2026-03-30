@@ -1,0 +1,11 @@
+{
+  "weights": {
+    "exp052_blend_poststack": 0.8365315238722952,
+    "exp044_gnn_graphsage": 0.0008088265464254846,
+    "exp026_fttransformer_lite_gpu": 0.0352722590481867,
+    "exp028_attention_catfreq_gpu": 0.11538873263038625,
+    "exp026_attention_gpu": 0.01199865790270639
+  },
+  "samples": 60000,
+  "seed": 7
+}

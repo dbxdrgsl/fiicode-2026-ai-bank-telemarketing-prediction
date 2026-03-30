@@ -1,0 +1,68 @@
+{
+  "config_path": null,
+  "config": {
+    "name": "exp054_blend_exp052_wideclean",
+    "model_family": "blend",
+    "feature_set": "mixed",
+    "with_class_weight": false
+  },
+  "data_dir": null,
+  "study_storage": "blend-search",
+  "existing_trials": 0,
+  "requested_trials": 60000,
+  "best_trial_number": null,
+  "search_auc": 0.9379267252747253,
+  "final_auc": 0.9379267252747253,
+  "best_params": {
+    "weights": {
+      "exp052_blend_poststack": 0.8365315238722952,
+      "exp044_gnn_graphsage": 0.0008088265464254846,
+      "exp026_fttransformer_lite_gpu": 0.0352722590481867,
+      "exp028_attention_catfreq_gpu": 0.11538873263038625,
+      "exp026_attention_gpu": 0.01199865790270639
+    }
+  },
+  "members": [
+    {
+      "name": "exp052_blend_poststack",
+      "model_family": "blend",
+      "final_auc": 0.9378740659340659,
+      "corr_to_best": 1.0
+    },
+    {
+      "name": "exp044_gnn_graphsage",
+      "model_family": "catboost",
+      "final_auc": 0.9177394725274725,
+      "corr_to_best": 0.9485341752621569
+    },
+    {
+      "name": "exp026_fttransformer_lite_gpu",
+      "model_family": "ft_transformer",
+      "final_auc": 0.9326095164835164,
+      "corr_to_best": 0.9811843930241666
+    },
+    {
+      "name": "exp028_attention_catfreq_gpu",
+      "model_family": "attention",
+      "final_auc": 0.9333608571428571,
+      "corr_to_best": 0.9847687626830284
+    },
+    {
+      "name": "exp026_attention_gpu",
+      "model_family": "attention",
+      "final_auc": 0.933358945054945,
+      "corr_to_best": 0.9878303149657723
+    }
+  ],
+  "best_single_model": "exp052_blend_poststack",
+  "best_single_auc": 0.9378740659340659,
+  "improvement_over_best_single": 5.2659340659455545e-05,
+  "promoted": false,
+  "paths": {
+    "submission": "/mnt/c/Users/dbxdr/fiicode-2026-ai-bank-telemarketing-prediction/outputs/submissions/exp054_blend_exp052_wideclean/submission.csv",
+    "oof": "/mnt/c/Users/dbxdr/fiicode-2026-ai-bank-telemarketing-prediction/outputs/oof/exp054_blend_exp052_wideclean/oof_predictions.csv",
+    "summary": "/mnt/c/Users/dbxdr/fiicode-2026-ai-bank-telemarketing-prediction/outputs/logs/exp054_blend_exp052_wideclean/best_run_summary.json",
+    "best_params": "/mnt/c/Users/dbxdr/fiicode-2026-ai-bank-telemarketing-prediction/outputs/models/exp054_blend_exp052_wideclean/best_params.json",
+    "correlation": "/mnt/c/Users/dbxdr/fiicode-2026-ai-bank-telemarketing-prediction/outputs/logs/exp054_blend_exp052_wideclean/oof_correlation.csv"
+  }
+}

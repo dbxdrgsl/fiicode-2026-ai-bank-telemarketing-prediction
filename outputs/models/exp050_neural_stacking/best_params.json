@@ -1,0 +1,28 @@
+{
+  "method": "neural_stacking",
+  "model_names": [
+    "exp012_blend_bucket_features_fixed",
+    "exp046_tabnet",
+    "exp047_tabnet_deep",
+    "exp048_blend_exp012_exp046",
+    "exp039_attention_gpu",
+    "exp037_fttransformer_deep_gpu",
+    "exp038_tabresnet_target_enc_gpu"
+  ],
+  "hidden_dim": 64,
+  "dropout": 0.3,
+  "batch_size": 256,
+  "max_epochs": 200,
+  "full_epochs": 120,
+  "patience": 20,
+  "lr": 0.001,
+  "weight_decay": 0.0001,
+  "n_splits": 5,
+  "seeds": [
+    42,
+    43,
+    44,
+    45,
+    46
+  ]
+}

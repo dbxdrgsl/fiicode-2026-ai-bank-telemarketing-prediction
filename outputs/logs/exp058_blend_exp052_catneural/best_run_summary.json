@@ -1,0 +1,75 @@
+{
+  "config_path": null,
+  "config": {
+    "name": "exp058_blend_exp052_catneural",
+    "model_family": "blend",
+    "feature_set": "mixed",
+    "with_class_weight": false
+  },
+  "data_dir": null,
+  "study_storage": "blend-search",
+  "existing_trials": 0,
+  "requested_trials": 140000,
+  "best_trial_number": null,
+  "search_auc": 0.9380973626373627,
+  "final_auc": 0.9380973626373627,
+  "best_params": {
+    "weights": {
+      "exp052_blend_poststack": 0.5281592879492498,
+      "exp026_fttransformer_lite_gpu": 0.07628507832949241,
+      "exp047_tabnet_deep": 0.04654278597043214,
+      "exp028_attention_catfreq_gpu": 0.06661348526744168,
+      "exp019_blend_bucket_state_crosses_fixed": 0.264980359437571,
+      "exp040_gbm_trio_blend": 0.017419003045812894
+    }
+  },
+  "members": [
+    {
+      "name": "exp052_blend_poststack",
+      "model_family": "blend",
+      "final_auc": 0.9378740659340659,
+      "corr_to_best": 1.0
+    },
+    {
+      "name": "exp026_fttransformer_lite_gpu",
+      "model_family": "ft_transformer",
+      "final_auc": 0.9326095164835164,
+      "corr_to_best": 0.9811843930241666
+    },
+    {
+      "name": "exp047_tabnet_deep",
+      "model_family": "catboost",
+      "final_auc": 0.9334515164835164,
+      "corr_to_best": 0.983450704500129
+    },
+    {
+      "name": "exp028_attention_catfreq_gpu",
+      "model_family": "attention",
+      "final_auc": 0.9333608571428571,
+      "corr_to_best": 0.9847687626830284
+    },
+    {
+      "name": "exp019_blend_bucket_state_crosses_fixed",
+      "model_family": "catboost",
+      "final_auc": 0.9369589450549451,
+      "corr_to_best": 0.9945974845630314
+    },
+    {
+      "name": "exp040_gbm_trio_blend",
+      "model_family": "blend",
+      "final_auc": 0.9368625494505495,
+      "corr_to_best": 0.9954723015270974
+    }
+  ],
+  "best_single_model": "exp052_blend_poststack",
+  "best_single_auc": 0.9378740659340659,
+  "improvement_over_best_single": 0.00022329670329679363,
+  "promoted": true,
+  "paths": {
+    "submission": "/mnt/c/Users/dbxdr/fiicode-2026-ai-bank-telemarketing-prediction/outputs/submissions/exp058_blend_exp052_catneural/submission.csv",
+    "oof": "/mnt/c/Users/dbxdr/fiicode-2026-ai-bank-telemarketing-prediction/outputs/oof/exp058_blend_exp052_catneural/oof_predictions.csv",
+    "summary": "/mnt/c/Users/dbxdr/fiicode-2026-ai-bank-telemarketing-prediction/outputs/logs/exp058_blend_exp052_catneural/best_run_summary.json",
+    "best_params": "/mnt/c/Users/dbxdr/fiicode-2026-ai-bank-telemarketing-prediction/outputs/models/exp058_blend_exp052_catneural/best_params.json",
+    "correlation": "/mnt/c/Users/dbxdr/fiicode-2026-ai-bank-telemarketing-prediction/outputs/logs/exp058_blend_exp052_catneural/oof_correlation.csv"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "weights": {
+    "exp052_blend_poststack": 0.6689231925309671,
+    "exp019_blend_bucket_state_crosses_fixed": 0.21559422983974164,
+    "exp016_blend_exp012_exp015": 0.027736983022589846,
+    "exp013_blend_exp012_exp003": 0.07320274889782771,
+    "exp010_blend_bucket_features": 0.006957808400051106,
+    "exp040_gbm_trio_blend": 0.007585037308822626
+  },
+  "samples": 140000,
+  "seed": 88
+}

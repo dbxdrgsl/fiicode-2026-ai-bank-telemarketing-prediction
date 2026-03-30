@@ -1,0 +1,99 @@
+{
+  "config_path": null,
+  "config": {
+    "name": "exp050_neural_stacking",
+    "model_family": "stacking_nn",
+    "feature_set": "mixed",
+    "with_class_weight": false
+  },
+  "data_dir": null,
+  "study_storage": "neural-stacking",
+  "existing_trials": 0,
+  "requested_trials": 25,
+  "best_trial_number": null,
+  "search_auc": 0.9363735824175825,
+  "final_auc": 0.9363735824175825,
+  "best_params": {
+    "method": "neural_stacking",
+    "model_names": [
+      "exp012_blend_bucket_features_fixed",
+      "exp046_tabnet",
+      "exp047_tabnet_deep",
+      "exp048_blend_exp012_exp046",
+      "exp039_attention_gpu",
+      "exp037_fttransformer_deep_gpu",
+      "exp038_tabresnet_target_enc_gpu"
+    ],
+    "hidden_dim": 64,
+    "dropout": 0.3,
+    "batch_size": 256,
+    "max_epochs": 200,
+    "full_epochs": 120,
+    "patience": 20,
+    "lr": 0.001,
+    "weight_decay": 0.0001,
+    "n_splits": 5,
+    "seeds": [
+      42,
+      43,
+      44,
+      45,
+      46
+    ]
+  },
+  "members": [
+    {
+      "name": "exp012_blend_bucket_features_fixed",
+      "model_family": "blend_component",
+      "final_auc": 0.9363836923076924,
+      "corr_to_best": null
+    },
+    {
+      "name": "exp046_tabnet",
+      "model_family": "blend_component",
+      "final_auc": 0.9340197802197803,
+      "corr_to_best": null
+    },
+    {
+      "name": "exp047_tabnet_deep",
+      "model_family": "blend_component",
+      "final_auc": 0.9334515164835164,
+      "corr_to_best": null
+    },
+    {
+      "name": "exp048_blend_exp012_exp046",
+      "model_family": "blend_component",
+      "final_auc": 0.9373916483516483,
+      "corr_to_best": null
+    },
+    {
+      "name": "exp039_attention_gpu",
+      "model_family": "blend_component",
+      "final_auc": 0.9314480659340659,
+      "corr_to_best": null
+    },
+    {
+      "name": "exp037_fttransformer_deep_gpu",
+      "model_family": "blend_component",
+      "final_auc": 0.9335774505494504,
+      "corr_to_best": null
+    },
+    {
+      "name": "exp038_tabresnet_target_enc_gpu",
+      "model_family": "blend_component",
+      "final_auc": 0.9288149670329672,
+      "corr_to_best": null
+    }
+  ],
+  "best_single_model": "exp048_blend_exp012_exp046",
+  "best_single_auc": 0.9373916483516483,
+  "improvement_over_best_single": -0.0010180659340658371,
+  "promoted": true,
+  "paths": {
+    "submission": "/mnt/c/Users/dbxdr/fiicode-2026-ai-bank-telemarketing-prediction/outputs/submissions/exp050_neural_stacking/submission.csv",
+    "oof": "/mnt/c/Users/dbxdr/fiicode-2026-ai-bank-telemarketing-prediction/outputs/oof/exp050_neural_stacking/oof_predictions.csv",
+    "summary": "/mnt/c/Users/dbxdr/fiicode-2026-ai-bank-telemarketing-prediction/outputs/logs/exp050_neural_stacking/best_run_summary.json",
+    "best_params": "/mnt/c/Users/dbxdr/fiicode-2026-ai-bank-telemarketing-prediction/outputs/models/exp050_neural_stacking/best_params.json",
+    "trials": "/mnt/c/Users/dbxdr/fiicode-2026-ai-bank-telemarketing-prediction/outputs/logs/exp050_neural_stacking/optuna_trials.csv"
+  }
+}
