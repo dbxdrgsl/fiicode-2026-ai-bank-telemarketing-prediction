@@ -1,0 +1,24 @@
+experiment_name: exp062_nn_ensemble_for_blend
+competition_slug: fiicode-2026-ai-competition
+feature_set: blend_buckets
+n_splits: 5
+drop_columns: []
+
+models:
+  - family: attention
+    seeds: [42, 43, 44]
+    epochs: 80
+    batch_size: 1024
+    lr: 0.001
+  - family: ft_transformer
+    seeds: [42, 43, 44]
+    epochs: 80
+    batch_size: 1024
+    lr: 0.001
+  - family: tabresnet
+    seeds: [42, 43, 44]
+    epochs: 80
+    batch_size: 1024
+    lr: 0.001
+
+notes: "Diverse NN ensemble to blend with exp058"
