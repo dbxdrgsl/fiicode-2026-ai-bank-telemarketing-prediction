@@ -109,6 +109,25 @@ python -m src.submit --submission outputs/submissions/exp003_blend_features/subm
 python -m src.submit --submission outputs/submissions/exp003_blend_features/submission.csv --message "exp003 blend" --run-kaggle-cli
 ```
 
+Score a submission against an allowed labeled reference and reconcile it against scored Kaggle history:
+
+```bash
+python -m src.score_submissions \
+  --reference path/to/reference_labels.csv \
+  --submission outputs/submissions/exp048_blend_exp012_exp046/submission.csv
+
+python -m src.score_submissions \
+  --reference path/to/reference_labels.csv \
+  --history \
+  --report-json outputs/logs/submission_score_audit.json
+```
+
+Notes:
+
+- this checks whether a local reference reproduces the displayed Kaggle public score to the chosen decimal precision
+- exact public-score reproduction is not identifiable from leaderboard history alone; you need an allowed labeled reference file
+- do not use external or leakage-derived labels for competition decisions
+
 Build a blend from saved experiments:
 
 ```bash
