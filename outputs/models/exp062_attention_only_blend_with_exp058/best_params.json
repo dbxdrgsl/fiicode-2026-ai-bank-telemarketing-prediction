@@ -1,0 +1,8 @@
+{
+  "weights": {
+    "exp058_blend_exp052_catneural": 1.0,
+    "exp062_attention_3seed": 0.0
+  },
+  "samples": 18000,
+  "seed": 42
+}

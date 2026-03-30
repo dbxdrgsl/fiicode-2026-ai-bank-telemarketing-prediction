@@ -1,0 +1,74 @@
+{
+  "config_path": "/mnt/c/Users/dbxdr/fiicode-2026-ai-bank-telemarketing-prediction/experiments/exp062_nn_ensemble_for_blend.yaml",
+  "config": {
+    "name": "exp062_attention_3seed",
+    "competition_slug": "fiicode-2026-ai-competition",
+    "model_family": "attention",
+    "feature_set": "blend_buckets",
+    "drop_columns": [],
+    "data_dir": "data/raw",
+    "output_root": "outputs",
+    "n_trials": 0,
+    "search_folds": 5,
+    "search_seeds": [
+      42,
+      43,
+      44
+    ],
+    "final_folds": 5,
+    "final_seeds": [
+      42,
+      43,
+      44
+    ],
+    "early_stop": 12,
+    "study_name": "exp062_attention_3seed",
+    "storage": null,
+    "timeout": null,
+    "thread_count": -1,
+    "with_class_weight": false,
+    "fixed_params_path": null,
+    "train_weight_mode": null,
+    "train_weight_params": {},
+    "notes": "Lightweight 3-seed NN ensemble (Attention, FT-Transformer, TabResNet) for fast diversity experiment to blend with exp058 within the 5-submission limit.\n"
+  },
+  "data_dir": "data/raw",
+  "study_storage": "gpu-cv",
+  "existing_trials": 0,
+  "requested_trials": 15,
+  "best_trial_number": null,
+  "search_auc": null,
+  "final_auc": 0.9314161978021978,
+  "best_params": {
+    "family": "attention",
+    "seeds": [
+      42,
+      43,
+      44
+    ],
+    "epochs": 70,
+    "batch_size": 1024,
+    "lr": 0.001,
+    "weight_decay": 0.01,
+    "patience": 12,
+    "max_grad_norm": 1.0,
+    "num_workers": 0,
+    "amp": true,
+    "model_params": {
+      "emb_dim": 20,
+      "hidden_dim": 160,
+      "n_layers": 3,
+      "heads": 4,
+      "dropout": 0.2
+    }
+  },
+  "fixed_params_path": null,
+  "sample_weight_stats": null,
+  "paths": {
+    "submission": "/mnt/c/Users/dbxdr/fiicode-2026-ai-bank-telemarketing-prediction/outputs/submissions/exp062_attention_3seed/submission.csv",
+    "oof": "/mnt/c/Users/dbxdr/fiicode-2026-ai-bank-telemarketing-prediction/outputs/oof/exp062_attention_3seed/oof_predictions.csv",
+    "trials": "/mnt/c/Users/dbxdr/fiicode-2026-ai-bank-telemarketing-prediction/outputs/logs/exp062_attention_3seed/optuna_trials.csv",
+    "summary": "/mnt/c/Users/dbxdr/fiicode-2026-ai-bank-telemarketing-prediction/outputs/logs/exp062_attention_3seed/best_run_summary.json",
+    "best_params": "/mnt/c/Users/dbxdr/fiicode-2026-ai-bank-telemarketing-prediction/outputs/models/exp062_attention_3seed/best_params.json"
+  }
+}

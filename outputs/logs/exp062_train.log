@@ -1,0 +1,91 @@
+==============================================================================
+FiiCode GPU Neural Training
+==============================================================================
+Config:            /mnt/c/Users/dbxdr/fiicode-2026-ai-bank-telemarketing-prediction/experiments/exp062_nn_ensemble_for_blend.yaml
+Experiment name:   exp062_nn_ensemble_for_blend
+Feature set:       blend_buckets
+Data dir:          data/raw
+Output root:       /mnt/c/Users/dbxdr/fiicode-2026-ai-bank-telemarketing-prediction/outputs
+Require CUDA:      True
+Deterministic:     False
+CV:                5-fold (seed=42)
+Models:            exp062_attention_3seed, exp062_fttransformer_3seed, exp062_tabresnet_3seed
+==============================================================================
+Using device: cuda (NVIDIA GeForce GTX 1660 SUPER)
+Prepared features: 29 numeric + 23 categorical (10000 train rows)
+==============================================================================
+Training exp062_attention_3seed (attention)
+folds=5, seeds=[42, 43, 44], epochs=70, batch_size=1024, lr=0.001
+==============================================================================
+
+Fold 1/5:
+  seed=42: best_auc=0.932277, best_epoch=10, epochs_ran=22
+  seed=43: best_auc=0.928555, best_epoch=12, epochs_ran=24
+  seed=44: best_auc=0.931137, best_epoch=14, epochs_ran=26
+  fold_avg_auc=0.934870
+
+Fold 2/5:
+  seed=42: best_auc=0.921532, best_epoch=15, epochs_ran=27
+  seed=43: best_auc=0.922172, best_epoch=19, epochs_ran=31
+  seed=44: best_auc=0.923400, best_epoch=21, epochs_ran=33
+  fold_avg_auc=0.927449
+
+Fold 3/5:
+  seed=42: best_auc=0.929692, best_epoch=15, epochs_ran=27
+  seed=43: best_auc=0.931851, best_epoch=13, epochs_ran=25
+  seed=44: best_auc=0.925555, best_epoch=21, epochs_ran=33
+  fold_avg_auc=0.934457
+
+Fold 4/5:
+  seed=42: best_auc=0.927228, best_epoch=12, epochs_ran=24
+  seed=43: best_auc=0.927371, best_epoch=17, epochs_ran=29
+  seed=44: best_auc=0.925392, best_epoch=13, epochs_ran=25
+  fold_avg_auc=0.930846
+
+Fold 5/5:
+  seed=42: best_auc=0.928920, best_epoch=8, epochs_ran=20
+  seed=43: best_auc=0.930304, best_epoch=11, epochs_ran=23
+  seed=44: best_auc=0.932407, best_epoch=14, epochs_ran=26
+  fold_avg_auc=0.935104
+
+exp062_attention_3seed final OOF AUC: 0.931416
+Saved summary:    /mnt/c/Users/dbxdr/fiicode-2026-ai-bank-telemarketing-prediction/outputs/logs/exp062_attention_3seed/best_run_summary.json
+Saved submission: /mnt/c/Users/dbxdr/fiicode-2026-ai-bank-telemarketing-prediction/outputs/submissions/exp062_attention_3seed/submission.csv
+Saved OOF:        /mnt/c/Users/dbxdr/fiicode-2026-ai-bank-telemarketing-prediction/outputs/oof/exp062_attention_3seed/oof_predictions.csv
+Saved trials:     /mnt/c/Users/dbxdr/fiicode-2026-ai-bank-telemarketing-prediction/outputs/logs/exp062_attention_3seed/optuna_trials.csv
+Saved params:     /mnt/c/Users/dbxdr/fiicode-2026-ai-bank-telemarketing-prediction/outputs/models/exp062_attention_3seed/best_params.json
+==============================================================================
+Training exp062_fttransformer_3seed (ft_transformer)
+folds=5, seeds=[42, 43, 44], epochs=70, batch_size=1024, lr=0.0008
+==============================================================================
+
+Fold 1/5:
+Traceback (most recent call last):
+  File "/mnt/c/Users/dbxdr/fiicode-2026-ai-bank-telemarketing-prediction/gpu_train.py", line 1061, in <module>
+    main()
+    ~~~~^^
+  File "/mnt/c/Users/dbxdr/fiicode-2026-ai-bank-telemarketing-prediction/gpu_train.py", line 1025, in main
+    result = run_model_cv(
+        model_cfg,
+    ...<5 lines>...
+        require_cuda=config.require_cuda,
+    )
+  File "/mnt/c/Users/dbxdr/fiicode-2026-ai-bank-telemarketing-prediction/gpu_train.py", line 590, in run_model_cv
+    model = build_model(
+            ~~~~~~~~~~~^
+        model_cfg,
+        ^^^^^^^^^^
+        num_numeric=encoded.x_num_train.shape[1],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        cat_dims=encoded.cat_dims,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ).to(device)
+    ^
+  File "/mnt/c/Users/dbxdr/fiicode-2026-ai-bank-telemarketing-prediction/gpu_train.py", line 497, in build_model
+    return FTTransformer(num_numeric, cat_dims, **(defaults | params))
+  File "/mnt/c/Users/dbxdr/fiicode-2026-ai-bank-telemarketing-prediction/gpu_train.py", line 397, in __init__
+    [TransformerBlock(token_dim, heads=heads, dropout=dropout, ff_mult=ff_mult) for _ in range(n_layers)]
+     ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/dbxdr/fiicode-2026-ai-bank-telemarketing-prediction/gpu_train.py", line 306, in __init__
+    raise ValueError(f"Transformer dim={dim} must be divisible by heads={heads}.")
+ValueError: Transformer dim=160 must be divisible by heads=6.

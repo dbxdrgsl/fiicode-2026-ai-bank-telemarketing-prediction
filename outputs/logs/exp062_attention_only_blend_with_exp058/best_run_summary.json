@@ -1,0 +1,47 @@
+{
+  "config_path": null,
+  "config": {
+    "name": "exp062_attention_only_blend_with_exp058",
+    "model_family": "blend",
+    "feature_set": "mixed",
+    "with_class_weight": false
+  },
+  "data_dir": null,
+  "study_storage": "blend-search",
+  "existing_trials": 0,
+  "requested_trials": 18000,
+  "best_trial_number": null,
+  "search_auc": 0.9380973626373627,
+  "final_auc": 0.9380973626373627,
+  "best_params": {
+    "weights": {
+      "exp058_blend_exp052_catneural": 1.0,
+      "exp062_attention_3seed": 0.0
+    }
+  },
+  "members": [
+    {
+      "name": "exp058_blend_exp052_catneural",
+      "model_family": "blend",
+      "final_auc": 0.9380973626373627,
+      "corr_to_best": 1.0
+    },
+    {
+      "name": "exp062_attention_3seed",
+      "model_family": "attention",
+      "final_auc": 0.9314161978021978,
+      "corr_to_best": 0.9818122378826858
+    }
+  ],
+  "best_single_model": "exp058_blend_exp052_catneural",
+  "best_single_auc": 0.9380973626373627,
+  "improvement_over_best_single": 0.0,
+  "promoted": true,
+  "paths": {
+    "submission": "/mnt/c/Users/dbxdr/fiicode-2026-ai-bank-telemarketing-prediction/outputs/submissions/exp062_attention_only_blend_with_exp058/submission.csv",
+    "oof": "/mnt/c/Users/dbxdr/fiicode-2026-ai-bank-telemarketing-prediction/outputs/oof/exp062_attention_only_blend_with_exp058/oof_predictions.csv",
+    "summary": "/mnt/c/Users/dbxdr/fiicode-2026-ai-bank-telemarketing-prediction/outputs/logs/exp062_attention_only_blend_with_exp058/best_run_summary.json",
+    "best_params": "/mnt/c/Users/dbxdr/fiicode-2026-ai-bank-telemarketing-prediction/outputs/models/exp062_attention_only_blend_with_exp058/best_params.json",
+    "correlation": "/mnt/c/Users/dbxdr/fiicode-2026-ai-bank-telemarketing-prediction/outputs/logs/exp062_attention_only_blend_with_exp058/oof_correlation.csv"
+  }
+}

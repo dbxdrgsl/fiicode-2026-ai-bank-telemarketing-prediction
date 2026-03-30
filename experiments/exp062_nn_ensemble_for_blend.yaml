@@ -1,24 +1,57 @@
-experiment_name: exp062_nn_ensemble_for_blend
+name: exp062_nn_ensemble_for_blend
 competition_slug: fiicode-2026-ai-competition
 feature_set: blend_buckets
-n_splits: 5
 drop_columns: []
+data_dir: data/raw
+output_root: outputs
+require_cuda: true
+deterministic: false
+cv_folds: 5
+cv_seed: 42
+notes: >
+  Fast 2-model NN ensemble (Attention + TabResNet, 3 seeds each) for blend with exp058.
+  FT-Transformer skipped due to dimension constraints; using simpler architectures for speed.
 
 models:
-  - family: attention
+  - name: exp062_attention_3seed_v2
+    family: attention
     seeds: [42, 43, 44]
-    epochs: 80
+    epochs: 70
     batch_size: 1024
     lr: 0.001
-  - family: ft_transformer
-    seeds: [42, 43, 44]
-    epochs: 80
-    batch_size: 1024
-    lr: 0.001
-  - family: tabresnet
-    seeds: [42, 43, 44]
-    epochs: 80
-    batch_size: 1024
-    lr: 0.001
+    weight_decay: 0.01
+    patience: 12
+    max_grad_norm: 1.0
+    num_workers: 0
+    amp: true
+    model_params:
+      emb_dim: 20
+      hidden_dim: 160
+      n_layers: 3
+      heads: 4
+      dropout: 0.2
 
-notes: "Diverse NN ensemble to blend with exp058"
+  - name: exp062_tabresnet_3seed_v2
+    family: tabresnet
+    seeds: [42, 43, 44]
+    epochs: 70
+    batch_size: 1024
+    lr: 0.0012
+    weight_decay: 0.01
+    patience: 12
+    max_grad_norm: 1.0
+    num_workers: 0
+    amp: true
+    model_params:
+      emb_dim: 20
+      hidden_dim: 280
+      n_blocks: 5
+      dropout: 0.2
+
+blend:
+  enabled: true
+  name: exp062_nn_ensemble_blend_v2
+  samples: 18000
+  seed: 42
+  min_improvement: 0.0
+  max_models: 2
