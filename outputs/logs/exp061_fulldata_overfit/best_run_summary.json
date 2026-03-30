@@ -1,0 +1,1 @@
+{"experiment_name": "exp061_fulldata_overfit", "n_models": 56, "oof_auc": 0.9453227472527471, "method": "neural_overfit_fulldata"}
