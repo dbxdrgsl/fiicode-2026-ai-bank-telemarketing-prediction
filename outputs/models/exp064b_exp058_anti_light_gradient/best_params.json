@@ -1,0 +1,4 @@
+{
+  "formula": "clip((1+alpha)*exp058 - alpha*exp_light_attention, 0, 1)",
+  "alpha": 0.11
+}

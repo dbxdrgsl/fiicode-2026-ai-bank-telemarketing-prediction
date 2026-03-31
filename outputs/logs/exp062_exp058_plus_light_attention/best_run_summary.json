@@ -1,0 +1,47 @@
+{
+  "config_path": null,
+  "config": {
+    "name": "exp062_exp058_plus_light_attention",
+    "model_family": "blend",
+    "feature_set": "mixed",
+    "with_class_weight": false,
+    "blend_type": "submission_only_direct_probability"
+  },
+  "data_dir": "C:\\Users\\dbxdr_iytiz92\\Dropbox\\fiicode\\data\\raw",
+  "study_storage": "manual-blend",
+  "existing_trials": 0,
+  "requested_trials": 0,
+  "best_trial_number": null,
+  "search_auc": 0.9382261098901098,
+  "final_auc": 0.9382261098901098,
+  "best_params": {
+    "weights": {
+      "exp058_blend_exp052_catneural": 0.9,
+      "exp_light_attention": 0.1
+    }
+  },
+  "members": [
+    {
+      "name": "exp058_blend_exp052_catneural",
+      "model_family": "blend",
+      "weight": 0.9
+    },
+    {
+      "name": "exp_light_attention",
+      "model_family": "attention",
+      "weight": 0.1
+    }
+  ],
+  "best_single_model": "exp058_blend_exp052_catneural",
+  "best_single_auc": 0.9380973626373627,
+  "improvement_over_best_single": 0.00012874725274714116,
+  "promoted": true,
+  "notes": "Submission-only direct probability blend: 90% exp058_blend_exp052_catneural + 10% exp_light_attention.",
+  "paths": {
+    "submission": "C:\\Users\\dbxdr_iytiz92\\Dropbox\\fiicode\\outputs\\submissions\\exp062_exp058_plus_light_attention\\submission.csv",
+    "oof": "C:\\Users\\dbxdr_iytiz92\\Dropbox\\fiicode\\outputs\\oof\\exp062_exp058_plus_light_attention\\oof_predictions.csv",
+    "summary": "C:\\Users\\dbxdr_iytiz92\\Dropbox\\fiicode\\outputs\\logs\\exp062_exp058_plus_light_attention\\best_run_summary.json",
+    "best_params": "C:\\Users\\dbxdr_iytiz92\\Dropbox\\fiicode\\outputs\\models\\exp062_exp058_plus_light_attention\\best_params.json",
+    "correlation": "C:\\Users\\dbxdr_iytiz92\\Dropbox\\fiicode\\outputs\\logs\\exp062_exp058_plus_light_attention\\oof_correlation.csv"
+  }
+}

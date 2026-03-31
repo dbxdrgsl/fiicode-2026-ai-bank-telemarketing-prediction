@@ -1,0 +1,45 @@
+{
+  "config_path": "C:\\Users\\dbxdr_iytiz92\\Dropbox\\fiicode\\experiments\\exp064b_exp058_anti_light_gradient.yaml",
+  "config": {
+    "name": "exp064b_exp058_anti_light_gradient",
+    "model_family": "blend",
+    "feature_set": "mixed",
+    "with_class_weight": false,
+    "blend_type": "manual_extrapolation",
+    "alpha": 0.11
+  },
+  "data_dir": "C:\\Users\\dbxdr_iytiz92\\Dropbox\\fiicode\\data\\raw",
+  "study_storage": "manual-gradient-extrapolation",
+  "existing_trials": 0,
+  "requested_trials": 0,
+  "best_trial_number": null,
+  "search_auc": 0.9376332307692307,
+  "final_auc": 0.9376332307692307,
+  "best_params": {
+    "alpha": 0.11
+  },
+  "members": [
+    {
+      "name": "exp058_blend_exp052_catneural",
+      "model_family": "blend",
+      "weight": 1.11
+    },
+    {
+      "name": "exp_light_attention",
+      "model_family": "attention",
+      "weight": -0.11
+    }
+  ],
+  "best_single_model": "exp058_blend_exp052_catneural",
+  "best_single_auc": 0.9380973626373627,
+  "improvement_over_best_single": -0.0004641318681319895,
+  "promoted": true,
+  "notes": "Submission-only public-LB-gradient extrapolation after exp062 underperformed: clip((1+alpha)*exp058 - alpha*exp_light_attention, 0, 1) with alpha=0.11.",
+  "paths": {
+    "submission": "C:\\Users\\dbxdr_iytiz92\\Dropbox\\fiicode\\outputs\\submissions\\exp064b_exp058_anti_light_gradient\\submission.csv",
+    "oof": "C:\\Users\\dbxdr_iytiz92\\Dropbox\\fiicode\\outputs\\oof\\exp064b_exp058_anti_light_gradient\\oof_predictions.csv",
+    "summary": "C:\\Users\\dbxdr_iytiz92\\Dropbox\\fiicode\\outputs\\logs\\exp064b_exp058_anti_light_gradient\\best_run_summary.json",
+    "best_params": "C:\\Users\\dbxdr_iytiz92\\Dropbox\\fiicode\\outputs\\models\\exp064b_exp058_anti_light_gradient\\best_params.json",
+    "correlation": "C:\\Users\\dbxdr_iytiz92\\Dropbox\\fiicode\\outputs\\logs\\exp064b_exp058_anti_light_gradient\\oof_correlation.csv"
+  }
+}

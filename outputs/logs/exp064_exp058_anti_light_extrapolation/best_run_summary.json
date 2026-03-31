@@ -1,0 +1,36 @@
+{
+  "config_path": null,
+  "config": {
+    "name": "exp064_exp058_anti_light_extrapolation",
+    "model_family": "blend",
+    "feature_set": "mixed",
+    "with_class_weight": false,
+    "blend_type": "manual_extrapolation"
+  },
+  "search_auc": 0.9375577582417582,
+  "final_auc": 0.9375577582417582,
+  "best_params": {
+    "alpha": 0.12
+  },
+  "members": [
+    {
+      "name": "exp058_blend_exp052_catneural",
+      "weight": 1.12
+    },
+    {
+      "name": "exp_light_attention",
+      "weight": -0.12
+    }
+  ],
+  "best_single_model": "exp058_blend_exp052_catneural",
+  "best_single_auc": 0.9380973626373627,
+  "improvement_over_best_single": -0.0005396043956044094,
+  "promoted": true,
+  "notes": "Submission-only extrapolation away from exp_light_attention after exp062 underperformed: clip((1+alpha)*exp058 - alpha*exp_light_attention, 0, 1) with alpha=0.12.",
+  "paths": {
+    "submission": "C:\\Users\\dbxdr_iytiz92\\Dropbox\\fiicode\\outputs\\submissions\\exp064_exp058_anti_light_extrapolation\\submission.csv",
+    "oof": "C:\\Users\\dbxdr_iytiz92\\Dropbox\\fiicode\\outputs\\oof\\exp064_exp058_anti_light_extrapolation\\oof_predictions.csv",
+    "summary": "C:\\Users\\dbxdr_iytiz92\\Dropbox\\fiicode\\outputs\\logs\\exp064_exp058_anti_light_extrapolation\\best_run_summary.json",
+    "best_params": "C:\\Users\\dbxdr_iytiz92\\Dropbox\\fiicode\\outputs\\models\\exp064_exp058_anti_light_extrapolation\\best_params.json"
+  }
+}

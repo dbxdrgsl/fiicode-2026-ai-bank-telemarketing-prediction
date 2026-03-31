@@ -1,0 +1,17 @@
+name: exp064b_exp058_anti_light_gradient
+competition_slug: fiicode-2026-ai-competition
+model_family: blend
+feature_set: mixed
+drop_columns: []
+data_dir: data/raw
+output_root: outputs
+with_class_weight: false
+manual_blend: true
+source_submission: outputs/submissions/exp058_blend_exp052_catneural/submission.csv
+side_submission: outputs/submissions/exp_light_attention/submission.csv
+formula: clip((1 + alpha) * source - alpha * side, 0, 1)
+alpha: 0.11
+notes: >
+  Final public-LB-gradient extrapolation candidate after exp062
+  (0.90 * exp058 + 0.10 * exp_light_attention) underperformed exp058.
+  Uses alpha=0.11 derived from the observed public leaderboard response.

@@ -9,6 +9,102 @@ The repo now supports:
 - reproducible YAML experiments
 - Kaggle CLI validation and submission journaling
 
+## Re-run 0.94939
+
+Final best public score captured in this repo: `0.94939`
+
+- Final submission: `exp064b_exp058_anti_light_gradient`
+- Public LB recorded in `outputs/logs/leaderboard_journal.csv`
+- Exact formula: `clip(1.11 * exp058 - 0.11 * exp_light_attention, 0, 1)`
+
+### 1. Activate the WSL environment
+
+```bash
+cd /mnt/c/Users/dbxdr_iytiz92/Dropbox/fiicode
+source .venv/bin/activate
+```
+
+### 2. Rebuild the exact final submission from saved source predictions
+
+This uses the two saved source files already in the repo:
+
+- `outputs/submissions/exp058_blend_exp052_catneural/submission.csv`
+- `outputs/submissions/exp_light_attention/submission.csv`
+
+Run:
+
+```bash
+python - <<'PY'
+from pathlib import Path
+import numpy as np
+import pandas as pd
+
+repo = Path(".")
+alpha = 0.11
+
+exp058 = pd.read_csv(repo / "outputs" / "submissions" / "exp058_blend_exp052_catneural" / "submission.csv")
+light = pd.read_csv(repo / "outputs" / "submissions" / "exp_light_attention" / "submission.csv")
+
+if not exp058["id"].equals(light["id"]):
+    raise SystemExit("id mismatch between exp058 and exp_light_attention")
+
+submission = exp058.copy()
+submission["Subscribed"] = np.clip(
+    (1.0 + alpha) * exp058["Subscribed"].to_numpy()
+    - alpha * light["Subscribed"].to_numpy(),
+    0.0,
+    1.0,
+)
+
+out_dir = repo / "outputs" / "submissions" / "exp064b_exp058_anti_light_gradient"
+out_dir.mkdir(parents=True, exist_ok=True)
+out_path = out_dir / "submission.csv"
+submission.to_csv(out_path, index=False)
+print(out_path)
+PY
+```
+
+Expected output file:
+
+- `outputs/submissions/exp064b_exp058_anti_light_gradient/submission.csv`
+
+### 3. Validate the rebuilt file locally
+
+```bash
+python -m src.submit \
+  --submission outputs/submissions/exp064b_exp058_anti_light_gradient/submission.csv \
+  --message "exp064b anti-light gradient alpha 0.11"
+```
+
+### 4. Submit through the working Kaggle auth context
+
+```bash
+wsl.exe -u admin --cd /mnt/c/Users/dbxdr_iytiz92/Dropbox/fiicode \
+  zsh -ic "source /home/admin/.venvs/fiicode/bin/activate && python -m src.submit --submission outputs/submissions/exp064b_exp058_anti_light_gradient/submission.csv --message 'exp064b anti-light gradient alpha 0.11' --run-kaggle-cli"
+```
+
+### 5. Record the resulting public score
+
+For the final run in this repo, the recorded public LB was `0.94939`.
+
+To log a scored rerun:
+
+```bash
+python -m src.submit \
+  --submission outputs/submissions/exp064b_exp058_anti_light_gradient/submission.csv \
+  --message "exp064b anti-light gradient alpha 0.11" \
+  --public-lb 0.94939 \
+  --notes "User-reported Kaggle public LB after final submission"
+```
+
+### Files That Define the Final 0.94939 Run
+
+- `experiments/exp064b_exp058_anti_light_gradient.yaml`
+- `outputs/submissions/exp064b_exp058_anti_light_gradient/submission.csv`
+- `outputs/oof/exp064b_exp058_anti_light_gradient/oof_predictions.csv`
+- `outputs/logs/exp064b_exp058_anti_light_gradient/best_run_summary.json`
+- `outputs/models/exp064b_exp058_anti_light_gradient/best_params.json`
+
 ## Competition
 
 The task is binary classification: predict the probability that a client of a
